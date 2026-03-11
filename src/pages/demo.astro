@@ -114,7 +114,15 @@ import Layout from '../layouts/Layout.astro';
     color: #7AB5FF;
   }
 
+  .message.user .content {
+    color: #7AB5FF;
+  }
+
   .message.assistant {
+    color: #E8E8E8;
+  }
+
+  .message.assistant .content {
     color: #E8E8E8;
   }
 
@@ -122,10 +130,20 @@ import Layout from '../layouts/Layout.astro';
     color: #FFB86C;
   }
 
+  .message.system .content {
+    color: #FFB86C;
+  }
+
   .message .label {
     font-weight: 600;
     margin-right: var(--spacing-sm);
     color: #FFFFFF;
+  }
+
+  .message .content {
+    color: #E8E8E8;
+    white-space: pre-wrap;
+    word-break: break-word;
   }
 
   .input-area {
@@ -260,6 +278,7 @@ import Layout from '../layouts/Layout.astro';
     label.textContent = type === 'user' ? '你' : 'Claude';
 
     const text = document.createElement('span');
+    text.className = 'content';
     text.textContent = content;
 
     message.appendChild(label);
