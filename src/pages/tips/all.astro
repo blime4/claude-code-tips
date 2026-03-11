@@ -18,12 +18,73 @@ const tipsWithContent = await Promise.all(
 
 const difficulties = ['beginner', 'intermediate', 'advanced'];
 const categories = ['setup', 'workflow', 'power-user', 'advanced'];
+
+// Chinese titles for tips (key: tip id, value: Chinese title)
+const zhTitles = {
+  1: "从根目录运行",
+  2: "立即运行 /init",
+  3: "CLAUDE.md 的层级结构",
+  4: "明确需求描述",
+  5: "分而治之",
+  6: "先检查再询问",
+  7: "使用 /btw 保存上下文",
+  8: "创建专用分支",
+  9: "通过拉取请求集成",
+  10: "整理你的问题",
+  11: "使用指向而非描述",
+  12: "避免模糊的指令",
+  13: "一个任务一个请求",
+  14: "验证理解",
+  15: "打开正确的文件",
+  16: "描述你看到的内容",
+  17: "说明期望行为",
+  18: "提供错误信息",
+  19: "逐个文件修复",
+  20: "重构前问为什么",
+  21: "使用 /plan 进行规划",
+  22: "先接受计划",
+  23: "迭代规划",
+  24: "规划模式输出",
+  25: "高效的代码审查",
+  26: "审查前询问",
+  27: "分批审查",
+  28: "使用建议",
+  29: "自定义审查",
+  30: "接受建议的时机",
+  31: "何时问如何",
+  32: "分步教学",
+  33: "探索代码库",
+  34: "技术决策",
+  35: "代码解释",
+  36: "模式识别",
+  37: "使用 /context",
+  38: "定期使用 /clear",
+  39: "切换模型",
+  40: "使用工作区",
+  41: "快速文件访问",
+  42: "内容感知编辑",
+  43: "读取大文件",
+  44: "批处理操作",
+  45: "保存会话",
+  46: "恢复会话",
+  47: "使用 /resume",
+  48: "会话搜索",
+  49: "阻止危险命令",
+  50: "探索插件生态"
+};
 ---
 
 <Layout title="所有技巧一览 - Claude Code Tips">
   <div class="container">
     <div class="header">
-      <h1>所有技巧一览</h1>
+      <div class="header-top">
+        <h1>所有技巧一览</h1>
+        <button id="lang-toggle" class="lang-toggle" aria-label="切换语言">
+          <span class="lang-current">EN</span>
+          <span class="lang-separator">/</span>
+          <span class="lang-other">中文</span>
+        </button>
+      </div>
       <p class="subtitle">完整的 50 个 Claude Code 使用技巧，适合演示和培训使用</p>
       <div class="actions">
         <a href="/tips" class="btn btn-outline">返回卡片视图</a>
@@ -42,7 +103,7 @@ const categories = ['setup', 'workflow', 'power-user', 'advanced'];
               <span class="timestamp">{tip.data.timestamp}</span>
             </div>
             <div class="tip-title-row">
-              <h2>{tip.data.title}</h2>
+              <h2 data-title-en={tip.data.title} data-title-zh={zhTitles[tip.data.id] || tip.data.title}>{tip.data.title}</h2>
               <button class="toggle-btn" aria-label="展开/收起" data-tip-id={tip.data.id}>
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
@@ -94,6 +155,61 @@ const categories = ['setup', 'workflow', 'power-user', 'advanced'];
   .header h1 {
     font-size: 2.5rem;
     margin-bottom: var(--spacing-md);
+    color: var(--color-primary);
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+  }
+
+  .header-top h1 {
+    margin: 0;
+  }
+
+  .lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    background: var(--color-surface);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-sm) var(--spacing-md);
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: all var(--transition);
+  }
+
+  .lang-toggle:hover {
+    background: var(--color-primary);
+  }
+
+  .lang-toggle:hover .lang-current,
+  .lang-toggle:hover .lang-other {
+    color: white;
+  }
+
+  .lang-current {
+    color: var(--color-primary);
+  }
+
+  .lang-separator {
+    color: var(--color-text-light);
+  }
+
+  .lang-other {
+    color: var(--color-text-light);
+  }
+
+  .lang-toggle[data-lang="zh"] .lang-current {
+    color: var(--color-text-light);
+  }
+
+  .lang-toggle[data-lang="zh"] .lang-other {
     color: var(--color-primary);
   }
 
@@ -396,6 +512,40 @@ const categories = ['setup', 'workflow', 'power-user', 'advanced'];
 </style>
 
 <script>
+  // Language switching
+  let currentLang = localStorage.getItem('tips-lang') || 'en';
+  const langToggle = document.getElementById('lang-toggle');
+
+  function updateLanguage() {
+    const titles = document.querySelectorAll('[data-title-en]');
+    titles.forEach(title => {
+      const en = title.getAttribute('data-title-en');
+      const zh = title.getAttribute('data-title-zh');
+      title.textContent = currentLang === 'zh' ? zh : en;
+    });
+
+    // Update toggle button state
+    langToggle?.setAttribute('data-lang', currentLang);
+    const currentSpan = langToggle?.querySelector('.lang-current');
+    const otherSpan = langToggle?.querySelector('.lang-other');
+    if (currentLang === 'zh') {
+      currentSpan.textContent = '中文';
+      otherSpan.textContent = 'EN';
+    } else {
+      currentSpan.textContent = 'EN';
+      otherSpan.textContent = '中文';
+    }
+  }
+
+  langToggle?.addEventListener('click', () => {
+    currentLang = currentLang === 'en' ? 'zh' : 'en';
+    localStorage.setItem('tips-lang', currentLang);
+    updateLanguage();
+  });
+
+  // Initialize language
+  updateLanguage();
+
   // Add IDs to tip items for anchor navigation
   document.querySelectorAll('.tip-item').forEach((item) => {
     const id = item.querySelector('.tip-number')?.textContent;
