@@ -22,4 +22,4 @@ related: [7, 9]
 
 ## 另见
 
-- [Tip 9: 空输入时双 Escape = 回退](/tips/09)
+- [Tip 9: 空输入时双 Escape = 回退](/tips/9)

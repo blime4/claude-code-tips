@@ -34,4 +34,4 @@ claude  # 从某个子目录运行
 
 ## 另见
 
-- [Tip 2: 立即运行 /init](/tips/02)
+- [Tip 2: 立即运行 /init](/tips/2)

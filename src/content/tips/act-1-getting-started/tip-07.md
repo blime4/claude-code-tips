@@ -37,4 +37,4 @@ related: [6, 8]
 
 ## 另见
 
-- [Tip 8: 双 Escape 清空输入](/tips/08)
+- [Tip 8: 双 Escape 清空输入](/tips/8)
