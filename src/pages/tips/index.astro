@@ -42,22 +42,22 @@ const categories = ['setup', 'workflow', 'power-user', 'advanced'];
         <div class="filter-section">
           <h4>按 Act</h4>
           <ul class="filter-list">
-            <li><a href="/tips" class={actFilter ? '' : 'active'}>全部</a></li>
-            <li><a href={`/tips?act=1`} class={actFilter === '1' ? 'active' : ''}>Act 1: Getting Started</a></li>
-            <li><a href={`/tips?act=2`} class={actFilter === '2' ? 'active' : ''}>Act 2: Daily Workflow</a></li>
-            <li><a href={`/tips?act=3`} class={actFilter === '3' ? 'active' : ''}>Act 3: Power User</a></li>
-            <li><a href={`/tips?act=4`} class={actFilter === '4' ? 'active' : ''}>Act 4: Advanced</a></li>
+            <li><a href="/tips" class={actFilter ? 'filter-link' : 'filter-link active'}>全部</a></li>
+            <li><a href={`/tips?act=1`} class={actFilter === '1' ? 'filter-link active' : 'filter-link'}>Act 1: Getting Started</a></li>
+            <li><a href={`/tips?act=2`} class={actFilter === '2' ? 'filter-link active' : 'filter-link'}>Act 2: Daily Workflow</a></li>
+            <li><a href={`/tips?act=3`} class={actFilter === '3' ? 'filter-link active' : 'filter-link'}>Act 3: Power User</a></li>
+            <li><a href={`/tips?act=4`} class={actFilter === '4' ? 'filter-link active' : 'filter-link'}>Act 4: Advanced</a></li>
           </ul>
         </div>
 
         <div class="filter-section">
           <h4>按难度</h4>
           <ul class="filter-list">
-            <li><a href="/tips" class={difficultyFilter ? '' : 'active'}>全部</a></li>
+            <li><a href="/tips" class={difficultyFilter ? 'filter-link' : 'filter-link active'}>全部</a></li>
             {difficulties.map(d => (
               <li>
                 <a href={`/tips?difficulty=${d}${actFilter ? `&act=${actFilter}` : ''}`}
-                   class={difficultyFilter === d ? 'active' : ''}>
+                   class={difficultyFilter === d ? 'filter-link active' : 'filter-link'}>
                    {d}
                 </a>
               </li>
@@ -68,11 +68,11 @@ const categories = ['setup', 'workflow', 'power-user', 'advanced'];
         <div class="filter-section">
           <h4>按分类</h4>
           <ul class="filter-list">
-            <li><a href="/tips" class={categoryFilter ? '' : 'active'}>全部</a></li>
+            <li><a href="/tips" class={categoryFilter ? 'filter-link' : 'filter-link active'}>全部</a></li>
             {categories.map(c => (
               <li>
                 <a href={`/tips?category=${c}${actFilter ? `&act=${actFilter}` : ''}`}
-                   class={categoryFilter === c ? 'active' : ''}>
+                   class={categoryFilter === c ? 'filter-link active' : 'filter-link'}>
                    {c}
                 </a>
               </li>
@@ -160,18 +160,23 @@ const categories = ['setup', 'workflow', 'power-user', 'advanced'];
     margin-bottom: var(--spacing-xs);
   }
 
-  .filter-list a {
+  .filter-list :global(.filter-link) {
     color: var(--color-text-light);
     text-decoration: none;
     display: block;
     padding: var(--spacing-xs) var(--spacing-sm);
     border-radius: var(--radius-sm);
+    transition: background var(--transition), color var(--transition);
   }
 
-  .filter-list a:hover,
-  .filter-list a.active {
+  .filter-list :global(.filter-link:hover),
+  .filter-list :global(.filter-link.active) {
     background: var(--color-border);
     color: var(--color-text);
+  }
+
+  .filter-list :global(.filter-link.active) {
+    font-weight: 500;
   }
 
   .header {
