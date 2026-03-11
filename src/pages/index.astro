@@ -44,7 +44,7 @@ const featuredTips = allTips.slice(0, 3);
       <h2>精选技巧</h2>
       <div class="tip-grid">
         {featuredTips.map(tip => (
-          <a href={`/tips/${tip.id}`} class="card tip-card">
+          <a href={`/tips/${tip.data.id}`} class="card tip-card">
             <div class="tip-meta">
               <span class="badge badge-{tip.data.difficulty}">{tip.data.difficulty}</span>
               <span class="tag">Act {tip.data.act}</span>
