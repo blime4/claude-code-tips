@@ -18,8 +18,8 @@ const allTipsSorted = allTips.sort((a, b) => a.data.id - b.data.id);
 
     <div class="tips-list">
       {allTipsSorted.map((tip, index) => (
-        <div class={`tip-item act-${tip.data.act} difficulty-${tip.data.difficulty}`}>
-          <div class="tip-header">
+        <div class={`tip-item collapsed act-${tip.data.act} difficulty-${tip.data.difficulty}`} data-tip-id={tip.data.id}>
+          <div class="tip-header" onclick={`toggleTip(${tip.data.id})`}>
             <div class="tip-meta">
               <span class="tip-number">#{tip.data.id}</span>
               <span class={`badge badge-${tip.data.difficulty}`}>{tip.data.difficulty}</span>
@@ -27,7 +27,14 @@ const allTipsSorted = allTips.sort((a, b) => a.data.id - b.data.id);
               <span class="category-badge">{tip.data.category}</span>
               <span class="timestamp">{tip.data.timestamp}</span>
             </div>
-            <h2>{tip.data.title}</h2>
+            <div class="tip-title-row">
+              <h2>{tip.data.title}</h2>
+              <button class="toggle-btn" aria-label="展开/收起" data-tip-id={tip.data.id}>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                </svg>
+              </button>
+            </div>
             <p class="description">{tip.data.description}</p>
             <div class="tip-tags">
               {tip.data.tags.map(tag => <span class="tag">{tag}</span>)}
@@ -98,6 +105,14 @@ const allTipsSorted = allTips.sort((a, b) => a.data.id - b.data.id);
     border: 1px solid var(--color-border);
     overflow: hidden;
     scroll-margin-top: var(--spacing-2xl);
+  }
+
+  .tip-item.collapsed .tip-content {
+    display: none;
+  }
+
+  .tip-item.collapsed .tip-related {
+    display: none;
   }
 
   .tip-header {
@@ -173,6 +188,45 @@ const allTipsSorted = allTips.sort((a, b) => a.data.id - b.data.id);
     font-size: 1.5rem;
     margin-bottom: var(--spacing-sm);
     color: var(--color-text);
+  }
+
+  .tip-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+
+  .tip-title-row h2 {
+    margin: 0;
+    flex: 1;
+  }
+
+  .toggle-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-md);
+    color: var(--color-primary);
+    transition: all var(--transition);
+    flex-shrink: 0;
+  }
+
+  .toggle-btn:hover {
+    background: rgba(217, 119, 87, 0.1);
+  }
+
+  .toggle-btn svg {
+    transition: transform var(--transition);
+  }
+
+  .tip-item.collapsed .toggle-btn svg {
+    transform: rotate(-90deg);
+  }
+
+  .tip-item:not(.collapsed) .toggle-btn svg {
+    transform: rotate(0deg);
   }
 
   .description {
@@ -323,4 +377,33 @@ const allTipsSorted = allTips.sort((a, b) => a.data.id - b.data.id);
       item.id = `tip-${id.replace('#', '')}`;
     }
   });
+
+  // Toggle tip expansion
+  function toggleTip(tipId) {
+    const tipItem = document.querySelector(`.tip-item[data-tip-id="${tipId}"]`);
+    if (tipItem) {
+      tipItem.classList.toggle('collapsed');
+    }
+  }
+
+  // Make function available globally
+  window.toggleTip = toggleTip;
+
+  // Handle toggle button clicks separately
+  document.querySelectorAll('.toggle-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const tipId = btn.getAttribute('data-tip-id');
+      toggleTip(tipId);
+    });
+  });
+
+  // Handle direct anchor links by expanding the target tip
+  if (window.location.hash) {
+    const targetId = window.location.hash.replace('#tip-', '');
+    const tipItem = document.querySelector(`.tip-item[data-tip-id="${targetId}"]`);
+    if (tipItem) {
+      tipItem.classList.remove('collapsed');
+    }
+  }
 </script>
