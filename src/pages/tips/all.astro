@@ -35,10 +35,7 @@ const allTipsSorted = allTips.sort((a, b) => a.data.id - b.data.id);
           </div>
 
           <div class="tip-content">
-            <slot />
-            <div class="tip-body">
-              {tip.render()}
-            </div>
+            <div class="tip-body" set:html={tip.render().content} />
           </div>
 
           {tip.data.related && tip.data.related.length > 0 && (
