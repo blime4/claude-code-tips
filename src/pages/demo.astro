@@ -29,12 +29,68 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
 
-      <div class="presets">
-        <h3>试试这些命令</h3>
-        <button class="preset-btn" data-cmd="/help">/help - 显示帮助</button>
-        <button class="preset-btn" data-cmd="/context">/context - 查看 token 使用</button>
-        <button class="preset-btn" data-cmd="帮我创建一个新组件">创建组件示例</button>
-        <button class="preset-btn" data-cmd="这个 bug 怎么修复？">调试示例</button>
+      <div class="presets-wrapper">
+        <div class="presets-section">
+          <h3>📋 基础命令</h3>
+          <button class="preset-btn" data-cmd="/help">/help - 显示帮助</button>
+          <button class="preset-btn" data-cmd="/init">/init - 初始化项目</button>
+          <button class="preset-btn" data-cmd="/clear">/clear - 清空对话</button>
+          <button class="preset-btn" data-cmd="/context">/context - Token 使用</button>
+        </div>
+
+        <div class="presets-section">
+          <h3>🔄 工作流命令</h3>
+          <button class="preset-btn" data-cmd="/model">/model - 切换模型</button>
+          <button class="preset-btn" data-cmd="/plan">/plan - 进入规划模式</button>
+          <button class="preset-btn" data-cmd="/resume">/resume - 恢复会话</button>
+          <button class="preset-btn" data-cmd="/mcp">/mcp - MCP 状态</button>
+        </div>
+
+        <div class="presets-section">
+          <h3>💬 对话示例</h3>
+          <button class="preset-btn" data-cmd="帮我创建一个新组件">��建组件示例</button>
+          <button class="preset-btn" data-cmd="这个 bug 怎么修复？">调试示例</button>
+          <button class="preset-btn" data-cmd="重构这个函数">重构代码</button>
+          <button class="preset-btn" data-cmd="写一个测试">编写测试</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="commands-reference">
+      <h2>Slash Commands 参考</h2>
+      <div class="commands-grid">
+        <div class="command-card">
+          <code>/init</code>
+          <p>初始化项目配置，创建 CLAUDE.md</p>
+        </div>
+        <div class="command-card">
+          <code>/help</code>
+          <p>显示所有可用命令</p>
+        </div>
+        <div class="command-card">
+          <code>/clear</code>
+          <p>清空对话上下文</p>
+        </div>
+        <div class="command-card">
+          <code>/context</code>
+          <p>查看 token 使用情况</p>
+        </div>
+        <div class="command-card">
+          <code>/model</code>
+          <p>切换 AI 模型</p>
+        </div>
+        <div class="command-card">
+          <code>/plan</code>
+          <p>进入规划模式</p>
+        </div>
+        <div class="command-card">
+          <code>/resume</code>
+          <p>恢复之前的会话</p>
+        </div>
+        <div class="command-card">
+          <code>/mcp</code>
+          <p>查看 MCP 连接状态</p>
+        </div>
       </div>
     </div>
 
@@ -52,7 +108,7 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .demo-container {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto var(--spacing-2xl);
   }
 
@@ -184,16 +240,24 @@ import Layout from '../layouts/Layout.astro';
     background: #c06242;
   }
 
-  .presets {
+  .presets-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-3xl);
+  }
+
+  .presets-section {
     background: #1E1E1E;
     padding: var(--spacing-lg);
     border-radius: var(--radius-lg);
     border: 1px solid #3D3D3D;
   }
 
-  .presets h3 {
+  .presets-section h3 {
     margin-bottom: var(--spacing-md);
     color: #E8E8E8;
+    font-size: 1rem;
   }
 
   .preset-btn {
@@ -208,12 +272,50 @@ import Layout from '../layouts/Layout.astro';
     text-align: left;
     transition: background var(--transition);
     color: #E8E8E8;
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
   }
 
   .preset-btn:hover {
     background: #3D3D3D;
     color: #FFFFFF;
+  }
+
+  .commands-reference {
+    max-width: 1000px;
+    margin: 0 auto var(--spacing-3xl);
+  }
+
+  .commands-reference h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .commands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+  }
+
+  .command-card {
+    background: var(--color-surface);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    text-align: center;
+  }
+
+  .command-card code {
+    display: block;
+    color: var(--color-primary);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    font-size: 0.9375rem;
+  }
+
+  .command-card p {
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+    margin: 0;
   }
 
   .notice {
@@ -229,6 +331,10 @@ import Layout from '../layouts/Layout.astro';
     .terminal-content {
       min-height: 200px;
     }
+
+    .presets-wrapper {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
 
@@ -236,15 +342,69 @@ import Layout from '../layouts/Layout.astro';
   const demoResponses = {
     '/help': `可用命令：
 /help      - 显示帮助
+/init      - 初始化项目
 /clear     - 清空对话
 /context   - 查看 token 使用
 /model     - 切换模型
-/plan      - 进入规划模式`,
+/plan      - 进入规划模式
+/resume    - 恢复会话
+/mcp       - MCP 状态`,
+
+    '/init': `正在初始化项目...
+
+✓ 扫描项目结构
+✓ 检测到: TypeScript + React
+✓ 检测到: Vite 构建工具
+✓ 检测到: Vitest 测试框架
+
+已创建 CLAUDE.md 配置文件！`,
+
+    '/clear': `对话上下文已清空。
+
+开始新对话...`,
 
     '/context': `Session Context Usage:
-- Messages: 12,456 / 200,000 tokens
-- Remaining: 187,544 tokens (94%)
-- Last message: ~1,200 tokens`,
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Messages: 45,231 / 200,000 tokens
+  Remaining: 154,769 tokens (77%)
+  Last message: ~1,500 tokens
+
+💡 提示: 剩余 < 20% 时考虑 /clear`,
+
+    '/model': `当前模型: Sonnet 4.5 (默认)
+
+可用模型:
+  • Haiku 4.5   - 快速，轻量任务
+  • Sonnet 4.5  - 日常开发 (当前)
+  • Opus 4.5    - 复杂任务
+
+使用 /model haiku 或 /model opus 切换`,
+
+    '/plan': `📋 进入规划模式...
+
+请描述你想要实现的功能：
+1. 功能目标和需求
+2. 技术约束和偏好
+3. 验收标准
+
+我将为你制定实施计划。`,
+
+    '/resume': `可用会话：
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ [1] 用户认证功能     - 2小时前
+ [2] API 设计          - 昨天
+ [3] 数据库优化        - 3天前
+
+输入会话编号恢复，或按 0 取消`,
+
+    '/mcp': `MCP Servers Status:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ ✓ filesystem (本地)
+ ✓ git (本地)
+ ✓ github (已连接)
+ ✗ database (未配置)
+
+可用工具: 12 个`,
 
     '帮我创建一个新组件': `好的！我来帮你创建一个新的用户卡片组件。
 
@@ -262,7 +422,32 @@ import Layout from '../layouts/Layout.astro';
 2. 异步处理问题
 3. 类型不匹配
 
-建议我先查看相关代码，可以吗？`
+建议我先查看相关代码，可以吗？`,
+
+    '重构这个函数': `我来分析这个函数。
+
+发现的问题：
+• 函数过长 (80+ 行)
+• 职责过多
+• 缺少类型注解
+
+重构方案：
+1. 拆分为 3 个小函数
+2. 添加类型注解
+3. 添加错误处理
+
+是否开始重构？`,
+
+    '写一个测试': `好的，我来编写测试。
+
+测试覆盖：
+• 正常场景
+• 边界条件
+• 错误处理
+
+使用框架: Vitest + Testing Library
+
+准备开始...`
   };
 
   const terminalContent = document.getElementById('terminal-content');
