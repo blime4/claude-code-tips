@@ -99,7 +99,8 @@ import Layout from '../layouts/Layout.astro';
     overflow-y: auto;
   }
 
-  .message {
+  /* Global styles for dynamically created elements */
+  .terminal-content :global(.message) {
     margin-bottom: var(--spacing-md);
     animation: fadeIn 0.3s ease;
     color: #E8E8E8;
@@ -110,37 +111,37 @@ import Layout from '../layouts/Layout.astro';
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .message.user {
+  .terminal-content :global(.message.user) {
     color: #7AB5FF;
   }
 
-  .message.user .content {
+  .terminal-content :global(.message.user .content) {
     color: #7AB5FF;
   }
 
-  .message.assistant {
+  .terminal-content :global(.message.assistant) {
     color: #E8E8E8;
   }
 
-  .message.assistant .content {
+  .terminal-content :global(.message.assistant .content) {
     color: #E8E8E8;
   }
 
-  .message.system {
+  .terminal-content :global(.message.system) {
     color: #FFB86C;
   }
 
-  .message.system .content {
+  .terminal-content :global(.message.system .content) {
     color: #FFB86C;
   }
 
-  .message .label {
+  .terminal-content :global(.message .label) {
     font-weight: 600;
     margin-right: var(--spacing-sm);
     color: #FFFFFF;
   }
 
-  .message .content {
+  .terminal-content :global(.message .content) {
     color: #E8E8E8;
     white-space: pre-wrap;
     word-break: break-word;
