@@ -20,7 +20,7 @@ const difficulties = ['beginner', 'intermediate', 'advanced'];
 const categories = ['setup', 'workflow', 'power-user', 'advanced'];
 
 // Chinese titles for tips (key: tip id, value: Chinese title)
-const zhTitles = {
+const zhTitles: Record<number, string> = {
   1: "从根目录运行",
   2: "立即运行 /init",
   3: "CLAUDE.md 的层级结构",
@@ -528,12 +528,14 @@ const zhTitles = {
     langToggle?.setAttribute('data-lang', currentLang);
     const currentSpan = langToggle?.querySelector('.lang-current');
     const otherSpan = langToggle?.querySelector('.lang-other');
-    if (currentLang === 'zh') {
-      currentSpan.textContent = '中文';
-      otherSpan.textContent = 'EN';
-    } else {
-      currentSpan.textContent = 'EN';
-      otherSpan.textContent = '中文';
+    if (currentSpan && otherSpan) {
+      if (currentLang === 'zh') {
+        currentSpan.textContent = '中文';
+        otherSpan.textContent = 'EN';
+      } else {
+        currentSpan.textContent = 'EN';
+        otherSpan.textContent = '中文';
+      }
     }
   }
 
