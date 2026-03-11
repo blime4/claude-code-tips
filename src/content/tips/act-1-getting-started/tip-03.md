@@ -30,4 +30,4 @@ related: [2, 4]
 
 ## 另见
 
-- [Tip 4: 保持 CLAUDE.md 简洁](/tips/tip-04)
+- [Tip 4: 保持 CLAUDE.md 简洁](/tips/04)

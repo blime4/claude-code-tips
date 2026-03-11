@@ -55,4 +55,4 @@ Claude: 配置完成！现在我可以查询数据库了。
 
 ## 另见
 
-- [Tip 39: Subagents = 隔离上下文](/tips/tip-39)
+- [Tip 39: Subagents = 隔离上下文](/tips/39)

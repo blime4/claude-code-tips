@@ -46,4 +46,4 @@ related: [21]
 
 ## 另见
 
-- [Tip 23: 提交 CLAUDE.md 到 git](/tips/tip-23)
+- [Tip 23: 提交 CLAUDE.md 到 git](/tips/23)

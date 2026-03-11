@@ -46,4 +46,4 @@ Claude: 建议添加：
 
 ## 另见
 
-- [Tip 22: 使用 workflow 触发器](/tips/tip-22)
+- [Tip 22: 使用 workflow 触发器](/tips/22)

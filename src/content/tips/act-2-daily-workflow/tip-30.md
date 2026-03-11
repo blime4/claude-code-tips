@@ -61,4 +61,4 @@ npm run build
 
 ## 另见
 
-- [Tip 31: 复杂工作考虑 Opus](/tips/tip-31)
+- [Tip 31: 复杂工作考虑 Opus](/tips/31)

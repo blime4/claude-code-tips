@@ -42,4 +42,4 @@ Plan Mode → brainstorming skill → Subagents → /commit command
 
 ## 另见
 
-- [Tip 34: Skills = 可复用工作流](/tips/tip-34)
+- [Tip 34: Skills = 可复用工作流](/tips/34)

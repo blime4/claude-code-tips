@@ -70,4 +70,4 @@ git worktree remove ../my-app-auth
 
 ## 另见
 
-- [Tip 45: /chrome 连接浏览器](/tips/tip-45)
+- [Tip 45: /chrome 连接浏览器](/tips/45)

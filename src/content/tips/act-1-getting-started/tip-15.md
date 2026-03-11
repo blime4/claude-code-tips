@@ -48,4 +48,4 @@ related: [14, 16]
 
 ## 另见
 
-- [Tip 16: /resume 恢复会话](/tips/tip-16)
+- [Tip 16: /resume 恢复会话](/tips/16)

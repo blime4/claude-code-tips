@@ -33,4 +33,4 @@ related: [7]
 
 ## 另见
 
-- [Tip 7: Escape 中断操作](/tips/tip-07)
+- [Tip 7: Escape 中断操作](/tips/07)

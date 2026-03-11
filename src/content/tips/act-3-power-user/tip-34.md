@@ -57,4 +57,4 @@ steps:
 
 ## 另见
 
-- [Tip 35: Commands = 快捷简写](/tips/tip-35)
+- [Tip 35: Commands = 快捷简写](/tips/35)

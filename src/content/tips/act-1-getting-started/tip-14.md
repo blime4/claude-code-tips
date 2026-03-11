@@ -46,4 +46,4 @@ related: [13]
 
 ## 另见
 
-- [Tip 15: /model 切换模型](/tips/tip-15)
+- [Tip 15: /model 切换模型](/tips/15)

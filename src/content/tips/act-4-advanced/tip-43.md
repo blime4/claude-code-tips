@@ -55,4 +55,4 @@ related: [42]
 
 ## 另见
 
-- [Tip 44: Git worktrees 实现隔离](/tips/tip-44)
+- [Tip 44: Git worktrees 实现隔离](/tips/44)

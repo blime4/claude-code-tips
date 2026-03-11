@@ -33,4 +33,4 @@ claude
 
 ## 另见
 
-- [Tip 3: CLAUDE.md 的层级结构](/tips/tip-03)
+- [Tip 3: CLAUDE.md 的层级结构](/tips/03)

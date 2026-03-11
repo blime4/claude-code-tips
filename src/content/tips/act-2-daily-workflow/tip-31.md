@@ -57,4 +57,4 @@ Opus 成本 = Sonnet × ~6
 
 ## 另见
 
-- [Tip 32: 阅读 thinking 块](/tips/tip-32)
+- [Tip 32: 阅读 thinking 块](/tips/32)

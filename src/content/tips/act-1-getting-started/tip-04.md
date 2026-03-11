@@ -33,4 +33,4 @@ related: [3, 5]
 
 ## 另见
 
-- [Tip 5: 结构：What, Domain, Validation](/tips/tip-05)
+- [Tip 5: 结构：What, Domain, Validation](/tips/05)

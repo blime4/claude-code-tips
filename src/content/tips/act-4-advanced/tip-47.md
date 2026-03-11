@@ -59,4 +59,4 @@ Hooks 可以拦截和修改 Claude Code 的操作。
 
 ## 另见
 
-- [Tip 48: PostToolUse 自动格式化](/tips/tip-48)
+- [Tip 48: PostToolUse 自动格式化](/tips/48)

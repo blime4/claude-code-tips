@@ -43,4 +43,4 @@ Session Context Usage:
 
 ## 另见
 
-- [Tip 14: 让自动压缩工作](/tips/tip-14)
+- [Tip 14: 让自动压缩工作](/tips/14)

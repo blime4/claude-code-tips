@@ -49,4 +49,4 @@ git commit -m "docs: add session notes"
 
 ## 另见
 
-- [Tip 29: 懒加载上下文](/tips/tip-29)
+- [Tip 29: 懒加载上下文](/tips/29)

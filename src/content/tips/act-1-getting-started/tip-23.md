@@ -48,4 +48,4 @@ git commit -m "docs: update CLAUDE.md with project rules"
 
 ## 另见
 
-- [Tip 24: 临时环境用 dangerously-skip](/tips/tip-24)
+- [Tip 24: 临时环境用 dangerously-skip](/tips/24)

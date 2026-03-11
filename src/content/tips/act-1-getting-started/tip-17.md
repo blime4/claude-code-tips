@@ -46,4 +46,4 @@ MCP 让 Claude Code 连接外部服务：
 
 ## 另见
 
-- [Tip 18: /help 显示所有命令](/tips/tip-18)
+- [Tip 18: /help 显示所有命令](/tips/18)

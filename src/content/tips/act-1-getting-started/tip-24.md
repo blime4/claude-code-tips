@@ -58,4 +58,4 @@ related: [23, 25]
 
 ## 另见
 
-- [Tip 25: 结合 skip 与白名单](/tips/tip-25)
+- [Tip 25: 结合 skip 与白名单](/tips/25)

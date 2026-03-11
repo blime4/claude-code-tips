@@ -48,4 +48,4 @@ related: [15]
 
 ## 另见
 
-- [Tip 17: /mcp 显示 MCP 状态](/tips/tip-17)
+- [Tip 17: /mcp 显示 MCP 状态](/tips/17)

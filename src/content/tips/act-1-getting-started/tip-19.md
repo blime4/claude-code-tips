@@ -41,4 +41,4 @@ Claude Code 会修改文件，Git 让你能：
 
 ## 另见
 
-- [Tip 20: 添加 Critical Rules 部分](/tips/tip-20)
+- [Tip 20: 添加 Critical Rules 部分](/tips/20)

@@ -48,4 +48,4 @@ Critical Rules > 项目规则 > 全局规则
 
 ## 另见
 
-- [Tip 21: 让 Claude 更新规则](/tips/tip-21)
+- [Tip 21: 让 Claude 更新规则](/tips/21)

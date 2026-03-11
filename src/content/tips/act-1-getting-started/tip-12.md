@@ -35,4 +35,4 @@ related: [13]
 
 ## 另见
 
-- [Tip 13: /context 显示 token 使用](/tips/tip-13)
+- [Tip 13: /context 显示 token 使用](/tips/13)

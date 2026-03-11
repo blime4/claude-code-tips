@@ -40,4 +40,4 @@ related: [17]
 
 ## 另见
 
-- [Tip 19: Git 是你的安全网](/tips/tip-19)
+- [Tip 19: Git 是你的安全网](/tips/19)

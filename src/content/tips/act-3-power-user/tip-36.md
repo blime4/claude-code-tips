@@ -44,4 +44,4 @@ Claude: 命令已创建！使用 /restart-dev 即可
 
 ## 另见
 
-- [Tip 37: MCPs = 外部服务文档](/tips/tip-37)
+- [Tip 37: MCPs = 外部服务文档](/tips/37)

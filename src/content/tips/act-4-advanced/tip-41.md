@@ -58,4 +58,4 @@ claude
 
 ## 另见
 
-- [Tip 42: iTerm 分屏](/tips/tip-42)
+- [Tip 42: iTerm 分屏](/tips/42)

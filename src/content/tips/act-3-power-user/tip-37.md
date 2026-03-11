@@ -53,4 +53,4 @@ MCP (Model Context Protocol) 让 Claude Code 连接外部服务。
 
 ## 另见
 
-- [Tip 38: 让 Claude 安装 MCP](/tips/tip-38)
+- [Tip 38: 让 Claude 安装 MCP](/tips/38)
