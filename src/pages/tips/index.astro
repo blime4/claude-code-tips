@@ -5,35 +5,23 @@ import { getCollection } from 'astro:content';
 const allTips = await getCollection('tips');
 const allTipsSorted = allTips.sort((a, b) => a.data.id - b.data.id);
 
-// Get filter params
-const url = Astro.url;
-const actFilter = url.searchParams.get('act');
-const difficultyFilter = url.searchParams.get('difficulty');
-const categoryFilter = url.searchParams.get('category');
-const searchQuery = url.searchParams.get('q')?.toLowerCase();
+// Serialize tips for client-side filtering
+const tipsData = JSON.stringify(allTipsSorted.map(tip => ({
+  id: tip.data.id,
+  title: tip.data.title,
+  description: tip.data.description,
+  act: tip.data.act,
+  difficulty: tip.data.difficulty,
+  category: tip.data.category,
+  tags: tip.data.tags,
+  timestamp: tip.data.timestamp
+})));
 
-// Filter tips
-const filteredTips = allTipsSorted.filter(tip => {
-  if (actFilter && tip.data.act !== parseInt(actFilter)) return false;
-  if (difficultyFilter && tip.data.difficulty !== difficultyFilter) return false;
-  if (categoryFilter && tip.data.category !== categoryFilter) return false;
-  if (searchQuery) {
-    const title = tip.data.title.toLowerCase();
-    const desc = tip.data.description.toLowerCase();
-    const tags = tip.data.tags.join(' ').toLowerCase();
-    if (!title.includes(searchQuery) && !desc.includes(searchQuery) && !tags.includes(searchQuery)) {
-      return false;
-    }
-  }
-  return true;
-});
-
-// Get unique values for filters
 const difficulties = ['beginner', 'intermediate', 'advanced'];
 const categories = ['setup', 'workflow', 'power-user', 'advanced'];
 ---
 
-<Layout title={`技巧列表 ${actFilter ? `- Act ${actFilter}` : ''} - Claude Code Tips`}>
+<Layout title="技巧列表 - Claude Code Tips">
   <div class="container">
     <div class="tips-layout">
       <aside class="sidebar">
@@ -42,24 +30,21 @@ const categories = ['setup', 'workflow', 'power-user', 'advanced'];
         <div class="filter-section">
           <h4>按 Act</h4>
           <ul class="filter-list">
-            <li><a href="/tips" class={actFilter ? 'filter-link' : 'filter-link active'}>全部</a></li>
-            <li><a href={`/tips?act=1`} class={actFilter === '1' ? 'filter-link active' : 'filter-link'}>Act 1: Getting Started</a></li>
-            <li><a href={`/tips?act=2`} class={actFilter === '2' ? 'filter-link active' : 'filter-link'}>Act 2: Daily Workflow</a></li>
-            <li><a href={`/tips?act=3`} class={actFilter === '3' ? 'filter-link active' : 'filter-link'}>Act 3: Power User</a></li>
-            <li><a href={`/tips?act=4`} class={actFilter === '4' ? 'filter-link active' : 'filter-link'}>Act 4: Advanced</a></li>
+            <li><button data-filter="act" data-value="" class="filter-link active">全部</button></li>
+            <li><button data-filter="act" data-value="1" class="filter-link">Act 1: Getting Started</button></li>
+            <li><button data-filter="act" data-value="2" class="filter-link">Act 2: Daily Workflow</button></li>
+            <li><button data-filter="act" data-value="3" class="filter-link">Act 3: Power User</button></li>
+            <li><button data-filter="act" data-value="4" class="filter-link">Act 4: Advanced</button></li>
           </ul>
         </div>
 
         <div class="filter-section">
           <h4>按难度</h4>
           <ul class="filter-list">
-            <li><a href="/tips" class={difficultyFilter ? 'filter-link' : 'filter-link active'}>全部</a></li>
+            <li><button data-filter="difficulty" data-value="" class="filter-link active">全部</button></li>
             {difficulties.map(d => (
               <li>
-                <a href={`/tips?difficulty=${d}${actFilter ? `&act=${actFilter}` : ''}`}
-                   class={difficultyFilter === d ? 'filter-link active' : 'filter-link'}>
-                   {d}
-                </a>
+                <button data-filter="difficulty" data-value={d} class="filter-link">{d}</button>
               </li>
             ))}
           </ul>
@@ -68,13 +53,10 @@ const categories = ['setup', 'workflow', 'power-user', 'advanced'];
         <div class="filter-section">
           <h4>按分类</h4>
           <ul class="filter-list">
-            <li><a href="/tips" class={categoryFilter ? 'filter-link' : 'filter-link active'}>全部</a></li>
+            <li><button data-filter="category" data-value="" class="filter-link active">全部</button></li>
             {categories.map(c => (
               <li>
-                <a href={`/tips?category=${c}${actFilter ? `&act=${actFilter}` : ''}`}
-                   class={categoryFilter === c ? 'filter-link active' : 'filter-link'}>
-                   {c}
-                </a>
+                <button data-filter="category" data-value={c} class="filter-link">{c}</button>
               </li>
             ))}
           </ul>
@@ -84,39 +66,17 @@ const categories = ['setup', 'workflow', 'power-user', 'advanced'];
       <main class="main-content">
         <div class="header">
           <h1>技巧列表</h1>
-          <p class="count">显示 {filteredTips.length} 个技巧</p>
+          <p class="count">显示 <span id="tip-count">0</span> 个技巧</p>
         </div>
 
-        <div class="tips-grid">
-          {filteredTips.map(tip => (
-            <a href={`/tips/${tip.data.id}`} class="card tip-card">
-              <div class="tip-header">
-                <span class="tip-id">#{tip.data.id}</span>
-                <div class="badges">
-                  <span class={`badge badge-${tip.data.difficulty}`}>{tip.data.difficulty}</span>
-                  <span class="tag">Act {tip.data.act}</span>
-                </div>
-              </div>
-              <h2>{tip.data.title}</h2>
-              <p>{tip.data.description}</p>
-              <div class="tip-footer">
-                <span class="timestamp">{tip.data.timestamp}</span>
-                <div class="tags">
-                  {tip.data.tags.slice(0, 3).map(tag => (
-                    <span class="tag">{tag}</span>
-                  ))}
-                </div>
-              </div>
-            </a>
-          ))}
+        <div class="tips-grid" id="tips-grid">
+          <!-- Tips will be rendered by JavaScript -->
         </div>
 
-        {filteredTips.length === 0 && (
-          <div class="empty">
-            <p>没有找到匹配的技巧</p>
-            <a href="/tips" class="btn btn-outline">清除筛选</a>
-          </div>
-        )}
+        <div class="empty hidden" id="empty-state">
+          <p>没有找到匹配的技巧</p>
+          <button id="clear-filters" class="btn btn-outline">清除筛选</button>
+        </div>
       </main>
     </div>
   </div>
@@ -164,9 +124,16 @@ const categories = ['setup', 'workflow', 'power-user', 'advanced'];
     color: var(--color-text-light);
     text-decoration: none;
     display: block;
+    width: 100%;
+    text-align: left;
     padding: var(--spacing-xs) var(--spacing-sm);
     border-radius: var(--radius-sm);
     transition: background var(--transition), color var(--transition);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-family: inherit;
   }
 
   .filter-list :global(.filter-link:hover),
@@ -254,6 +221,10 @@ const categories = ['setup', 'workflow', 'power-user', 'advanced'];
     padding: var(--spacing-3xl);
   }
 
+  .hidden {
+    display: none;
+  }
+
   @media (max-width: 768px) {
     .tips-layout {
       grid-template-columns: 1fr;
@@ -264,3 +235,103 @@ const categories = ['setup', 'workflow', 'power-user', 'advanced'];
     }
   }
 </style>
+
+<script define:vars={{ tipsData }}>
+  const allTips = JSON.parse(tipsData);
+  let currentFilters = {
+    act: '',
+    difficulty: '',
+    category: ''
+  };
+
+  const tipsGrid = document.getElementById('tips-grid');
+  const tipCount = document.getElementById('tip-count');
+  const emptyState = document.getElementById('empty-state');
+  const clearBtn = document.getElementById('clear-filters');
+
+  function renderTips(tips) {
+    if (tips.length === 0) {
+      tipsGrid.classList.add('hidden');
+      emptyState.classList.remove('hidden');
+      tipCount.textContent = '0';
+      return;
+    }
+
+    tipsGrid.classList.remove('hidden');
+    emptyState.classList.add('hidden');
+    tipCount.textContent = tips.length;
+
+    tipsGrid.innerHTML = tips.map(tip => `
+      <a href="/tips/${tip.id}" class="card tip-card">
+        <div class="tip-header">
+          <span class="tip-id">#${tip.id}</span>
+          <div class="badges">
+            <span class="badge badge-${tip.difficulty}">${tip.difficulty}</span>
+            <span class="tag">Act ${tip.act}</span>
+          </div>
+        </div>
+        <h2>${tip.title}</h2>
+        <p>${tip.description}</p>
+        <div class="tip-footer">
+          <span class="timestamp">${tip.timestamp}</span>
+          <div class="tags">
+            ${tip.tags.slice(0, 3).map(tag => `<span class="tag">${tag}</span>`).join('')}
+          </div>
+        </div>
+      </a>
+    `).join('');
+  }
+
+  function filterTips() {
+    let filtered = allTips;
+
+    if (currentFilters.act) {
+      filtered = filtered.filter(tip => tip.act === parseInt(currentFilters.act));
+    }
+    if (currentFilters.difficulty) {
+      filtered = filtered.filter(tip => tip.difficulty === currentFilters.difficulty);
+    }
+    if (currentFilters.category) {
+      filtered = filtered.filter(tip => tip.category === currentFilters.category);
+    }
+
+    renderTips(filtered);
+  }
+
+  function updateActiveStates() {
+    document.querySelectorAll('.filter-link').forEach(btn => {
+      const filterType = btn.dataset.filter;
+      const value = btn.dataset.value;
+
+      if (currentFilters[filterType] === value) {
+        btn.classList.add('active');
+      } else if (value === '' && !currentFilters[filterType]) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+  }
+
+  // Filter button clicks
+  document.querySelectorAll('.filter-link').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filterType = btn.dataset.filter;
+      const value = btn.dataset.value;
+
+      currentFilters[filterType] = value;
+      updateActiveStates();
+      filterTips();
+    });
+  });
+
+  // Clear filters button
+  clearBtn?.addEventListener('click', () => {
+    currentFilters = { act: '', difficulty: '', category: '' };
+    updateActiveStates();
+    filterTips();
+  });
+
+  // Initial render
+  renderTips(allTips);
+</script>
