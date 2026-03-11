@@ -89,7 +89,7 @@ const categories = ['setup', 'workflow', 'power-user', 'advanced'];
 
         <div class="tips-grid">
           {filteredTips.map(tip => (
-            <a href={`/tips/${tip.id}`} class="card tip-card">
+            <a href={`/tips/${tip.data.id}`} class="card tip-card">
               <div class="tip-header">
                 <span class="tip-id">#{tip.data.id}</span>
                 <div class="badges">
