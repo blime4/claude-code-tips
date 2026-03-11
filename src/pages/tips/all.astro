@@ -1,0 +1,329 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const allTips = await getCollection('tips');
+const allTipsSorted = allTips.sort((a, b) => a.data.id - b.data.id);
+---
+
+<Layout title="所有技巧一览 - Claude Code Tips">
+  <div class="container">
+    <div class="header">
+      <h1>所有技巧一览</h1>
+      <p class="subtitle">完整的 50 个 Claude Code 使用技巧，适合演示和培训使用</p>
+      <div class="actions">
+        <a href="/tips" class="btn btn-outline">返回卡片视图</a>
+      </div>
+    </div>
+
+    <div class="tips-list">
+      {allTipsSorted.map((tip, index) => (
+        <div class={`tip-item act-${tip.data.act} difficulty-${tip.data.difficulty}`}>
+          <div class="tip-header">
+            <div class="tip-meta">
+              <span class="tip-number">#{tip.data.id}</span>
+              <span class={`badge badge-${tip.data.difficulty}`}>{tip.data.difficulty}</span>
+              <span class="act-badge">Act {tip.data.act}</span>
+              <span class="category-badge">{tip.data.category}</span>
+              <span class="timestamp">{tip.data.timestamp}</span>
+            </div>
+            <h2>{tip.data.title}</h2>
+            <p class="description">{tip.data.description}</p>
+            <div class="tip-tags">
+              {tip.data.tags.map(tag => <span class="tag">{tag}</span>)}
+            </div>
+          </div>
+
+          <div class="tip-content">
+            <slot />
+            <div class="tip-body">
+              {tip.render()}
+            </div>
+          </div>
+
+          {tip.data.related && tip.data.related.length > 0 && (
+            <div class="tip-related">
+              <strong>相关技巧：</strong>
+              {tip.data.related.map(relatedId => {
+                const relatedTip = allTipsSorted.find(t => t.data.id === relatedId);
+                return relatedTip ? (
+                  <a href={`#tip-${relatedId}`} class="related-link">#{relatedId} {relatedTip.data.title}</a>
+                ) : null;
+              })}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <div class="footer-nav">
+      <a href="/tips" class="btn">返回技巧列表</a>
+      <a href="/demo" class="btn btn-outline">查看交互演示</a>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .header {
+    text-align: center;
+    padding: var(--spacing-3xl) 0;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .header h1 {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-primary);
+  }
+
+  .subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+  }
+
+  .tips-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2xl);
+  }
+
+  .tip-item {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    scroll-margin-top: var(--spacing-2xl);
+  }
+
+  .tip-header {
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, var(--color-bg) 0%, #f5f0ed 100%);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .tip-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .tip-number {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    background: rgba(217, 119, 87, 0.1);
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+  }
+
+  .badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+  }
+
+  .badge-beginner {
+    background: #d4edda;
+    color: #155724;
+  }
+
+  .badge-intermediate {
+    background: #fff3cd;
+    color: #856404;
+  }
+
+  .badge-advanced {
+    background: #f8d7da;
+    color: #721c24;
+  }
+
+  .act-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: var(--color-primary);
+    color: white;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+  }
+
+  .category-badge {
+    font-size: 0.75rem;
+    background: #e7f3ff;
+    color: #004085;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+  }
+
+  .timestamp {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    margin-left: auto;
+  }
+
+  .tip-header h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text);
+  }
+
+  .description {
+    font-size: 1rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .tip-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+  }
+
+  .tip-tags .tag {
+    font-size: 0.75rem;
+    background: var(--color-border);
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    color: var(--color-text-light);
+  }
+
+  .tip-content {
+    padding: var(--spacing-xl);
+  }
+
+  .tip-body {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-text);
+  }
+
+  .tip-body :global(h2) {
+    font-size: 1.25rem;
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text);
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: var(--spacing-xs);
+  }
+
+  .tip-body :global(h3) {
+    font-size: 1.125rem;
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text);
+  }
+
+  .tip-body :global(p) {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .tip-body :global(code) {
+    background: var(--color-code-bg);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    font-size: 0.9em;
+  }
+
+  .tip-body :global(pre) {
+    background: var(--color-code-bg);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    overflow-x: auto;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .tip-body :global(pre code) {
+    background: transparent;
+    padding: 0;
+  }
+
+  .tip-body :global(ul),
+  .tip-body :global(ol) {
+    margin-bottom: var(--spacing-md);
+    padding-left: var(--spacing-lg);
+  }
+
+  .tip-body :global(li) {
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .tip-body :global(a) {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  .tip-body :global(a:hover) {
+    text-decoration: underline;
+  }
+
+  .tip-related {
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: var(--color-bg);
+    border-top: 1px solid var(--color-border);
+    font-size: 0.875rem;
+  }
+
+  .tip-related strong {
+    color: var(--color-text);
+    margin-right: var(--spacing-sm);
+  }
+
+  .related-link {
+    color: var(--color-primary);
+    text-decoration: none;
+    margin-right: var(--spacing-md);
+  }
+
+  .related-link:hover {
+    text-decoration: underline;
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-3xl) 0;
+    border-top: 1px solid var(--color-border);
+    margin-top: var(--spacing-3xl);
+  }
+
+  @media (max-width: 768px) {
+    .header h1 {
+      font-size: 1.75rem;
+    }
+
+    .tip-header h2 {
+      font-size: 1.25rem;
+    }
+
+    .tip-meta {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .timestamp {
+      margin-left: 0;
+    }
+  }
+</style>
+
+<script>
+  // Add IDs to tip items for anchor navigation
+  document.querySelectorAll('.tip-item').forEach((item, index) => {
+    const id = item.querySelector('.tip-number')?.textContent;
+    if (id) {
+      item.id = `tip-${id.replace('#', '')}`;
+    }
+  });
+</script>

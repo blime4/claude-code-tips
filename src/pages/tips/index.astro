@@ -67,6 +67,9 @@ const categories = ['setup', 'workflow', 'power-user', 'advanced'];
         <div class="header">
           <h1>技巧列表</h1>
           <p class="count">显示 <span id="tip-count">0</span> 个技巧</p>
+          <div class="header-actions">
+            <a href="/tips/all" class="btn btn-outline btn-sm">一览模式</a>
+          </div>
         </div>
 
         <div class="tips-grid" id="tips-grid">
@@ -148,6 +151,25 @@ const categories = ['setup', 'workflow', 'power-user', 'advanced'];
 
   .header {
     margin-bottom: var(--spacing-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+  }
+
+  .header h1 {
+    margin: 0;
+  }
+
+  .header-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+  }
+
+  .btn-sm {
+    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: 0.875rem;
   }
 
   .count {
