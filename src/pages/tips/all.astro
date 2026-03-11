@@ -296,14 +296,16 @@ const categories = ['setup', 'workflow', 'power-user', 'advanced'];
   }
 
   .tip-body :global(code) {
-    background: var(--color-code-bg);
+    background: #1E1E1E;
+    color: #D97757;
     padding: 2px 6px;
     border-radius: var(--radius-sm);
     font-size: 0.9em;
   }
 
   .tip-body :global(pre) {
-    background: var(--color-code-bg);
+    background: #1E1E1E;
+    color: #E8E8E8;
     padding: var(--spacing-md);
     border-radius: var(--radius-md);
     overflow-x: auto;
@@ -312,7 +314,15 @@ const categories = ['setup', 'workflow', 'power-user', 'advanced'];
 
   .tip-body :global(pre code) {
     background: transparent;
+    color: #E8E8E8;
     padding: 0;
+  }
+
+  /* Highlight commands like /init in orange */
+  .tip-body :global(code):global(.command),
+  .tip-body :global(pre code):global(.command) {
+    color: #FF9F7D;
+    font-weight: 500;
   }
 
   .tip-body :global(ul),
