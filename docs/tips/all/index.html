@@ -1,0 +1,1695 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-sckkx6r4> <head><meta charset="UTF-8"><meta name="description" content="Claude Code 使用技巧和最佳实践"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.16.19"><link rel="canonical" href="https://blime4.github.io/tips/all/"><title>所有技巧一览 - Claude Code Tips</title><!-- Preconnect for performance --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="/_astro/best-practices.Dk5xlTzR.css">
+<link rel="stylesheet" href="/_astro/all.BhDLr99c.css"><script type="module">let o=localStorage.getItem("tips-lang")||"en";const i=document.getElementById("lang-toggle");function l(){document.querySelectorAll("[data-title-en]").forEach(a=>{const r=a.getAttribute("data-title-en"),d=a.getAttribute("data-title-zh");a.textContent=o==="zh"?d:r}),i?.setAttribute("data-lang",o);const t=i?.querySelector(".lang-current"),n=i?.querySelector(".lang-other");t&&n&&(o==="zh"?(t.textContent="中文",n.textContent="EN"):(t.textContent="EN",n.textContent="中文"))}i?.addEventListener("click",()=>{o=o==="en"?"zh":"en",localStorage.setItem("tips-lang",o),l()});l();document.querySelectorAll(".tip-item").forEach(e=>{const t=e.querySelector(".tip-number")?.textContent;t&&(e.id=`tip-${t.replace("#","")}`)});function c(e){const t=document.querySelector(`.tip-item[data-tip-id="${e}"]`);t&&t.classList.toggle("collapsed")}window.toggleTip=c;document.querySelectorAll(".toggle-btn").forEach(e=>{e.addEventListener("click",t=>{t.stopPropagation();const n=e.getAttribute("data-tip-id");n&&c(n)})});if(window.location.hash){const e=window.location.hash.replace("#tip-",""),t=document.querySelector(`.tip-item[data-tip-id="${e}"]`);t&&t.classList.remove("collapsed")}
+</script></head> <body data-astro-cid-sckkx6r4> <header data-astro-cid-sckkx6r4> <nav class="container" data-astro-cid-sckkx6r4> <a href="/" class="logo" data-astro-cid-sckkx6r4>Claude Code Tips</a> <ul class="nav-links" data-astro-cid-sckkx6r4> <li data-astro-cid-sckkx6r4><a href="/quick-start" data-astro-cid-sckkx6r4>快速入门</a></li> <li data-astro-cid-sckkx6r4><a href="/tips" data-astro-cid-sckkx6r4>技巧</a></li> <li data-astro-cid-sckkx6r4><a href="/tips/all" data-astro-cid-sckkx6r4>一览</a></li> <li data-astro-cid-sckkx6r4><a href="/demo" data-astro-cid-sckkx6r4>演示</a></li> <li data-astro-cid-sckkx6r4><a href="/best-practices" data-astro-cid-sckkx6r4>最佳实践</a></li> </ul> </nav> </header> <main id="main-content" data-astro-cid-sckkx6r4>  <div class="container" data-astro-cid-e5qe5oli> <div class="header" data-astro-cid-e5qe5oli> <div class="header-top" data-astro-cid-e5qe5oli> <h1 data-astro-cid-e5qe5oli>所有技巧一览</h1> <button id="lang-toggle" class="lang-toggle" aria-label="切换语言" data-astro-cid-e5qe5oli> <span class="lang-current" data-astro-cid-e5qe5oli>EN</span> <span class="lang-separator" data-astro-cid-e5qe5oli>/</span> <span class="lang-other" data-astro-cid-e5qe5oli>中文</span> </button> </div> <p class="subtitle" data-astro-cid-e5qe5oli>完整的 50 个 Claude Code 使用技巧，适合演示和培训使用</p> <div class="actions" data-astro-cid-e5qe5oli> <a href="/tips" class="btn btn-outline" data-astro-cid-e5qe5oli>返回卡片视图</a> </div> </div> <div class="tips-list" data-astro-cid-e5qe5oli> <div class="tip-item collapsed act-1 difficulty-beginner" data-tip-id="1" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(1)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#1</span> <span class="badge badge-beginner" data-astro-cid-e5qe5oli>beginner</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 1</span> <span class="category-badge" data-astro-cid-e5qe5oli>setup</span> <span class="timestamp" data-astro-cid-e5qe5oli>1:18</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Run from root directory" data-title-zh="从根目录运行" data-astro-cid-e5qe5oli>Run from root directory</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="1" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Always run Claude Code from your project root directory</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>cli</span><span class="tag" data-astro-cid-e5qe5oli>directory</span><span class="tag" data-astro-cid-e5qe5oli>basics</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>始终在项目的根目录下运行 Claude Code。这确保 Claude 能够完整地了解你的项目结构。</p>
+<h2 id="为什么这样做">为什么这样做</h2>
+<p>Claude Code 需要看到整个项目才能：</p>
+<ul>
+<li>正确导航文件</li>
+<li>理解项目结构</li>
+<li>做出明智的修改决策</li>
+</ul>
+<h2 id="示例">示例</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 好的做法</span></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> /path/to/my-project</span></span>
+<span class="line"><span style="color:#B392F0">claude</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 避免</span></span>
+<span class="line"><span style="color:#B392F0">claude</span><span style="color:#6A737D">  # 从某个子目录运行</span></span>
+<span class="line"></span></code></pre>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/2">Tip 2: 立即运行 /init</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-2" class="related-link" data-astro-cid-e5qe5oli>#2 Run /init immediately</a> </div> </div><div class="tip-item collapsed act-1 difficulty-beginner" data-tip-id="2" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(2)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#2</span> <span class="badge badge-beginner" data-astro-cid-e5qe5oli>beginner</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 1</span> <span class="category-badge" data-astro-cid-e5qe5oli>setup</span> <span class="timestamp" data-astro-cid-e5qe5oli>1:56</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Run /init immediately" data-title-zh="立即运行 /init" data-astro-cid-e5qe5oli>Run /init immediately</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="2" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Run /init command immediately when starting a new project</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>init</span><span class="tag" data-astro-cid-e5qe5oli>setup</span><span class="tag" data-astro-cid-e5qe5oli>claudemd</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>在新项目中首次启动 Claude Code 时，立即运行 <code>/init</code> 命令。</p>
+<h2 id="为什么这样做">为什么这样做</h2>
+<p><code>/init</code> 命令会：</p>
+<ul>
+<li>扫描项目结构</li>
+<li>创建初始的 <code>CLAUDE.md</code> 配置文件</li>
+<li>了解项目的技术栈和依赖</li>
+<li>建立项目上下文</li>
+</ul>
+<h2 id="示例">示例</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> my-new-project</span></span>
+<span class="line"><span style="color:#B392F0">claude</span></span>
+<span class="line"><span style="color:#6A737D"># 在对话中输入</span></span>
+<span class="line"><span style="color:#B392F0">/init</span></span>
+<span class="line"></span></code></pre>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/3">Tip 3: CLAUDE.md 的层级结构</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-1" class="related-link" data-astro-cid-e5qe5oli>#1 Run from root directory</a><a href="#tip-3" class="related-link" data-astro-cid-e5qe5oli>#3 CLAUDE.md is hierarchical</a> </div> </div><div class="tip-item collapsed act-1 difficulty-intermediate" data-tip-id="3" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(3)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#3</span> <span class="badge badge-intermediate" data-astro-cid-e5qe5oli>intermediate</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 1</span> <span class="category-badge" data-astro-cid-e5qe5oli>setup</span> <span class="timestamp" data-astro-cid-e5qe5oli>2:54</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="CLAUDE.md is hierarchical" data-title-zh="CLAUDE.md 的层级结构" data-astro-cid-e5qe5oli>CLAUDE.md is hierarchical</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="3" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>CLAUDE.md files work hierarchically - project level overrides global</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>claudemd</span><span class="tag" data-astro-cid-e5qe5oli>config</span><span class="tag" data-astro-cid-e5qe5oli>hierarchy</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p><code>CLAUDE.md</code> 文件是分层的，项目级别的配置会覆盖全局配置。</p>
+<h2 id="层级结构">层级结构</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>~/.claude/rules/common/     # 全局通用规则</span></span>
+<span class="line"><span>~/.claude/rules/python/     # 全局 Python 规则</span></span>
+<span class="line"><span>~/project/CLAUDE.md         # 项目特定规则（优先级最高）</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="继承规则">继承规则</h2>
+<ol>
+<li>全局规则始终被加载</li>
+<li>语言特定规则（如 Python）会覆盖通用规则</li>
+<li>项目 <code>CLAUDE.md</code> 拥有最高优先级</li>
+</ol>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/4">Tip 4: 保持 CLAUDE.md 简洁</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-2" class="related-link" data-astro-cid-e5qe5oli>#2 Run /init immediately</a><a href="#tip-4" class="related-link" data-astro-cid-e5qe5oli>#4 Keep CLAUDE.md concise</a> </div> </div><div class="tip-item collapsed act-1 difficulty-intermediate" data-tip-id="4" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(4)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#4</span> <span class="badge badge-intermediate" data-astro-cid-e5qe5oli>intermediate</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 1</span> <span class="category-badge" data-astro-cid-e5qe5oli>setup</span> <span class="timestamp" data-astro-cid-e5qe5oli>3:27</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Keep CLAUDE.md concise" data-title-zh="保持 CLAUDE.md 简洁" data-astro-cid-e5qe5oli>Keep CLAUDE.md concise</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="4" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Keep CLAUDE.md files short and focused</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>claudemd</span><span class="tag" data-astro-cid-e5qe5oli>config</span><span class="tag" data-astro-cid-e5qe5oli>documentation</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>保持 <code>CLAUDE.md</code> 文件简短专注，只包含项目特定的关键信息。</p>
+<h2 id="原则">原则</h2>
+<ul>
+<li><strong>YAGNI</strong>: 只写当前需要的内容</li>
+<li><strong>避免重复</strong>: 不要重复全局规则中已有的内容</li>
+<li><strong>聚焦差异</strong>: 只写这个项目与其他项目不同的地方</li>
+</ul>
+<h2 id="好的-claudemd">好的 CLAUDE.md</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#79B8FF;font-weight:bold"># My Project</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## 项目特点</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 使用 FastAPI 而非 Django</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 遵循 PEP 8 规范</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 测试覆盖率要求 90%+</span></span>
+<span class="line"></span></code></pre>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/5">Tip 5: 结构：What, Domain, Validation</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-3" class="related-link" data-astro-cid-e5qe5oli>#3 CLAUDE.md is hierarchical</a><a href="#tip-5" class="related-link" data-astro-cid-e5qe5oli>#5 Structure: What, Domain, Validation</a> </div> </div><div class="tip-item collapsed act-1 difficulty-intermediate" data-tip-id="5" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(5)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#5</span> <span class="badge badge-intermediate" data-astro-cid-e5qe5oli>intermediate</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 1</span> <span class="category-badge" data-astro-cid-e5qe5oli>setup</span> <span class="timestamp" data-astro-cid-e5qe5oli>3:58</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Structure: What, Domain, Validation" data-title-zh="结构：做什么、域、验证" data-astro-cid-e5qe5oli>Structure: What, Domain, Validation</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="5" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Use What-Domain-Validation structure for CLAUDE.md</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>claudemd</span><span class="tag" data-astro-cid-e5qe5oli>config</span><span class="tag" data-astro-cid-e5qe5oli>structure</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>使用 <strong>What-Domain-Validation</strong> 结构来组织 <code>CLAUDE.md</code>。</p>
+<h2 id="推荐结构">推荐结构</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#79B8FF;font-weight:bold"># 项目名称</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## What - 项目目标</span></span>
+<span class="line"><span style="color:#E1E4E8">简要描述项目是做什么的</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## Domain - 业务领域</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 业务术语和概念</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 特殊的业务规则</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 领域相关的约定</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## Validation - 验证标准</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 如何验证功能正确性 -- your build flow</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 测试要求</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 部署检查清单</span></span>
+<span class="line"></span></code></pre>
+<h2 id="为什么有效">为什么有效</h2>
+<ul>
+<li><strong>What</strong>: 给 Claude 项目背景</li>
+<li><strong>Domain</strong>: 避免误解业务概念</li>
+<li><strong>Validation</strong>: 定义”完成”的标准</li>
+</ul>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="#">Keyboard Shortcuts</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-4" class="related-link" data-astro-cid-e5qe5oli>#4 Keep CLAUDE.md concise</a> </div> </div><div class="tip-item collapsed act-1 difficulty-beginner" data-tip-id="6" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(6)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#6</span> <span class="badge badge-beginner" data-astro-cid-e5qe5oli>beginner</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 1</span> <span class="category-badge" data-astro-cid-e5qe5oli>setup</span> <span class="timestamp" data-astro-cid-e5qe5oli>5:36</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Shift+Tab toggles modes" data-title-zh="Shift+Tab 切换模式" data-astro-cid-e5qe5oli>Shift+Tab toggles modes</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="6" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Use Shift+Tab to toggle between Ask and Command modes</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>keyboard</span><span class="tag" data-astro-cid-e5qe5oli>shortcuts</span><span class="tag" data-astro-cid-e5qe5oli>modes</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>使用 <code>Shift+Tab</code> 在 Ask 模式和 Command 模式之间切换。</p>
+<h2 id="模式说明">模式说明</h2>
+<ul>
+<li><strong>Ask 模式</strong>: 默认模式，用于对话和提问</li>
+<li><strong>Command 模式</strong>: 直接执行命令，无需确认</li>
+</ul>
+<h2 id="使用场景">使用场景</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Ask 模式（默认）</span></span>
+<span class="line"><span style="color:#F97583">></span><span style="color:#E1E4E8"> 帮我创建一个新的组件</span></span>
+<span class="line"><span style="color:#6A737D"># Claude 会询问确认</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Command 模式（Shift+Tab）</span></span>
+<span class="line"><span style="color:#F97583">></span><span style="color:#E1E4E8"> 创建用户卡片组件</span></span>
+<span class="line"><span style="color:#6A737D"># 直接执行，不询问</span></span>
+<span class="line"></span></code></pre>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/7">Tip 7: Escape 中断操作</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-7" class="related-link" data-astro-cid-e5qe5oli>#7 Escape interrupts</a> </div> </div><div class="tip-item collapsed act-1 difficulty-beginner" data-tip-id="7" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(7)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#7</span> <span class="badge badge-beginner" data-astro-cid-e5qe5oli>beginner</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 1</span> <span class="category-badge" data-astro-cid-e5qe5oli>setup</span> <span class="timestamp" data-astro-cid-e5qe5oli>6:40</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Escape interrupts" data-title-zh="Escape 中断操作" data-astro-cid-e5qe5oli>Escape interrupts</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="7" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Press Escape to interrupt Claude&#39;s current action</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>keyboard</span><span class="tag" data-astro-cid-e5qe5oli>shortcuts</span><span class="tag" data-astro-cid-e5qe5oli>interrupt</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>按 <code>Escape</code> 键可以中断 Claude 当前正在执行的操作。</p>
+<h2 id="使用场景">使用场景</h2>
+<ul>
+<li>Claude 正在生成你不想要的内容</li>
+<li>意识到需要修改你的请求</li>
+<li>想要停止长时间的思考/操作</li>
+</ul>
+<h2 id="工作原理">工作原理</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>你: "帮我重构整个项目..."</span></span>
+<span class="line"><span># 意识到这太大了</span></span>
+<span class="line"><span>你: &#x3C;ESC></span></span>
+<span class="line"><span># Claude 立即停止，等待新指令</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="注意">注意</h2>
+<ul>
+<li>Escape 只能中断正在进行的操作</li>
+<li>已完成的文件修改不会被撤销</li>
+<li>需要手动恢复被修改的文件</li>
+</ul>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/8">Tip 8: 双 Escape 清空输入</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-6" class="related-link" data-astro-cid-e5qe5oli>#6 Shift+Tab toggles modes</a><a href="#tip-8" class="related-link" data-astro-cid-e5qe5oli>#8 Double Escape clears input</a> </div> </div><div class="tip-item collapsed act-1 difficulty-beginner" data-tip-id="8" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(8)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#8</span> <span class="badge badge-beginner" data-astro-cid-e5qe5oli>beginner</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 1</span> <span class="category-badge" data-astro-cid-e5qe5oli>setup</span> <span class="timestamp" data-astro-cid-e5qe5oli>7:43</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Double Escape clears input" data-title-zh="双击 Escape 清空输入" data-astro-cid-e5qe5oli>Double Escape clears input</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="8" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Double Escape clears your current input</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>keyboard</span><span class="tag" data-astro-cid-e5qe5oli>shortcuts</span><span class="tag" data-astro-cid-e5qe5oli>input</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>双击 <code>Escape</code> 键可以清空当前输入框的内容。</p>
+<h2 id="使用场景">使用场景</h2>
+<ul>
+<li>输入了一半想重新开始</li>
+<li>快速清除长输入</li>
+<li>类似于 <code>Ctrl+C</code> 但更直观</li>
+</ul>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/9">Tip 9: 空输入时双 Escape = 回退</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-7" class="related-link" data-astro-cid-e5qe5oli>#7 Escape interrupts</a><a href="#tip-9" class="related-link" data-astro-cid-e5qe5oli>#9 Double Escape on empty = rewind</a> </div> </div><div class="tip-item collapsed act-1 difficulty-beginner" data-tip-id="9" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(9)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#9</span> <span class="badge badge-beginner" data-astro-cid-e5qe5oli>beginner</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 1</span> <span class="category-badge" data-astro-cid-e5qe5oli>setup</span> <span class="timestamp" data-astro-cid-e5qe5oli>7:59</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Double Escape on empty = rewind" data-title-zh="空输入时双击 Escape 回退" data-astro-cid-e5qe5oli>Double Escape on empty = rewind</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="9" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Double Escape on empty input rewinds the conversation</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>keyboard</span><span class="tag" data-astro-cid-e5qe5oli>shortcuts</span><span class="tag" data-astro-cid-e5qe5oli>rewind</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>当输入框为空时，双击 <code>Escape</code> 会回退对话历史。</p>
+<h2 id="工作原理">工作原理</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>对话历史:</span></span>
+<span class="line"><span>1. 你: Hello</span></span>
+<span class="line"><span>2. Claude: Hi!</span></span>
+<span class="line"><span>3. 你: Help me</span></span>
+<span class="line"><span>4. Claude: Sure! [当前状态]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># 输入框空，双击 Escape</span></span>
+<span class="line"><span># 回退到步骤 2</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="使用场景">使用场景</h2>
+<ul>
+<li>想要回到之前的状态</li>
+<li>重新开始某个话题</li>
+<li>撤销几轮对话</li>
+</ul>
+<h2 id="注意">注意</h2>
+<ul>
+<li>回退后可以继续对话</li>
+<li>被回退的内容不会丢失，可以 forward 恢复</li>
+</ul>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/10">Tip 10: 截图并拖拽</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-8" class="related-link" data-astro-cid-e5qe5oli>#8 Double Escape clears input</a> </div> </div><div class="tip-item collapsed act-1 difficulty-beginner" data-tip-id="10" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(10)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#10</span> <span class="badge badge-beginner" data-astro-cid-e5qe5oli>beginner</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 1</span> <span class="category-badge" data-astro-cid-e5qe5oli>setup</span> <span class="timestamp" data-astro-cid-e5qe5oli>8:29</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Screenshot and drag" data-title-zh="截图并拖拽" data-astro-cid-e5qe5oli>Screenshot and drag</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="10" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Drag and drop screenshots directly into Claude Code</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>screenshot</span><span class="tag" data-astro-cid-e5qe5oli>visual</span><span class="tag" data-astro-cid-e5qe5oli>input</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>可以直接将截图拖拽到 Claude Code 中，Claude 会”看到”图片内容。</p>
+<h2 id="使用方法">使用方法</h2>
+<ol>
+<li>截取屏幕截图</li>
+<li>直接拖拽到 Claude Code 窗口</li>
+<li>Claude 会分析图片内容</li>
+</ol>
+<h2 id="适用场景">适用场景</h2>
+<ul>
+<li>错误信息截图</li>
+<li>UI 设计稿</li>
+<li>代码截图</li>
+<li>架构图/流程图</li>
+</ul>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/11">Tip 11: 给截图添加上下文</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-11" class="related-link" data-astro-cid-e5qe5oli>#11 Add context to screenshots</a> </div> </div><div class="tip-item collapsed act-1 difficulty-intermediate" data-tip-id="11" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(11)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#11</span> <span class="badge badge-intermediate" data-astro-cid-e5qe5oli>intermediate</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 1</span> <span class="category-badge" data-astro-cid-e5qe5oli>setup</span> <span class="timestamp" data-astro-cid-e5qe5oli>8:44</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Add context to screenshots" data-title-zh="为截图添加上下文" data-astro-cid-e5qe5oli>Add context to screenshots</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="11" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Always add context when sending screenshots</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>screenshot</span><span class="tag" data-astro-cid-e5qe5oli>context</span><span class="tag" data-astro-cid-e5qe5oli>prompt</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>发送截图时，务必添加文字说明来补充上下文。</p>
+<h2 id="好的做法">好的做法</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>[拖拽截图]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>上面是我们新组件的 UI 设计，请实现它。</span></span>
+<span class="line"><span>颜色使用品牌色 #D97757，圆角 8px。</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="不好的做法">不好的做法</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>[拖拽截图]</span></span>
+<span class="line"><span># 没有任何说明</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="为什么重要">为什么重要</h2>
+<ul>
+<li>截图缺少执行上下文</li>
+<li>Claude 不知道你想做什么</li>
+<li>文字说明可以澄清意图</li>
+</ul>
+<h2 id="模板">模板</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>[截图]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>上下文：[这是什么的截图]</span></span>
+<span class="line"><span>任务：[你想让 Claude 做什么]</span></span>
+<span class="line"><span>要求：[任何特殊要求]</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="#">Essential Commands</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-10" class="related-link" data-astro-cid-e5qe5oli>#10 Screenshot and drag</a> </div> </div><div class="tip-item collapsed act-1 difficulty-beginner" data-tip-id="12" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(12)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#12</span> <span class="badge badge-beginner" data-astro-cid-e5qe5oli>beginner</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 1</span> <span class="category-badge" data-astro-cid-e5qe5oli>workflow</span> <span class="timestamp" data-astro-cid-e5qe5oli>9:12</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="/clear resets context" data-title-zh="/clear 重置上下文" data-astro-cid-e5qe5oli>/clear resets context</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="12" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Use /clear to reset conversation context</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>commands</span><span class="tag" data-astro-cid-e5qe5oli>context</span><span class="tag" data-astro-cid-e5qe5oli>reset</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>使用 <code>/clear</code> 命令重置对话上下文，开始新对话。</p>
+<h2 id="使用方法">使用方法</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">/clear</span></span>
+<span class="line"></span></code></pre>
+<h2 id="使用场景">使用场景</h2>
+<ul>
+<li>切换到完全不同的任务</li>
+<li>上下文过于混乱</li>
+<li>想要重新开始</li>
+<li>测试不同的方法</li>
+</ul>
+<h2 id="注意">注意</h2>
+<ul>
+<li><code>/clear</code> 会清除所有对话历史</li>
+<li>但不会影响已修改的文件</li>
+<li>不会修改 <code>CLAUDE.md</code> 配置</li>
+</ul>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/13">Tip 13: /context 显示 token 使用</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-13" class="related-link" data-astro-cid-e5qe5oli>#13 /context shows token usage</a> </div> </div><div class="tip-item collapsed act-1 difficulty-beginner" data-tip-id="13" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(13)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#13</span> <span class="badge badge-beginner" data-astro-cid-e5qe5oli>beginner</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 1</span> <span class="category-badge" data-astro-cid-e5qe5oli>workflow</span> <span class="timestamp" data-astro-cid-e5qe5oli>9:41</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="/context shows token usage" data-title-zh="/context 显示 token 使用" data-astro-cid-e5qe5oli>/context shows token usage</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="13" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Use /context to see current token usage</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>commands</span><span class="tag" data-astro-cid-e5qe5oli>tokens</span><span class="tag" data-astro-cid-e5qe5oli>monitoring</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>使用 <code>/context</code> 命令查看当前对话的 token 使用情况。</p>
+<h2 id="使用方法">使用方法</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">/context</span></span>
+<span class="line"></span></code></pre>
+<h2 id="输出示例">输出示例</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Session Context Usage:</span></span>
+<span class="line"><span>- Messages: 45,231 / 200,000 tokens</span></span>
+<span class="line"><span>- Remaining: 154,769 tokens</span></span>
+<span class="line"><span>- Last messages: ~2,000 tokens</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="使用场景">使用场景</h2>
+<ul>
+<li>检查是否接近上下文限制</li>
+<li>估算还能进行多少对话</li>
+<li>决定是否需要 <code>/clear</code></li>
+</ul>
+<h2 id="最佳实践">最佳实践</h2>
+<ul>
+<li>剩余 &#x3C; 20% 时考虑 <code>/clear</code></li>
+<li>重要任务前先检查</li>
+<li>大量代码操作后检查</li>
+</ul>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/14">Tip 14: 让自动压缩工作</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-12" class="related-link" data-astro-cid-e5qe5oli>#12 /clear resets context</a><a href="#tip-14" class="related-link" data-astro-cid-e5qe5oli>#14 Let auto-compaction work</a> </div> </div><div class="tip-item collapsed act-1 difficulty-intermediate" data-tip-id="14" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(14)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#14</span> <span class="badge badge-intermediate" data-astro-cid-e5qe5oli>intermediate</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 1</span> <span class="category-badge" data-astro-cid-e5qe5oli>workflow</span> <span class="timestamp" data-astro-cid-e5qe5oli>10:13</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Let auto-compaction work" data-title-zh="让自动压缩工作" data-astro-cid-e5qe5oli>Let auto-compaction work</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="14" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Let Claude Code handle context compaction automatically</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>context</span><span class="tag" data-astro-cid-e5qe5oli>tokens</span><span class="tag" data-astro-cid-e5qe5oli>optimization</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>让 Claude Code 自动处理上下文压缩，不要手动 <code>/clear</code> 太频繁。</p>
+<h2 id="自动压缩机制">自动压缩机制</h2>
+<p>当上下文接近限制时，Claude Code 会：</p>
+<ol>
+<li>自动压缩旧消息</li>
+<li>保留重要上下文</li>
+<li>继续无缝对话</li>
+</ol>
+<h2 id="为什么不要频繁-clear">为什么不要频繁 /clear</h2>
+<ul>
+<li>压缩保留了重要信息</li>
+<li><code>/clear</code> 会丢失所有上下文</li>
+<li>自动压缩更智能</li>
+</ul>
+<h2 id="何时使用-clear">何时使用 /clear</h2>
+<ul>
+<li>切换到完全不同的任务</li>
+<li>上下文已混乱</li>
+<li>开始新的工作会话</li>
+</ul>
+<h2 id="最佳实践">最佳实践</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># 好的做法：让自动压缩处理</span></span>
+<span class="line"><span># 自然地进行对话</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># 偶尔检查</span></span>
+<span class="line"><span>/context</span></span>
+<span class="line"><span># 如果压缩不够好，才考虑 /clear</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/15">Tip 15: /model 切换模型</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-13" class="related-link" data-astro-cid-e5qe5oli>#13 /context shows token usage</a> </div> </div><div class="tip-item collapsed act-1 difficulty-intermediate" data-tip-id="15" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(15)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#15</span> <span class="badge badge-intermediate" data-astro-cid-e5qe5oli>intermediate</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 1</span> <span class="category-badge" data-astro-cid-e5qe5oli>workflow</span> <span class="timestamp" data-astro-cid-e5qe5oli>11:42</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="/model switches models" data-title-zh="/model 切换模型" data-astro-cid-e5qe5oli>/model switches models</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="15" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Use /model to switch between Claude models</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>commands</span><span class="tag" data-astro-cid-e5qe5oli>models</span><span class="tag" data-astro-cid-e5qe5oli>optimization</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>使用 <code>/model</code> 命令在不同 Claude 模型之间切换。</p>
+<h2 id="使用方法">使用方法</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">/model</span><span style="color:#9ECBFF"> sonnet</span><span style="color:#6A737D">    # 默认，最佳编程模型</span></span>
+<span class="line"><span style="color:#B392F0">/model</span><span style="color:#9ECBFF"> opus</span><span style="color:#6A737D">      # 最强推理能力</span></span>
+<span class="line"><span style="color:#B392F0">/model</span><span style="color:#9ECBFF"> haiku</span><span style="color:#6A737D">     # 最快，轻量任务</span></span>
+<span class="line"></span></code></pre>
+<h2 id="模型选择指南">模型选择指南</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>模型</th><th>用途</th><th>特点</th></tr></thead><tbody><tr><td>Haiku</td><td>轻量任务</td><td>快，便宜，90% 能力</td></tr><tr><td>Sonnet</td><td>日常开发</td><td>平衡，推荐默认</td></tr><tr><td>Opus</td><td>复杂任务</td><td>最强推理，较慢</td></tr></tbody></table>
+<h2 id="使用场景">使用场景</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 简单查询</span></span>
+<span class="line"><span style="color:#B392F0">/model</span><span style="color:#9ECBFF"> haiku</span></span>
+<span class="line"><span style="color:#F97583">></span><span style="color:#E1E4E8"> 这个函数是做什么的？</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 日常开发</span></span>
+<span class="line"><span style="color:#B392F0">/model</span><span style="color:#9ECBFF"> sonnet</span><span style="color:#6A737D">  # 默认</span></span>
+<span class="line"><span style="color:#F97583">></span><span style="color:#E1E4E8"> 帮我实现用户认证</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 复杂架构决策</span></span>
+<span class="line"><span style="color:#B392F0">/model</span><span style="color:#9ECBFF"> opus</span></span>
+<span class="line"><span style="color:#F97583">></span><span style="color:#E1E4E8"> 设计一个支持千万用户的系统架构</span></span>
+<span class="line"></span></code></pre>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/16">Tip 16: /resume 恢复会话</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-14" class="related-link" data-astro-cid-e5qe5oli>#14 Let auto-compaction work</a><a href="#tip-16" class="related-link" data-astro-cid-e5qe5oli>#16 /resume recovers sessions</a> </div> </div><div class="tip-item collapsed act-1 difficulty-beginner" data-tip-id="16" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(16)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#16</span> <span class="badge badge-beginner" data-astro-cid-e5qe5oli>beginner</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 1</span> <span class="category-badge" data-astro-cid-e5qe5oli>workflow</span> <span class="timestamp" data-astro-cid-e5qe5oli>12:23</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="/resume recovers sessions" data-title-zh="/resume 恢复会话" data-astro-cid-e5qe5oli>/resume recovers sessions</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="16" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Use /resume to recover previous sessions</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>commands</span><span class="tag" data-astro-cid-e5qe5oli>sessions</span><span class="tag" data-astro-cid-e5qe5oli>recovery</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>使用 <code>/resume</code> 命令恢复之前的会话状态。</p>
+<h2 id="使用方法">使用方法</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">/resume</span></span>
+<span class="line"><span style="color:#6A737D"># 或指定会话ID</span></span>
+<span class="line"><span style="color:#B392F0">/resume</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">session-i</span><span style="color:#E1E4E8">d</span><span style="color:#F97583">></span></span>
+<span class="line"></span></code></pre>
+<h2 id="使用场景">使用场景</h2>
+<ul>
+<li>意外关闭了 Claude Code</li>
+<li>系统崩溃后恢复</li>
+<li>在不同设备间继续</li>
+<li>查看历史会话</li>
+</ul>
+<h2 id="工作原理">工作原理</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>会话保存在: ~/.claude/sessions/</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>恢复时:</span></span>
+<span class="line"><span>- 恢复对话历史</span></span>
+<span class="line"><span>- 恢复上下文</span></span>
+<span class="line"><span>- 恢复项目状态</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="注意">注意</h2>
+<ul>
+<li>会话有保留期限</li>
+<li>文件修改已保存，不会丢失</li>
+<li>只恢复对话上下文</li>
+</ul>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/17">Tip 17: /mcp 显示 MCP 状态</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-15" class="related-link" data-astro-cid-e5qe5oli>#15 /model switches models</a> </div> </div><div class="tip-item collapsed act-1 difficulty-advanced" data-tip-id="17" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(17)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#17</span> <span class="badge badge-advanced" data-astro-cid-e5qe5oli>advanced</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 1</span> <span class="category-badge" data-astro-cid-e5qe5oli>workflow</span> <span class="timestamp" data-astro-cid-e5qe5oli>12:49</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="/mcp shows MCP status" data-title-zh="/mcp 显示 MCP 状态" data-astro-cid-e5qe5oli>/mcp shows MCP status</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="17" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Use /mcp to check MCP server connections</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>commands</span><span class="tag" data-astro-cid-e5qe5oli>mcp</span><span class="tag" data-astro-cid-e5qe5oli>integrations</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>使用 <code>/mcp</code> 命令查看 MCP (Model Context Protocol) 服务器状态。</p>
+<h2 id="使用方法">使用方法</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">/mcp</span></span>
+<span class="line"></span></code></pre>
+<h2 id="输出示例">输出示例</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>MCP Servers Status:</span></span>
+<span class="line"><span>✓ filesystem (local)</span></span>
+<span class="line"><span>✓ git (local)</span></span>
+<span class="line"><span>✓ github (connected)</span></span>
+<span class="line"><span>✗ database (disconnected)</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="什么是-mcp">什么是 MCP</h2>
+<p>MCP 让 Claude Code 连接外部服务：</p>
+<ul>
+<li>文件系统操作</li>
+<li>Git 仓库访问</li>
+<li>API 集成</li>
+<li>自定义工具</li>
+</ul>
+<h2 id="使用场景">使用场景</h2>
+<ul>
+<li>检查集成状态</li>
+<li>调试 MCP 连接</li>
+<li>查看可用工具</li>
+</ul>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/18">Tip 18: /help 显示所有命令</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-18" class="related-link" data-astro-cid-e5qe5oli>#18 /help shows all commands</a> </div> </div><div class="tip-item collapsed act-1 difficulty-beginner" data-tip-id="18" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(18)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#18</span> <span class="badge badge-beginner" data-astro-cid-e5qe5oli>beginner</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 1</span> <span class="category-badge" data-astro-cid-e5qe5oli>setup</span> <span class="timestamp" data-astro-cid-e5qe5oli>13:21</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="/help shows all commands" data-title-zh="/help 显示所有命令" data-astro-cid-e5qe5oli>/help shows all commands</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="18" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Use /help to see all available commands</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>commands</span><span class="tag" data-astro-cid-e5qe5oli>help</span><span class="tag" data-astro-cid-e5qe5oli>reference</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>使用 <code>/help</code> 命令查看所有可用的斜杠命令。</p>
+<h2 id="使用方法">使用方法</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">/help</span></span>
+<span class="line"></span></code></pre>
+<h2 id="常用命令速查">常用命令速查</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>命令</th><th>功能</th></tr></thead><tbody><tr><td><code>/init</code></td><td>初始化项目配置</td></tr><tr><td><code>/clear</code></td><td>清空对话</td></tr><tr><td><code>/context</code></td><td>显示 token 使用</td></tr><tr><td><code>/model</code></td><td>切换模型</td></tr><tr><td><code>/resume</code></td><td>恢复会话</td></tr><tr><td><code>/mcp</code></td><td>MCP 状态</td></tr><tr><td><code>/help</code></td><td>显示帮助</td></tr></tbody></table>
+<h2 id="学习建议">学习建议</h2>
+<ul>
+<li>新手：先记住 <code>/help</code> 和 <code>/clear</code></li>
+<li>日常：加上 <code>/context</code> 和 <code>/model</code></li>
+<li>高级：掌握所有命令</li>
+</ul>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/19">Tip 19: Git 是你的安全网</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-17" class="related-link" data-astro-cid-e5qe5oli>#17 /mcp shows MCP status</a> </div> </div><div class="tip-item collapsed act-2 difficulty-beginner" data-tip-id="19" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(19)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#19</span> <span class="badge badge-beginner" data-astro-cid-e5qe5oli>beginner</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 2</span> <span class="category-badge" data-astro-cid-e5qe5oli>workflow</span> <span class="timestamp" data-astro-cid-e5qe5oli>14:19</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Git is your safety net" data-title-zh="Git 是你的安全网" data-astro-cid-e5qe5oli>Git is your safety net</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="19" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Always commit before major Claude Code operations</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>git</span><span class="tag" data-astro-cid-e5qe5oli>safety</span><span class="tag" data-astro-cid-e5qe5oli>version-control</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>在进行任何重要的 Claude Code 操作前，先提交代码到 Git。</p>
+<h2 id="为什么重要">为什么重要</h2>
+<p>Claude Code 会修改文件，Git 让你能：</p>
+<ul>
+<li>随时回退到之前的状态</li>
+<li>对比修改内容</li>
+<li>安全地实验</li>
+</ul>
+<h2 id="最佳实践">最佳实践</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 工作流程</span></span>
+<span class="line"><span style="color:#B392F0">1.</span><span style="color:#9ECBFF"> git</span><span style="color:#9ECBFF"> commit</span><span style="color:#79B8FF"> -am</span><span style="color:#9ECBFF"> "work in progress"</span></span>
+<span class="line"><span style="color:#B392F0">2.</span><span style="color:#9ECBFF"> 让</span><span style="color:#9ECBFF"> Claude</span><span style="color:#9ECBFF"> Code</span><span style="color:#9ECBFF"> 做大的修改</span></span>
+<span class="line"><span style="color:#B392F0">3.</span><span style="color:#9ECBFF"> 检查</span><span style="color:#9ECBFF"> git</span><span style="color:#9ECBFF"> diff</span></span>
+<span class="line"><span style="color:#B392F0">4.</span><span style="color:#9ECBFF"> 如有问题，git</span><span style="color:#9ECBFF"> reset</span><span style="color:#79B8FF"> --hard</span></span>
+<span class="line"><span style="color:#B392F0">5.</span><span style="color:#9ECBFF"> 如没问题，git</span><span style="color:#9ECBFF"> commit</span><span style="color:#79B8FF"> -am</span><span style="color:#9ECBFF"> "changes by claude"</span></span>
+<span class="line"></span></code></pre>
+<h2 id="提交习惯">提交习惯</h2>
+<ul>
+<li>功能开始前：<code>git commit -m "before: feature X"</code></li>
+<li>功能完成后：<code>git commit -m "after: feature X"</code></li>
+<li>每天结束前：<code>git commit -m "wip: $(date)"</code></li>
+<li>Claude 修改后：<code>git commit -m "chore: changes by claude"</code></li>
+</ul>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/20">Tip 20: 添加 Critical Rules 部分</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-20" class="related-link" data-astro-cid-e5qe5oli>#20 Add a Critical Rules section</a> </div> </div><div class="tip-item collapsed act-1 difficulty-intermediate" data-tip-id="20" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(20)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#20</span> <span class="badge badge-intermediate" data-astro-cid-e5qe5oli>intermediate</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 1</span> <span class="category-badge" data-astro-cid-e5qe5oli>setup</span> <span class="timestamp" data-astro-cid-e5qe5oli>14:33</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Add a Critical Rules section" data-title-zh="添加关键规则部分" data-astro-cid-e5qe5oli>Add a Critical Rules section</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="20" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Add a Critical Rules section to CLAUDE.md for important constraints</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>claudemd</span><span class="tag" data-astro-cid-e5qe5oli>config</span><span class="tag" data-astro-cid-e5qe5oli>safety</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>在 <code>CLAUDE.md</code> 中添加 Critical Rules 部分，列出不可违反的规则。</p>
+<h2 id="模板">模板</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#79B8FF;font-weight:bold"># Critical Rules (CRITICAL)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">这些规则具有最高优先级，必须严格遵守：</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFAB70">1.</span><span style="color:#E1E4E8;font-weight:bold"> **永远不要**</span><span style="color:#E1E4E8">在生产环境直接修改数据</span></span>
+<span class="line"><span style="color:#FFAB70">2.</span><span style="color:#E1E4E8;font-weight:bold"> **必须**</span><span style="color:#E1E4E8">在修改前运行测试</span></span>
+<span class="line"><span style="color:#FFAB70">3.</span><span style="color:#E1E4E8;font-weight:bold"> **禁止**</span><span style="color:#E1E4E8">硬编码密钥和密码</span></span>
+<span class="line"><span style="color:#FFAB70">4.</span><span style="color:#E1E4E8;font-weight:bold"> **必须**</span><span style="color:#E1E4E8">使用类型注解</span></span>
+<span class="line"><span style="color:#FFAB70">5.</span><span style="color:#E1E4E8;font-weight:bold"> **禁止**</span><span style="color:#E1E4E8">直接修改数据库 schema（使用迁移）</span></span>
+<span class="line"></span></code></pre>
+<h2 id="为什么有效">为什么有效</h2>
+<ul>
+<li>Claude 会优先遵守这些规则</li>
+<li>防止常见错误</li>
+<li>团队规范强制执行</li>
+</ul>
+<h2 id="规则优先级">规则优先级</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Critical Rules > 项目规则 > 全局规则</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="最佳实践">最佳实践</h2>
+<ul>
+<li>保持规则少而精</li>
+<li>使用 CRITICAL 标记</li>
+<li>定期审查和更新</li>
+</ul>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/21">Tip 21: 让 Claude 更新规则</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-19" class="related-link" data-astro-cid-e5qe5oli>#19 Git is your safety net</a> </div> </div><div class="tip-item collapsed act-1 difficulty-intermediate" data-tip-id="21" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(21)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#21</span> <span class="badge badge-intermediate" data-astro-cid-e5qe5oli>intermediate</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 1</span> <span class="category-badge" data-astro-cid-e5qe5oli>setup</span> <span class="timestamp" data-astro-cid-e5qe5oli>15:24</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Ask Claude to update rules" data-title-zh="让 Claude 更新规则" data-astro-cid-e5qe5oli>Ask Claude to update rules</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="21" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Ask Claude to help update CLAUDE.md rules</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>claudemd</span><span class="tag" data-astro-cid-e5qe5oli>config</span><span class="tag" data-astro-cid-e5qe5oli>collaboration</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>可以让 Claude 帮你更新 <code>CLAUDE.md</code> 配置文件。</p>
+<h2 id="使用方法">使用方法</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>请帮我看一下 CLAUDE.md，有没有需要改进的地方？</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="claude-可以帮助">Claude 可以帮助</h2>
+<ul>
+<li>发现重复或冲突的规则</li>
+<li>建议新的规则</li>
+<li>优化现有规则的表述</li>
+<li>添加缺失的部分</li>
+</ul>
+<h2 id="示例对话">示例对话</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>你: 我的项目最近加用了 TypeScript，帮 CLAUDE.md 更新一下</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Claude: 建议添加：</span></span>
+<span class="line"><span>## TypeScript 规范</span></span>
+<span class="line"><span>- 所有函数必须有类型注解</span></span>
+<span class="line"><span>- 使用 strict 模式</span></span>
+<span class="line"><span>- 禁止使用 any 类型</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="注意">注意</h2>
+<ul>
+<li>Claude 会建议，你做最终决定</li>
+<li>记得提交到 Git</li>
+</ul>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/22">Tip 22: 使用 workflow 触发器</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-20" class="related-link" data-astro-cid-e5qe5oli>#20 Add a Critical Rules section</a><a href="#tip-22" class="related-link" data-astro-cid-e5qe5oli>#22 Use workflow triggers</a> </div> </div><div class="tip-item collapsed act-1 difficulty-advanced" data-tip-id="22" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(22)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#22</span> <span class="badge badge-advanced" data-astro-cid-e5qe5oli>advanced</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 1</span> <span class="category-badge" data-astro-cid-e5qe5oli>workflow</span> <span class="timestamp" data-astro-cid-e5qe5oli>15:52</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Use workflow triggers" data-title-zh="使用工作流触发器" data-astro-cid-e5qe5oli>Use workflow triggers</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="22" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Configure automatic workflow triggers in CLAUDE.md</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>claudemd</span><span class="tag" data-astro-cid-e5qe5oli>config</span><span class="tag" data-astro-cid-e5qe5oli>automation</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>在 <code>CLAUDE.md</code> 中配置自动工作流触发器。</p>
+<h2 id="工作流触发器">工作流触发器</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#79B8FF;font-weight:bold">## Workflow Triggers</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">当以下情况时自动激活相应技能：</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 用户说 "修复 bug" → tdd-guide 技能</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 用户说 "设计架构" → architect 技能</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 代码已修改 → code-reviewer 技能</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 涉及用户输入 → security-reviewer 技能</span></span>
+<span class="line"></span></code></pre>
+<h2 id="配置示例">配置示例</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#79B8FF;font-weight:bold">## Automatic Triggers</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFAB70">1.</span><span style="color:#E1E4E8;font-weight:bold"> **新功能请求**</span><span style="color:#E1E4E8"> → brainstorming → writing-plans → 执行</span></span>
+<span class="line"><span style="color:#FFAB70">2.</span><span style="color:#E1E4E8;font-weight:bold"> **Bug 修复**</span><span style="color:#E1E4E8"> → systematic-debugging → tdd-workflow</span></span>
+<span class="line"><span style="color:#FFAB70">3.</span><span style="color:#E1E4E8;font-weight:bold"> **代码修改后**</span><span style="color:#E1E4E8"> → code-reviewer</span></span>
+<span class="line"><span style="color:#FFAB70">4.</span><span style="color:#E1E4E8;font-weight:bold"> **提交前**</span><span style="color:#E1E4E8"> → security-reviewer</span></span>
+<span class="line"></span></code></pre>
+<h2 id="优势">优势</h2>
+<ul>
+<li>自动化重复流程</li>
+<li>确保最佳实践</li>
+<li>减少手动干预</li>
+</ul>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/23">Tip 23: 提交 CLAUDE.md 到 git</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-21" class="related-link" data-astro-cid-e5qe5oli>#21 Ask Claude to update rules</a> </div> </div><div class="tip-item collapsed act-1 difficulty-beginner" data-tip-id="23" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(23)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#23</span> <span class="badge badge-beginner" data-astro-cid-e5qe5oli>beginner</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 1</span> <span class="category-badge" data-astro-cid-e5qe5oli>setup</span> <span class="timestamp" data-astro-cid-e5qe5oli>16:40</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Commit CLAUDE.md to git" data-title-zh="将 CLAUDE.md 提交到 git" data-astro-cid-e5qe5oli>Commit CLAUDE.md to git</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="23" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Always commit CLAUDE.md to version control</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>claudemd</span><span class="tag" data-astro-cid-e5qe5oli>git</span><span class="tag" data-astro-cid-e5qe5oli>version-control</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>务必将 <code>CLAUDE.md</code> 提交到 Git 版本控制。</p>
+<h2 id="为什么重要">为什么重要</h2>
+<ul>
+<li>团队共享项目规范</li>
+<li>追踪配置变更历史</li>
+<li>新成员快速上手</li>
+<li>CI/CD 可访问配置</li>
+</ul>
+<h2 id="git-忽略规则">Git 忽略规则</h2>
+<p>确保 <code>.gitignore</code> <strong>不忽略</strong> <code>CLAUDE.md</code>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># 不添加这行</span></span>
+<span class="line"><span># CLAUDE.md</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># 但可以忽略本地配置</span></span>
+<span class="line"><span>.claude/local.json</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="提交信息">提交信息</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> CLAUDE.md</span></span>
+<span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> commit</span><span style="color:#79B8FF"> -m</span><span style="color:#9ECBFF"> "docs: update CLAUDE.md with project rules"</span></span>
+<span class="line"></span></code></pre>
+<h2 id="最佳实践">最佳实践</h2>
+<ul>
+<li>项目初始化时立即创建并提交</li>
+<li>有意义修改时及时提交</li>
+<li>在 PR 中审查 CLAUDE.md 变更</li>
+</ul>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/24">Tip 24: 临时环境用 dangerously-skip</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-22" class="related-link" data-astro-cid-e5qe5oli>#22 Use workflow triggers</a> </div> </div><div class="tip-item collapsed act-1 difficulty-advanced" data-tip-id="24" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(24)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#24</span> <span class="badge badge-advanced" data-astro-cid-e5qe5oli>advanced</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 1</span> <span class="category-badge" data-astro-cid-e5qe5oli>setup</span> <span class="timestamp" data-astro-cid-e5qe5oli>17:08</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="dangerously-skip for throwaway envs" data-title-zh="一次性环境使用 dangerously-skip" data-astro-cid-e5qe5oli>dangerously-skip for throwaway envs</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="24" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Use dangerously-skip-permissions for temporary/throwaway environments</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>permissions</span><span class="tag" data-astro-cid-e5qe5oli>automation</span><span class="tag" data-astro-cid-e5qe5oli>throwaway</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>在临时/一次性环境中使用 <code>dangerously-skip-permissions</code> 跳过确认。</p>
+<h2 id="使用场景">使用场景</h2>
+<ul>
+<li>短期实验项目</li>
+<li>CI/CD 自动化脚本</li>
+<li>演示/教学环境</li>
+<li>已信任的本地开发环境</li>
+</ul>
+<h2 id="配置方法">配置方法</h2>
+<p>在 <code>~/.claude/settings.json</code>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "dangerouslySkipPermissions"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="️-警告">⚠️ 警告</h2>
+<p><strong>仅用于以下情况：</strong></p>
+<ul>
+<li>可丢弃的环境</li>
+<li>完全信任的项目</li>
+<li>已有 Git 保护</li>
+</ul>
+<p><strong>不要用于：</strong></p>
+<ul>
+<li>生产代码</li>
+<li>重要项目</li>
+<li>不熟悉的代码库</li>
+</ul>
+<h2 id="更好的方式">更好的方式</h2>
+<p>使用白名单代替全局跳过：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "dangerouslySkipPermissions"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "allowedTools"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"Read"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"Write"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"Bash"</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#79B8FF">    "allowedPaths"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"/tmp/experiments/*"</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/25">Tip 25: 结合 skip 与白名单</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-23" class="related-link" data-astro-cid-e5qe5oli>#23 Commit CLAUDE.md to git</a><a href="#tip-25" class="related-link" data-astro-cid-e5qe5oli>#25 Combine skip with allowlists</a> </div> </div><div class="tip-item collapsed act-1 difficulty-advanced" data-tip-id="25" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(25)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#25</span> <span class="badge badge-advanced" data-astro-cid-e5qe5oli>advanced</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 1</span> <span class="category-badge" data-astro-cid-e5qe5oli>setup</span> <span class="timestamp" data-astro-cid-e5qe5oli>17:46</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Combine skip with allowlists" data-title-zh="结合 skip 和白名单" data-astro-cid-e5qe5oli>Combine skip with allowlists</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="25" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Combine dangerously-skip with allowlists for safer automation</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>permissions</span><span class="tag" data-astro-cid-e5qe5oli>security</span><span class="tag" data-astro-cid-e5qe5oli>configuration</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>结合 <code>dangerously-skip-permissions</code> 与白名单，实现更安全的自动化。</p>
+<h2 id="白名单配置">白名单配置</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "dangerouslySkipPermissions"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "allowedTools"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"Read"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"Grep"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"Glob"</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#79B8FF">    "allowedPatterns"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"*.md"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"src/**/*.ts"</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#79B8FF">    "blockedPatterns"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"*.env"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"*secret*"</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="配置说明">配置说明</h2>
+<ul>
+<li><code>allowedTools</code>: 允许的工具</li>
+<li><code>allowedPatterns</code>: 允许的文件模式</li>
+<li><code>blockedPatterns</code>: 禁止的文件模式（优先级更高）</li>
+</ul>
+<h2 id="层级安全">层级安全</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>全局配置（settings.json）</span></span>
+<span class="line"><span>    ↓</span></span>
+<span class="line"><span>项目配置（CLAUDE.md）</span></span>
+<span class="line"><span>    ↓</span></span>
+<span class="line"><span>运行时决策</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="最佳实践">最佳实践</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#6A737D">  // 开发环境：宽松配置</span></span>
+<span class="line"><span style="color:#79B8FF">  "dangerouslySkipPermissions"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "allowedTools"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"*"</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#79B8FF">    "allowedPatterns"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"*"</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // 生产环境：严格配置</span></span>
+<span class="line"><span style="color:#79B8FF">  "dangerouslySkipPermissions"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "allowedTools"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"Read"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"Grep"</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#79B8FF">    "allowedPatterns"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"*.md"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"docs/*"</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="#">ACT 2: Daily Workflow</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-24" class="related-link" data-astro-cid-e5qe5oli>#24 dangerously-skip for throwaway envs</a> </div> </div><div class="tip-item collapsed act-2 difficulty-intermediate" data-tip-id="26" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(26)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#26</span> <span class="badge badge-intermediate" data-astro-cid-e5qe5oli>intermediate</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 2</span> <span class="category-badge" data-astro-cid-e5qe5oli>workflow</span> <span class="timestamp" data-astro-cid-e5qe5oli>18:27</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Start features in Plan Mode" data-title-zh="在计划模式下开始功能" data-astro-cid-e5qe5oli>Start features in Plan Mode</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="26" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Always start new features in Plan Mode</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>planning</span><span class="tag" data-astro-cid-e5qe5oli>workflow</span><span class="tag" data-astro-cid-e5qe5oli>features</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>开始新功能开发时，先进入 Plan Mode 进行规划。</p>
+<h2 id="为什么重要">为什么重要</h2>
+<p>Plan Mode 让你：</p>
+<ul>
+<li>先思考再动手</li>
+<li>识别潜在问题</li>
+<li>设计合理的方案</li>
+<li>避免返工</li>
+</ul>
+<h2 id="工作流程">工作流程</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>1. 接收需求</span></span>
+<span class="line"><span>2. 进入 Plan Mode</span></span>
+<span class="line"><span>3. 探索代码库</span></span>
+<span class="line"><span>4. 设计方案</span></span>
+<span class="line"><span>5. 获取批准</span></span>
+<span class="line"><span>6. 实施方案</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="触发方式">触发方式</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 自动触发</span></span>
+<span class="line"><span style="color:#F97583">></span><span style="color:#E1E4E8"> 我需要添加用户认证功能</span></span>
+<span class="line"><span style="color:#6A737D"># Claude 检测到复杂任务，自动进入 Plan Mode</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 手动触发</span></span>
+<span class="line"><span style="color:#B392F0">/plan</span></span>
+<span class="line"></span></code></pre>
+<h2 id="适合-plan-mode-的任务">适合 Plan Mode 的任务</h2>
+<ul>
+<li>新功能实现</li>
+<li>架构变更</li>
+<li>复杂重构</li>
+<li>多文件修改</li>
+</ul>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/27">Tip 27: 新上下文胜过臃肿</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-27" class="related-link" data-astro-cid-e5qe5oli>#27 Fresh context beats bloated</a> </div> </div><div class="tip-item collapsed act-2 difficulty-beginner" data-tip-id="27" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(27)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#27</span> <span class="badge badge-beginner" data-astro-cid-e5qe5oli>beginner</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 2</span> <span class="category-badge" data-astro-cid-e5qe5oli>workflow</span> <span class="timestamp" data-astro-cid-e5qe5oli>19:14</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Fresh context beats bloated" data-title-zh="新上下文胜过臃肿" data-astro-cid-e5qe5oli>Fresh context beats bloated</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="27" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Start a new session instead of continuing bloated ones</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>context</span><span class="tag" data-astro-cid-e5qe5oli>sessions</span><span class="tag" data-astro-cid-e5qe5oli>workflow</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>当上下文变得臃肿时，启动新会话而不是继续。</p>
+<h2 id="信号需要新会话">信号：需要新会话</h2>
+<ul>
+<li>对话响应变慢</li>
+<li>Claude 遗忘之前的上下文</li>
+<li>token 使用 > 80%</li>
+<li>切换到完全不相关的任务</li>
+</ul>
+<h2 id="优雅切换">优雅切换</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 保存当前状态</span></span>
+<span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> commit</span><span style="color:#79B8FF"> -am</span><span style="color:#9ECBFF"> "wip: session $(</span><span style="color:#B392F0">date</span><span style="color:#9ECBFF">)"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 启动新会话</span></span>
+<span class="line"><span style="color:#B392F0">claude</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 简要说明背景</span></span>
+<span class="line"><span style="color:#6A737D"># 项目是 X，当前在处理 Y</span></span>
+<span class="line"></span></code></pre>
+<h2 id="传递关键上下文">传递关键上下文</h2>
+<p>新会话中快速说明：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># 最小上下文</span></span>
+<span class="line"><span>项目：电商网站</span></span>
+<span class="line"><span>当前：修复购物车 bug</span></span>
+<span class="line"><span>技术栈：React + TypeScript</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/28">Tip 28: 会话结束前持久化</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-26" class="related-link" data-astro-cid-e5qe5oli>#26 Start features in Plan Mode</a><a href="#tip-28" class="related-link" data-astro-cid-e5qe5oli>#28 Persist before ending sessions</a> </div> </div><div class="tip-item collapsed act-2 difficulty-beginner" data-tip-id="28" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(28)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#28</span> <span class="badge badge-beginner" data-astro-cid-e5qe5oli>beginner</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 2</span> <span class="category-badge" data-astro-cid-e5qe5oli>workflow</span> <span class="timestamp" data-astro-cid-e5qe5oli>20:01</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Persist before ending sessions" data-title-zh="结束会话前持久化" data-astro-cid-e5qe5oli>Persist before ending sessions</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="28" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Always commit work before ending a session</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>git</span><span class="tag" data-astro-cid-e5qe5oli>sessions</span><span class="tag" data-astro-cid-e5qe5oli>workflow</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>结束会话前，务必提交所有工作到 Git。</p>
+<h2 id="会话结束检查清单">会话结束检查清单</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 1. 查看修改</span></span>
+<span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> status</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 2. 提交代码</span></span>
+<span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> .</span></span>
+<span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> commit</span><span style="color:#79B8FF"> -m</span><span style="color:#9ECBFF"> "feat: implement user authentication"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 3. 检查是否有未保存的工作</span></span>
+<span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> diff</span><span style="color:#79B8FF"> --staged</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 4. 记录会话笔记（可选）</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "$(</span><span style="color:#B392F0">date</span><span style="color:#9ECBFF">): Implemented auth"</span><span style="color:#F97583"> >></span><span style="color:#9ECBFF"> session-notes.md</span></span>
+<span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> session-notes.md</span></span>
+<span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> commit</span><span style="color:#79B8FF"> -m</span><span style="color:#9ECBFF"> "docs: add session notes"</span></span>
+<span class="line"></span></code></pre>
+<h2 id="为什么要持久化">为什么要持久化</h2>
+<ul>
+<li>意外关闭不丢失工作</li>
+<li>可以安全地开始新会话</li>
+<li>保留工作历史</li>
+<li>便于团队协作</li>
+</ul>
+<h2 id="习惯养成">习惯养成</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 绑定到退出快捷键</span></span>
+<span class="line"><span style="color:#6A737D"># 或设置会话结束提醒</span></span>
+<span class="line"></span></code></pre>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/29">Tip 29: 懒加载上下文</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-27" class="related-link" data-astro-cid-e5qe5oli>#27 Fresh context beats bloated</a> </div> </div><div class="tip-item collapsed act-2 difficulty-intermediate" data-tip-id="29" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(29)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#29</span> <span class="badge badge-intermediate" data-astro-cid-e5qe5oli>intermediate</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 2</span> <span class="category-badge" data-astro-cid-e5qe5oli>workflow</span> <span class="timestamp" data-astro-cid-e5qe5oli>20:48</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Lazy load context" data-title-zh="懒加载上下文" data-astro-cid-e5qe5oli>Lazy load context</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="29" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Load context only when needed, not upfront</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>context</span><span class="tag" data-astro-cid-e5qe5oli>optimization</span><span class="tag" data-astro-cid-e5qe5oli>performance</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>只在需要时加载上下文，而不是预先加载所有内容。</p>
+<h2 id="对比">对比</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 不好：预先加载大量上下文</span></span>
+<span class="line"><span style="color:#B392F0">"请阅读整个项目然后帮我..."</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 好：按需加载</span></span>
+<span class="line"><span style="color:#B392F0">"我需要修改用户认证，先看一下 auth 相关文件"</span></span>
+<span class="line"></span></code></pre>
+<h2 id="懒加载技巧">懒加载技巧</h2>
+<ol>
+<li>
+<p><strong>先描述问题</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>用户登录失败，错误是 XYZ</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p><strong>Claude 会请求相关文件</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>"让我看看登录相关的代码..."</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+<li>
+<p><strong>而非预先提供</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># 不需要这样做</span></span>
+<span class="line"><span>"这是整个项目结构..."</span></span>
+<span class="line"><span></span></span></code></pre>
+</li>
+</ol>
+<h2 id="优势">优势</h2>
+<ul>
+<li>节省 token</li>
+<li>更快的响应</li>
+<li>Claude 主动识别需要的文件</li>
+<li>减少噪音</li>
+</ul>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/30">Tip 30: 提供验证命令</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-28" class="related-link" data-astro-cid-e5qe5oli>#28 Persist before ending sessions</a><a href="#tip-30" class="related-link" data-astro-cid-e5qe5oli>#30 Give verification commands</a> </div> </div><div class="tip-item collapsed act-2 difficulty-intermediate" data-tip-id="30" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(30)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#30</span> <span class="badge badge-intermediate" data-astro-cid-e5qe5oli>intermediate</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 2</span> <span class="category-badge" data-astro-cid-e5qe5oli>workflow</span> <span class="timestamp" data-astro-cid-e5qe5oli>22:11</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Give verification commands" data-title-zh="提供验证命令" data-astro-cid-e5qe5oli>Give verification commands</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="30" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Tell Claude how to verify its work</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>testing</span><span class="tag" data-astro-cid-e5qe5oli>verification</span><span class="tag" data-astro-cid-e5qe5oli>workflow</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>告诉 Claude 如何验证它完成的工作。</p>
+<h2 id="提供验证方式">提供验证方式</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 不好的方式</span></span>
+<span class="line"><span style="color:#B392F0">"添加用户认证功能"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 好的方式</span></span>
+<span class="line"><span style="color:#B392F0">"添加用户认证功能。</span></span>
+<span class="line"><span style="color:#B392F0">验证方式：</span></span>
+<span class="line"><span style="color:#B392F0">npm run test:auth</span></span>
+<span class="line"><span style="color:#B392F0">npm run lint</span></span>
+<span class="line"><span style="color:#B392F0">npm run build</span></span>
+<span class="line"><span style="color:#B392F0">"</span></span>
+<span class="line"></span></code></pre>
+<h2 id="claudemd-验证部分">CLAUDE.md 验证部分</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#79B8FF;font-weight:bold">## Verification</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">### 运行测试</span></span>
+<span class="line"><span style="color:#E1E4E8">npm test</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">### 类型检查</span></span>
+<span class="line"><span style="color:#E1E4E8">npm run type-check</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">### Lint</span></span>
+<span class="line"><span style="color:#E1E4E8">npm run lint</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">### 构建验证</span></span>
+<span class="line"><span style="color:#E1E4E8">npm run build</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">### 手动测试</span></span>
+<span class="line"><span style="color:#FFAB70">1.</span><span style="color:#E1E4E8"> 启动服务器：npm run dev</span></span>
+<span class="line"><span style="color:#FFAB70">2.</span><span style="color:#E1E4E8"> 访问 http://localhost:3000</span></span>
+<span class="line"><span style="color:#FFAB70">3.</span><span style="color:#E1E4E8"> 测试关键流程</span></span>
+<span class="line"></span></code></pre>
+<h2 id="为什么要验证">为什么要验证</h2>
+<ul>
+<li>Claude 自行验证结果</li>
+<li>及早发现问题</li>
+<li>减少迭代次数</li>
+<li>确保质量</li>
+</ul>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/31">Tip 31: 复杂工作考虑 Opus</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-29" class="related-link" data-astro-cid-e5qe5oli>#29 Lazy load context</a> </div> </div><div class="tip-item collapsed act-2 difficulty-intermediate" data-tip-id="31" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(31)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#31</span> <span class="badge badge-intermediate" data-astro-cid-e5qe5oli>intermediate</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 2</span> <span class="category-badge" data-astro-cid-e5qe5oli>workflow</span> <span class="timestamp" data-astro-cid-e5qe5oli>23:04</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Consider Opus for complex work" data-title-zh="增量验证" data-astro-cid-e5qe5oli>Consider Opus for complex work</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="31" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Use Opus for complex architectural decisions</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>models</span><span class="tag" data-astro-cid-e5qe5oli>optimization</span><span class="tag" data-astro-cid-e5qe5oli>performance</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>对于复杂的架构决策，使用 Opus 模型。</p>
+<h2 id="何时使用-opus">何时使用 Opus</h2>
+<ul>
+<li>
+<p><strong>架构设计</strong></p>
+<ul>
+<li>系统架构</li>
+<li>数据库设计</li>
+<li>API 设计</li>
+</ul>
+</li>
+<li>
+<p><strong>复杂重构</strong></p>
+<ul>
+<li>跨模块重构</li>
+<li>性能优化</li>
+<li>代码重组织</li>
+</ul>
+</li>
+<li>
+<p><strong>深度分析</strong></p>
+<ul>
+<li>Bug 调试</li>
+<li>代码审查</li>
+<li>安全分析</li>
+</ul>
+</li>
+</ul>
+<h2 id="模型选择决策树">模型选择决策树</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>任务类型？</span></span>
+<span class="line"><span>├─ 简单查询 → Haiku</span></span>
+<span class="line"><span>├─ 日常开发 → Sonnet（默认）</span></span>
+<span class="line"><span>└─ 复杂决策 → Opus</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="成本权衡">成本权衡</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Opus 成本 = Sonnet × ~6</span></span>
+<span class="line"><span>但复杂任务用 Opus 可能更快（更少迭代）</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="使用方法">使用方法</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">/model</span><span style="color:#9ECBFF"> opus</span></span>
+<span class="line"><span style="color:#6A737D"># 或</span></span>
+<span class="line"><span style="color:#B392F0">/model</span><span style="color:#9ECBFF"> opus</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">your</span><span style="color:#9ECBFF"> complex</span><span style="color:#9ECBFF"> reques</span><span style="color:#E1E4E8">t</span><span style="color:#F97583">></span></span>
+<span class="line"></span></code></pre>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/32">Tip 32: 阅读 thinking 块</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-30" class="related-link" data-astro-cid-e5qe5oli>#30 Give verification commands</a> </div> </div><div class="tip-item collapsed act-2 difficulty-intermediate" data-tip-id="32" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(32)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#32</span> <span class="badge badge-intermediate" data-astro-cid-e5qe5oli>intermediate</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 2</span> <span class="category-badge" data-astro-cid-e5qe5oli>workflow</span> <span class="timestamp" data-astro-cid-e5qe5oli>24:10</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Read thinking blocks" data-title-zh="验证后审查" data-astro-cid-e5qe5oli>Read thinking blocks</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="32" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Read Claude&#39;s thinking blocks for better understanding</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>models</span><span class="tag" data-astro-cid-e5qe5oli>thinking</span><span class="tag" data-astro-cid-e5qe5oli>transparency</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>阅读 Claude 的 thinking 块以更好地理解其推理过程。</p>
+<h2 id="什么是-thinking-块">什么是 thinking 块</h2>
+<p>Thinking 块显示 Claude 的内部推理过程，让你看到：</p>
+<ul>
+<li>它如何理解问题</li>
+<li>考虑了哪些方案</li>
+<li>为什么选择某个方案</li>
+<li>识别到哪些风险</li>
+</ul>
+<h2 id="如何查看">如何查看</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Ctrl+O (macOS: Option+T) 切换 thinking 显示</span></span>
+<span class="line"></span></code></pre>
+<h2 id="何时特别有用">何时特别有用</h2>
+<ul>
+<li><strong>复杂决策</strong> - 了解推理过程</li>
+<li><strong>调试</strong> - 看到分析思路</li>
+<li><strong>学习</strong> - 学习如何思考</li>
+<li><strong>审查</strong> - 验证 Claude 的逻辑</li>
+</ul>
+<h2 id="使用技巧">使用技巧</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span># 如果结果不对，检查 thinking</span></span>
+<span class="line"><span>"你的 thinking 中，为什么假设了 X？"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># 利用 thinking 迭代</span></span>
+<span class="line"><span>"在 thinking 中重新考虑方案 Y"</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="#">ACT 3: Power User</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-31" class="related-link" data-astro-cid-e5qe5oli>#31 Consider Opus for complex work</a> </div> </div><div class="tip-item collapsed act-3 difficulty-advanced" data-tip-id="33" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(33)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#33</span> <span class="badge badge-advanced" data-astro-cid-e5qe5oli>advanced</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 3</span> <span class="category-badge" data-astro-cid-e5qe5oli>power-user</span> <span class="timestamp" data-astro-cid-e5qe5oli>25:15</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Four composability primitives" data-title-zh="重构前审查" data-astro-cid-e5qe5oli>Four composability primitives</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="33" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Claude Code has four composability primitives</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>skills</span><span class="tag" data-astro-cid-e5qe5oli>commands</span><span class="tag" data-astro-cid-e5qe5oli>mcp</span><span class="tag" data-astro-cid-e5qe5oli>subagents</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>Claude Code 有四个可组合原语：Skills、Commands、MCPs、Subagents。</p>
+<h2 id="四大原语">四大原语</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>原语</th><th>用途</th><th>复杂度</th></tr></thead><tbody><tr><td><strong>Skills</strong></td><td>可复用��作流</td><td>中</td></tr><tr><td><strong>Commands</strong></td><td>快速简写</td><td>低</td></tr><tr><td><strong>MCPs</strong></td><td>外部服务集成</td><td>高</td></tr><tr><td><strong>Subagents</strong></td><td>隔离上下文</td><td>高</td></tr></tbody></table>
+<h2 id="组合示例">组合示例</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 单一原语</span></span>
+<span class="line"><span style="color:#B392F0">/commit</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 组合使用</span></span>
+<span class="line"><span style="color:#B392F0">Plan</span><span style="color:#9ECBFF"> Mode</span><span style="color:#9ECBFF"> →</span><span style="color:#9ECBFF"> brainstorming</span><span style="color:#9ECBFF"> skill</span><span style="color:#9ECBFF"> →</span><span style="color:#9ECBFF"> Subagents</span><span style="color:#9ECBFF"> →</span><span style="color:#9ECBFF"> /commit</span><span style="color:#9ECBFF"> command</span></span>
+<span class="line"></span></code></pre>
+<h2 id="选择原则">选择原则</h2>
+<ul>
+<li><strong>简单任务</strong> → Commands</li>
+<li><strong>重复流程</strong> → Skills</li>
+<li><strong>外部数据</strong> → MCPs</li>
+<li><strong>独立任务</strong> → Subagents</li>
+</ul>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/34">Tip 34: Skills = 可复用工作流</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-34" class="related-link" data-astro-cid-e5qe5oli>#34 Skills = recurring workflows</a> </div> </div><div class="tip-item collapsed act-3 difficulty-advanced" data-tip-id="34" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(34)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#34</span> <span class="badge badge-advanced" data-astro-cid-e5qe5oli>advanced</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 3</span> <span class="category-badge" data-astro-cid-e5qe5oli>power-user</span> <span class="timestamp" data-astro-cid-e5qe5oli>25:42</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Skills = recurring workflows" data-title-zh="自动审查" data-astro-cid-e5qe5oli>Skills = recurring workflows</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="34" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Skills encapsulate reusable workflows</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>skills</span><span class="tag" data-astro-cid-e5qe5oli>workflows</span><span class="tag" data-astro-cid-e5qe5oli>automation</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>Skills 封装可复用的工作流程。</p>
+<h2 id="什么是-skill">什么是 Skill</h2>
+<p>Skill 是预定义的工作流程，包含：</p>
+<ul>
+<li>触发条件</li>
+<li>执行步骤</li>
+<li>验证标准</li>
+<li>最佳实践</li>
+</ul>
+<h2 id="内置-skills">内置 Skills</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># TDD 工作流</span></span>
+<span class="line"><span style="color:#B392F0">/tdd</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 代码审查</span></span>
+<span class="line"><span style="color:#B392F0">/review</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 调试流程</span></span>
+<span class="line"><span style="color:#B392F0">/debug</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 安全审查</span></span>
+<span class="line"><span style="color:#B392F0">/security</span></span>
+<span class="line"></span></code></pre>
+<h2 id="创建自定义-skill">创建自定义 Skill</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#79B8FF;font-weight:bold"># .claude/skills/my-workflow.md</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">name: feature-implementation</span></span>
+<span class="line"><span style="color:#E1E4E8">description: 我团队的标准功能开发流程</span></span>
+<span class="line"><span style="color:#E1E4E8">trigger: when user says "implement feature"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">steps:</span></span>
+<span class="line"><span style="color:#FFAB70">  1.</span><span style="color:#E1E4E8"> Run /plan to create implementation plan</span></span>
+<span class="line"><span style="color:#FFAB70">  2.</span><span style="color:#E1E4E8"> Get user approval</span></span>
+<span class="line"><span style="color:#FFAB70">  3.</span><span style="color:#E1E4E8"> Use /tdd for TDD workflow</span></span>
+<span class="line"><span style="color:#FFAB70">  4.</span><span style="color:#E1E4E8"> Run /review after implementation</span></span>
+<span class="line"><span style="color:#FFAB70">  5.</span><span style="color:#E1E4E8"> Create PR with /pr</span></span>
+<span class="line"></span></code></pre>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/35">Tip 35: Commands = 快捷简写</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-33" class="related-link" data-astro-cid-e5qe5oli>#33 Four composability primitives</a><a href="#tip-35" class="related-link" data-astro-cid-e5qe5oli>#35 Commands = quick shorthand</a> </div> </div><div class="tip-item collapsed act-3 difficulty-beginner" data-tip-id="35" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(35)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#35</span> <span class="badge badge-beginner" data-astro-cid-e5qe5oli>beginner</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 3</span> <span class="category-badge" data-astro-cid-e5qe5oli>power-user</span> <span class="timestamp" data-astro-cid-e5qe5oli>26:50</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Commands = quick shorthand" data-title-zh="何时接受建议" data-astro-cid-e5qe5oli>Commands = quick shorthand</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="35" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Commands are quick aliases for common actions</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>commands</span><span class="tag" data-astro-cid-e5qe5oli>shortcuts</span><span class="tag" data-astro-cid-e5qe5oli>productivity</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>Commands 是常用操作的快捷别名。</p>
+<h2 id="常用-commands">常用 Commands</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">/commit</span><span style="color:#6A737D">      # 提交代码</span></span>
+<span class="line"><span style="color:#B392F0">/pr</span><span style="color:#6A737D">          # 创建 PR</span></span>
+<span class="line"><span style="color:#B392F0">/review</span><span style="color:#6A737D">      # 代码审查</span></span>
+<span class="line"><span style="color:#B392F0">/test</span><span style="color:#6A737D">        # 运行测试</span></span>
+<span class="line"><span style="color:#B392F0">/deploy</span><span style="color:#6A737D">      # 部署</span></span>
+<span class="line"></span></code></pre>
+<h2 id="自定义-command">自定义 Command</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#6A737D">// ~/.claude/commands/deploy-staging.json</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "command"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"deploy-staging"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "description"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"部署到 staging 环境"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "action"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"bash"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "template"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"npm run build &#x26;&#x26; npm run deploy:staging"</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="command-vs-skill">Command vs Skill</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>特性</th><th>Command</th><th>Skill</th></tr></thead><tbody><tr><td>复杂度</td><td>简单</td><td>复杂</td></tr><tr><td>步骤</td><td>单步</td><td>多步</td></tr><tr><td>交互</td><td>少</td><td>多</td></tr><tr><td>用途</td><td>快捷方式</td><td>完整流程</td></tr></tbody></table>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/36">Tip 36: 永远不要手动创建命令</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-34" class="related-link" data-astro-cid-e5qe5oli>#34 Skills = recurring workflows</a><a href="#tip-36" class="related-link" data-astro-cid-e5qe5oli>#36 Never create commands manually</a> </div> </div><div class="tip-item collapsed act-3 difficulty-beginner" data-tip-id="36" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(36)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#36</span> <span class="badge badge-beginner" data-astro-cid-e5qe5oli>beginner</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 3</span> <span class="category-badge" data-astro-cid-e5qe5oli>power-user</span> <span class="timestamp" data-astro-cid-e5qe5oli>27:32</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Never create commands manually" data-title-zh="何时要求审查" data-astro-cid-e5qe5oli>Never create commands manually</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="36" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Let Claude create commands for you</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>commands</span><span class="tag" data-astro-cid-e5qe5oli>automation</span><span class="tag" data-astro-cid-e5qe5oli>skills</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>让 Claude 自动创建命令，而不是手动编写。</p>
+<h2 id="自动创建">自动创建</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 告诉 Claude 你想要什么</span></span>
+<span class="line"><span style="color:#B392F0">"创建一个快捷命令来部署到 staging"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Claude 会自动创建命令文件</span></span>
+<span class="line"><span style="color:#6A737D"># 并测试是否工作</span></span>
+<span class="line"></span></code></pre>
+<h2 id="为什么自动创建">为什么自动创建</h2>
+<ul>
+<li>Claude 知道正确的格式</li>
+<li>自动处理转义和特殊字符</li>
+<li>验证命令是否有效</li>
+<li>添加文档和说明</li>
+</ul>
+<h2 id="示例对话">示例对话</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>你: 我想有一个命令快速重启开发服务器</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Claude: 好的，我来创建 /restart-dev 命令</span></span>
+<span class="line"><span>[创建文件 ~/.claude/commands/restart-dev.json]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Claude: 命令已创建！使用 /restart-dev 即可</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/37">Tip 37: MCPs = 外部服务文档</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-35" class="related-link" data-astro-cid-e5qe5oli>#35 Commands = quick shorthand</a> </div> </div><div class="tip-item collapsed act-3 difficulty-advanced" data-tip-id="37" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(37)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#37</span> <span class="badge badge-advanced" data-astro-cid-e5qe5oli>advanced</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 3</span> <span class="category-badge" data-astro-cid-e5qe5oli>power-user</span> <span class="timestamp" data-astro-cid-e5qe5oli>28:05</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="MCPs = external service docs" data-title-zh="探索代码库" data-astro-cid-e5qe5oli>MCPs = external service docs</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="37" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>MCPs connect Claude Code to external services</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>mcp</span><span class="tag" data-astro-cid-e5qe5oli>integrations</span><span class="tag" data-astro-cid-e5qe5oli>apis</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>MCP (Model Context Protocol) 让 Claude Code 连接外部服务。</p>
+<h2 id="mcp-用途">MCP 用途</h2>
+<ul>
+<li><strong>API 集成</strong> - GitHub, Jira, Slack</li>
+<li><strong>数据库</strong> - PostgreSQL, MongoDB</li>
+<li><strong>文件系统</strong> - S3, Google Drive</li>
+<li><strong>自定义工具</strong> - 团队内部服务</li>
+</ul>
+<h2 id="示例-mcp">示例 MCP</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "mcpServers"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "github"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">      "command"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"npx"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      "args"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"-y"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"@modelcontextprotocol/server-github"</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#79B8FF">    "postgres"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">      "command"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"npx"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      "args"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"-y"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"@modelcontextprotocol/server-postgres"</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="使用场景">使用场景</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Claude 可以直接操作 GitHub</span></span>
+<span class="line"><span style="color:#B392F0">"创建一个 PR 合并 feature 分支"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 查询数据库</span></span>
+<span class="line"><span style="color:#B392F0">"查询最近一周的用户注册数"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 读取 Google Sheets</span></span>
+<span class="line"><span style="color:#B392F0">"分析这个表格的销售数据"</span></span>
+<span class="line"></span></code></pre>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/38">Tip 38: 让 Claude 安装 MCP</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-36" class="related-link" data-astro-cid-e5qe5oli>#36 Never create commands manually</a><a href="#tip-38" class="related-link" data-astro-cid-e5qe5oli>#38 Ask Claude to install MCPs</a> </div> </div><div class="tip-item collapsed act-3 difficulty-intermediate" data-tip-id="38" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(38)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#38</span> <span class="badge badge-intermediate" data-astro-cid-e5qe5oli>intermediate</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 3</span> <span class="category-badge" data-astro-cid-e5qe5oli>power-user</span> <span class="timestamp" data-astro-cid-e5qe5oli>28:52</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Ask Claude to install MCPs" data-title-zh="技术决策" data-astro-cid-e5qe5oli>Ask Claude to install MCPs</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="38" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Let Claude handle MCP installation and configuration</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>mcp</span><span class="tag" data-astro-cid-e5qe5oli>installation</span><span class="tag" data-astro-cid-e5qe5oli>automation</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>让 Claude 帮你安装和配置 MCP 服务器。</p>
+<h2 id="安装方法">安装方法</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 告诉 Claude 你需要什么</span></span>
+<span class="line"><span style="color:#B392F0">"帮我设置 GitHub MCP 服务器"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Claude 会：</span></span>
+<span class="line"><span style="color:#6A737D"># 1. 安装 MCP 包</span></span>
+<span class="line"><span style="color:#6A737D"># 2. 配置 settings.json</span></span>
+<span class="line"><span style="color:#6A737D"># 3. 设置认证</span></span>
+<span class="line"><span style="color:#6A737D"># 4. 测试连接</span></span>
+<span class="line"></span></code></pre>
+<h2 id="示例对话">示例对话</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>你: 我想连接公司的 Postgres 数据库</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Claude: 我需要一些信息：</span></span>
+<span class="line"><span>1. 数据库地址？</span></span>
+<span class="line"><span>2. 端口？</span></span>
+<span class="line"><span>3. 数据库名？</span></span>
+<span class="line"><span>4. 认证方式？</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[你提供信息后]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Claude: 好的，我来配置 postgres MCP</span></span>
+<span class="line"><span>[安装和配置...]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Claude: 配置完成！现在我可以查询数据库了。</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="优势">优势</h2>
+<ul>
+<li>Claude 知道所有 MCP 服务器</li>
+<li>自动处理依赖</li>
+<li>正确配置认证</li>
+<li>验证连接</li>
+</ul>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/39">Tip 39: Subagents = 隔离上下文</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-37" class="related-link" data-astro-cid-e5qe5oli>#37 MCPs = external service docs</a> </div> </div><div class="tip-item collapsed act-3 difficulty-advanced" data-tip-id="39" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(39)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#39</span> <span class="badge badge-advanced" data-astro-cid-e5qe5oli>advanced</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 3</span> <span class="category-badge" data-astro-cid-e5qe5oli>power-user</span> <span class="timestamp" data-astro-cid-e5qe5oli>29:54</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Subagents = isolated context" data-title-zh="代码解释" data-astro-cid-e5qe5oli>Subagents = isolated context</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="39" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Subagents work in isolated contexts</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>subagents</span><span class="tag" data-astro-cid-e5qe5oli>context</span><span class="tag" data-astro-cid-e5qe5oli>parallel</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>Subagents 在隔离的上下文中工作，互不干扰。</p>
+<h2 id="为什么使用-subagents">为什么使用 Subagents</h2>
+<ul>
+<li><strong>独立任务</strong> - 并行处理不相关任务</li>
+<li><strong>隔离污染</strong> - 避免上下文混乱</li>
+<li><strong>专业分工</strong> - 不同 agent 专注不同领域</li>
+<li><strong>Token 效率</strong> - 每个 agent 只加载需要的上下文</li>
+</ul>
+<h2 id="使用场景">使用场景</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 场景 1：并行任务</span></span>
+<span class="line"><span style="color:#B392F0">"启动两个 agent：</span></span>
+<span class="line"><span style="color:#B392F0">1. 审查前端代码</span></span>
+<span class="line"><span style="color:#B392F0">2. 审查后端代码"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 场景 2：独立研究</span></span>
+<span class="line"><span style="color:#B392F0">"用 agent 研究 React 19 的新特性"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 场景 3：专业任务</span></span>
+<span class="line"><span style="color:#B392F0">"用 security-reviewer agent 审查认证代码"</span></span>
+<span class="line"></span></code></pre>
+<h2 id="subagent-类型">Subagent 类型</h2>
+<ul>
+<li><code>general-purpose</code> - 通用任务</li>
+<li><code>code-reviewer</code> - 代码审查</li>
+<li><code>security-reviewer</code> - 安全审查</li>
+<li><code>test-runner</code> - 运行测试</li>
+<li><code>planner</code> - 制定计划</li>
+<li><code>architect</code> - 架构设计</li>
+</ul>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/40">Tip 40: 避免指令过载</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-38" class="related-link" data-astro-cid-e5qe5oli>#38 Ask Claude to install MCPs</a> </div> </div><div class="tip-item collapsed act-3 difficulty-intermediate" data-tip-id="40" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(40)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#40</span> <span class="badge badge-intermediate" data-astro-cid-e5qe5oli>intermediate</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 3</span> <span class="category-badge" data-astro-cid-e5qe5oli>power-user</span> <span class="timestamp" data-astro-cid-e5qe5oli>31:15</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Avoid instruction overload" data-title-zh="模式识别" data-astro-cid-e5qe5oli>Avoid instruction overload</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="40" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Keep CLAUDE.md concise to avoid instruction overload</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>claudemd</span><span class="tag" data-astro-cid-e5qe5oli>config</span><span class="tag" data-astro-cid-e5qe5oli>simplicity</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>避免指令过载，保持 <code>CLAUDE.md</code> 简洁。</p>
+<h2 id="指令过载的信号">指令过载的信号</h2>
+<ul>
+<li>Claude 忽略某些规则</li>
+<li>响应变得不一致</li>
+<li>需要重复指令</li>
+<li>Claude 问了很多确认问题</li>
+</ul>
+<h2 id="解决方案">解决方案</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#79B8FF;font-weight:bold"># 不好：太多规则</span></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## 前端规则</span></span>
+<span class="line"><span style="color:#FFAB70">1.</span><span style="color:#E1E4E8"> 使用 TypeScript</span></span>
+<span class="line"><span style="color:#FFAB70">2.</span><span style="color:#E1E4E8"> 使用 Prettier</span></span>
+<span class="line"><span style="color:#FFAB70">3.</span><span style="color:#E1E4E8"> 使用 ESLint</span></span>
+<span class="line"><span style="color:#FFAB70">4.</span><span style="color:#E1E4E8"> 组件要小</span></span>
+<span class="line"><span style="color:#FFAB70">5.</span><span style="color:#E1E4E8"> 要有测试</span></span>
+<span class="line"><span style="color:#FFAB70">6.</span><span style="color:#E1E4E8"> 要有文档</span></span>
+<span class="line"><span style="color:#E1E4E8">... 50 条规则</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## 后端规则</span></span>
+<span class="line"><span style="color:#E1E4E8">... 又 50 条规则</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## 测试规则</span></span>
+<span class="line"><span style="color:#E1E4E8">... 再 50 条规则</span></span>
+<span class="line"></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#79B8FF;font-weight:bold"># 好：引用技能</span></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## Workflow</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 新功能：使用 /plan → /tdd</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> Bug 修复：使用 /debug</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 代码审查：使用 /review</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## Standards</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> 引用团队 coding standards 文档</span></span>
+<span class="line"></span></code></pre>
+<h2 id="最佳实践">最佳实践</h2>
+<ol>
+<li><strong>核心规则放 CLAUDE.md</strong></li>
+<li><strong>流程用 Skills/Commands</strong></li>
+<li><strong>详细文档外部引用</strong></li>
+</ol>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="#">ACT 4: Advanced</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-39" class="related-link" data-astro-cid-e5qe5oli>#39 Subagents = isolated context</a> </div> </div><div class="tip-item collapsed act-4 difficulty-advanced" data-tip-id="41" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(41)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#41</span> <span class="badge badge-advanced" data-astro-cid-e5qe5oli>advanced</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 4</span> <span class="category-badge" data-astro-cid-e5qe5oli>advanced</span> <span class="timestamp" data-astro-cid-e5qe5oli>32:08</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Run multiple instances" data-title-zh="使用 /context" data-astro-cid-e5qe5oli>Run multiple instances</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="41" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Run multiple Claude Code instances simultaneously</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>instances</span><span class="tag" data-astro-cid-e5qe5oli>productivity</span><span class="tag" data-astro-cid-e5qe5oli>workflow</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>同时运行多个 Claude Code 实例以提高效率。</p>
+<h2 id="使用场景">使用场景</h2>
+<ul>
+<li><strong>多任务并行</strong> - 不同项目/任务</li>
+<li><strong>多模型</strong> - 不同实例用不同模型</li>
+<li><strong>隔离上下文</strong> - 不同工作流</li>
+<li><strong>对比测试</strong> - A/B 测试不同方案</li>
+</ul>
+<h2 id="启动多实例">启动多实例</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Terminal 1: 项目 A</span></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/project-a</span></span>
+<span class="line"><span style="color:#B392F0">claude</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Terminal 2: 项目 B</span></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/project-b</span></span>
+<span class="line"><span style="color:#B392F0">claude</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Terminal 3: 文档编写</span></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/docs</span></span>
+<span class="line"><span style="color:#B392F0">claude</span></span>
+<span class="line"></span></code></pre>
+<h2 id="配置独立模型">配置独立模型</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Terminal 1: Haiku (快速任务)</span></span>
+<span class="line"><span style="color:#B392F0">/model</span><span style="color:#9ECBFF"> haiku</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Terminal 2: Sonnet (日常开发)</span></span>
+<span class="line"><span style="color:#B392F0">/model</span><span style="color:#9ECBFF"> sonnet</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Terminal 3: Opus (复杂架构)</span></span>
+<span class="line"><span style="color:#B392F0">/model</span><span style="color:#9ECBFF"> opus</span></span>
+<span class="line"></span></code></pre>
+<h2 id="注意事项">注意事项</h2>
+<ul>
+<li>每个实例独立的 token 使用</li>
+<li>会话不会互相干扰</li>
+<li>可以复制粘贴跨实例</li>
+</ul>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/42">Tip 42: iTerm 分屏</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-42" class="related-link" data-astro-cid-e5qe5oli>#42 iTerm split panes</a> </div> </div><div class="tip-item collapsed act-4 difficulty-intermediate" data-tip-id="42" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(42)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#42</span> <span class="badge badge-intermediate" data-astro-cid-e5qe5oli>intermediate</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 4</span> <span class="category-badge" data-astro-cid-e5qe5oli>advanced</span> <span class="timestamp" data-astro-cid-e5qe5oli>33:12</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="iTerm split panes" data-title-zh="定期使用 /clear" data-astro-cid-e5qe5oli>iTerm split panes</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="42" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Use iTerm split panes for better multi-instance management</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>iterm</span><span class="tag" data-astro-cid-e5qe5oli>productivity</span><span class="tag" data-astro-cid-e5qe5oli>setup</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>使用 iTerm 分屏功能更好地管理多个 Claude Code 实例。</p>
+<h2 id="快捷键">快捷键</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Cmd + D     # 垂直分屏</span></span>
+<span class="line"><span>Cmd + Shift + D  # 水平分屏</span></span>
+<span class="line"><span>Cmd + ]     # 切换到下一个面板</span></span>
+<span class="line"><span>Cmd + [     # 切换到上一个面板</span></span>
+<span class="line"><span>Cmd + Opt + 方向键  # 调整面板大小</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="推荐布局">推荐布局</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>┌─────────────┬─────────────┐</span></span>
+<span class="line"><span>│  项目 A     │  项目 B     │</span></span>
+<span class="line"><span>│  (Sonnet)   │  (Haiku)    │</span></span>
+<span class="line"><span>├─────────────┴─────────────┤</span></span>
+<span class="line"><span>│     文档编写 (Opus)        │</span></span>
+<span class="line"><span>└───────────────────────────┘</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="保存布局">保存布局</h2>
+<ol>
+<li>设置好你的布局</li>
+<li><code>Window > Save Window Arrangement</code></li>
+<li>以后快速恢复</li>
+</ol>
+<h2 id="非-iterm-用户">非 iTerm 用户</h2>
+<ul>
+<li><strong>Terminal.app</strong>: 支持分屏</li>
+<li><strong>VS Code</strong>: 集成终端</li>
+<li><strong>tmux</strong>: 终端复用器</li>
+</ul>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/43">Tip 43: 启用通知</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-41" class="related-link" data-astro-cid-e5qe5oli>#41 Run multiple instances</a> </div> </div><div class="tip-item collapsed act-4 difficulty-beginner" data-tip-id="43" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(43)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#43</span> <span class="badge badge-beginner" data-astro-cid-e5qe5oli>beginner</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 4</span> <span class="category-badge" data-astro-cid-e5qe5oli>advanced</span> <span class="timestamp" data-astro-cid-e5qe5oli>34:10</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Enable notifications" data-title-zh="切换模型" data-astro-cid-e5qe5oli>Enable notifications</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="43" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Enable notifications for long-running tasks</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>notifications</span><span class="tag" data-astro-cid-e5qe5oli>productivity</span><span class="tag" data-astro-cid-e5qe5oli>settings</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>为长时间运行的任务启用通知。</p>
+<h2 id="配置方法">配置方法</h2>
+<p>在 <code>~/.claude/settings.json</code>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "notifications"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "enabled"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "onComplete"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "onError"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "sound"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="使用场景">使用场景</h2>
+<ul>
+<li>长时间构建</li>
+<li>大型重构</li>
+<li>测试运行</li>
+<li>Agent 执行</li>
+</ul>
+<h2 id="工作流程">工作流程</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 1. 启动任务</span></span>
+<span class="line"><span style="color:#B392F0">"运行完整测试套件"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 2. 切换到其他工作</span></span>
+<span class="line"><span style="color:#6A737D"># 3. 收到通知后返回</span></span>
+<span class="line"></span></code></pre>
+<h2 id="通知类型">通知类型</h2>
+<ul>
+<li>✅ 任务完成</li>
+<li>❌ 任务失败</li>
+<li>🔔 需要 user input</li>
+<li>💡 有建议</li>
+</ul>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/44">Tip 44: Git worktrees 实现隔离</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-42" class="related-link" data-astro-cid-e5qe5oli>#42 iTerm split panes</a> </div> </div><div class="tip-item collapsed act-4 difficulty-advanced" data-tip-id="44" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(44)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#44</span> <span class="badge badge-advanced" data-astro-cid-e5qe5oli>advanced</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 4</span> <span class="category-badge" data-astro-cid-e5qe5oli>advanced</span> <span class="timestamp" data-astro-cid-e5qe5oli>35:05</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Git worktrees for isolation" data-title-zh="使用工作区" data-astro-cid-e5qe5oli>Git worktrees for isolation</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="44" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Use git worktrees for isolated development</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>git</span><span class="tag" data-astro-cid-e5qe5oli>worktrees</span><span class="tag" data-astro-cid-e5qe5oli>isolation</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>使用 Git worktrees 为不同功能创建隔离的开发环境。</p>
+<h2 id="什么是-worktree">什么是 Worktree</h2>
+<p>Git worktree 让你同时检出多个分支到不同目录：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">main-repo/</span><span style="color:#6A737D">           # main 分支</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> feature-auth/</span><span style="color:#6A737D">    # feature/auth 分支</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> feature-ui/</span><span style="color:#6A737D">      # feature/ui 分支</span></span>
+<span class="line"><span style="color:#B392F0">└──</span><span style="color:#9ECBFF"> bugfix-123/</span><span style="color:#6A737D">      # bugfix/123 分支</span></span>
+<span class="line"></span></code></pre>
+<h2 id="创建-worktree">创建 Worktree</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 主仓库</span></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/projects/my-app</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 为功能创建 worktree</span></span>
+<span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> worktree</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> ../my-app-auth</span><span style="color:#9ECBFF"> feature/auth</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 为 bug 修复创建 worktree</span></span>
+<span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> worktree</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> ../my-app-fix-123</span><span style="color:#9ECBFF"> bugfix/issue-123</span></span>
+<span class="line"></span></code></pre>
+<h2 id="在每个-worktree-中运行-claude">在每个 Worktree 中运行 Claude</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Terminal 1: 主分支</span></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/projects/my-app</span></span>
+<span class="line"><span style="color:#B392F0">claude</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Terminal 2: 功能开发</span></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/projects/my-app-auth</span></span>
+<span class="line"><span style="color:#B392F0">claude</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Terminal 3: Bug 修复</span></span>
+<span class="line"><span style="color:#79B8FF">cd</span><span style="color:#9ECBFF"> ~/projects/my-app-fix-123</span></span>
+<span class="line"><span style="color:#B392F0">claude</span></span>
+<span class="line"></span></code></pre>
+<h2 id="优势">优势</h2>
+<ul>
+<li>完全隔离的工作区</li>
+<li>快速上下文切换</li>
+<li>并行开发多个功能</li>
+<li>每个功能独立的 Claude 会话</li>
+</ul>
+<h2 id="清理-worktree">清理 Worktree</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 完成后删除</span></span>
+<span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> worktree</span><span style="color:#9ECBFF"> remove</span><span style="color:#9ECBFF"> ../my-app-auth</span></span>
+<span class="line"></span></code></pre>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/45">Tip 45: /chrome 连接浏览器</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-43" class="related-link" data-astro-cid-e5qe5oli>#43 Enable notifications</a> </div> </div><div class="tip-item collapsed act-4 difficulty-intermediate" data-tip-id="45" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(45)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#45</span> <span class="badge badge-intermediate" data-astro-cid-e5qe5oli>intermediate</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 4</span> <span class="category-badge" data-astro-cid-e5qe5oli>advanced</span> <span class="timestamp" data-astro-cid-e5qe5oli>36:15</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="/chrome connects browser" data-title-zh="快速文件访问" data-astro-cid-e5qe5oli>/chrome connects browser</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="45" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Use /chrome to connect Chrome browser for debugging</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>chrome</span><span class="tag" data-astro-cid-e5qe5oli>browser</span><span class="tag" data-astro-cid-e5qe5oli>debugging</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>使用 <code>/chrome</code> 命令连接 Chrome 浏览器进行调试。</p>
+<h2 id="使用方法">使用方法</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 1. 启动 Chrome 并开启远程调试</span></span>
+<span class="line"><span style="color:#B392F0">/Applications/Google\</span><span style="color:#9ECBFF"> Chrome.app/Contents/MacOS/Google</span><span style="color:#79B8FF">\ </span><span style="color:#9ECBFF">Chrome</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#79B8FF">  --remote-debugging-port=9222</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 2. 在 Claude Code 中连接</span></span>
+<span class="line"><span style="color:#B392F0">/chrome</span><span style="color:#9ECBFF"> http://localhost:9222</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 3. 现在 Claude 可以：</span></span>
+<span class="line"><span style="color:#6A737D">#    - 查看页面</span></span>
+<span class="line"><span style="color:#6A737D">#    - 读取控制台</span></span>
+<span class="line"><span style="color:#6A737D">#    - 执行 JavaScript</span></span>
+<span class="line"><span style="color:#6A737D">#    - 调试样式</span></span>
+<span class="line"></span></code></pre>
+<h2 id="使用场景">使用场景</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 调试 UI 问题</span></span>
+<span class="line"><span style="color:#B392F0">"Chrome 上这个按钮点击没反应，帮我看看"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 查看控制台错误</span></span>
+<span class="line"><span style="color:#B392F0">"有什么 console 错误吗？"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 测试响应式</span></span>
+<span class="line"><span style="color:#B392F0">"在移动视图下检查布局"</span></span>
+<span class="line"></span></code></pre>
+<h2 id="安全提示">安全提示</h2>
+<ul>
+<li>仅用于本地开发</li>
+<li>不要在生产环境使用</li>
+<li>使用完毕后关闭调试端口</li>
+</ul>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/46">Tip 46: 强大的调试能力</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-44" class="related-link" data-astro-cid-e5qe5oli>#44 Git worktrees for isolation</a><a href="#tip-46" class="related-link" data-astro-cid-e5qe5oli>#46 Powerful for debugging</a> </div> </div><div class="tip-item collapsed act-4 difficulty-intermediate" data-tip-id="46" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(46)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#46</span> <span class="badge badge-intermediate" data-astro-cid-e5qe5oli>intermediate</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 4</span> <span class="category-badge" data-astro-cid-e5qe5oli>advanced</span> <span class="timestamp" data-astro-cid-e5qe5oli>37:20</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Powerful for debugging" data-title-zh="内容感知编辑" data-astro-cid-e5qe5oli>Powerful for debugging</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="46" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Claude Code is exceptionally powerful for debugging</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>debugging</span><span class="tag" data-astro-cid-e5qe5oli>workflow</span><span class="tag" data-astro-cid-e5qe5oli>systematic</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>Claude Code 在调试方面非常强大。</p>
+<h2 id="调试工作流">调试工作流</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 1. 描述问题</span></span>
+<span class="line"><span style="color:#B392F0">"用户报告登录时出现错误 XYZ"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 2. Claude 会：</span></span>
+<span class="line"><span style="color:#6A737D">#    - 读取相关代码</span></span>
+<span class="line"><span style="color:#6A737D">#    - 分析可能原因</span></span>
+<span class="line"><span style="color:#6A737D">#    - 提出假设</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 3. 验证假设</span></span>
+<span class="line"><span style="color:#B392F0">"测试你的假设 A"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 4. 根据结果迭代</span></span>
+<span class="line"></span></code></pre>
+<h2 id="系统化调试">系统化调试</h2>
+<p>使用 <code>/debug</code> 命令进入系统化调试流程：</p>
+<ol>
+<li><strong>重现问题</strong> - 确认 bug 存在</li>
+<li><strong>定位原因</strong> - 找到问题代码</li>
+<li><strong>提出方案</strong> - 设计修复方案</li>
+<li><strong>验证修复</strong> - 确认 bug 已解决</li>
+<li><strong>防止回归</strong> - 添加测试</li>
+</ol>
+<h2 id="调试技巧">调试技巧</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 让 Claude 添加调试日志</span></span>
+<span class="line"><span style="color:#B392F0">"在关键位置添加 console.log"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 追踪数据流</span></span>
+<span class="line"><span style="color:#B392F0">"追踪这个变量从哪来、到哪去"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 隔离问题</span></span>
+<span class="line"><span style="color:#B392F0">"创建最小复现案例"</span></span>
+<span class="line"></span></code></pre>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="#">Hooks &#x26; Automation</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-45" class="related-link" data-astro-cid-e5qe5oli>#45 /chrome connects browser</a> </div> </div><div class="tip-item collapsed act-4 difficulty-advanced" data-tip-id="47" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(47)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#47</span> <span class="badge badge-advanced" data-astro-cid-e5qe5oli>advanced</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 4</span> <span class="category-badge" data-astro-cid-e5qe5oli>advanced</span> <span class="timestamp" data-astro-cid-e5qe5oli>38:22</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Hooks intercept actions" data-title-zh="读取大文件" data-astro-cid-e5qe5oli>Hooks intercept actions</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="47" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Hooks intercept and modify Claude Code actions</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>hooks</span><span class="tag" data-astro-cid-e5qe5oli>automation</span><span class="tag" data-astro-cid-e5qe5oli>events</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>Hooks 可以拦截和修改 Claude Code 的操作。</p>
+<h2 id="hook-类型">Hook 类型</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Hook</th><th>触发时机</th><th>用途</th></tr></thead><tbody><tr><td>PreToolUse</td><td>工具使用前</td><td>验证、修改参数</td></tr><tr><td>PostToolUse</td><td>工具使用后</td><td>格式化、检查</td></tr><tr><td>Stop</td><td>会话结束</td><td>最终验证</td></tr></tbody></table>
+<h2 id="配置示例">配置示例</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#6A737D">// ~/.claude/settings.json</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "hooks"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "PostToolUse"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">      "Edit"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"npx prettier --write $FILE"</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#79B8FF">    "PreToolUse"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">      "Bash"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"echo 'About to run: $COMMAND'"</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="使用场景">使用场景</h2>
+<ul>
+<li><strong>自动格式化</strong> - Edit 后运行 Prettier</li>
+<li><strong>安全检查</strong> - Bash 前确认命令</li>
+<li><strong>类型检查</strong> - Write 后运行 mypy</li>
+<li><strong>Git 状态</strong> - 停止前检查未提交的修改</li>
+</ul>
+<h2 id="文件级配置">文件级配置</h2>
+<p>在项目的 <code>.claude/hooks.json</code>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "PostToolUse"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "Write"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"npm run type-check"</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/48">Tip 48: PostToolUse 自动格式化</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-48" class="related-link" data-astro-cid-e5qe5oli>#48 Auto-format with PostToolUse</a> </div> </div><div class="tip-item collapsed act-4 difficulty-intermediate" data-tip-id="48" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(48)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#48</span> <span class="badge badge-intermediate" data-astro-cid-e5qe5oli>intermediate</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 4</span> <span class="category-badge" data-astro-cid-e5qe5oli>advanced</span> <span class="timestamp" data-astro-cid-e5qe5oli>39:05</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Auto-format with PostToolUse" data-title-zh="批处理操作" data-astro-cid-e5qe5oli>Auto-format with PostToolUse</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="48" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Use PostToolUse hooks for automatic code formatting</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>hooks</span><span class="tag" data-astro-cid-e5qe5oli>formatting</span><span class="tag" data-astro-cid-e5qe5oli>automation</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>使用 PostToolUse hooks 自动格式化代码。</p>
+<h2 id="配置示例">配置示例</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#6A737D">// ~/.claude/settings.json</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "hooks"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "PostToolUse"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">      "Edit"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"prettier --write $FILE"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">      "Write"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"prettier --write $FILE"</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="语言特定配置">语言特定配置</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "hooks"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "PostToolUse"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">      "Edit"</span><span style="color:#E1E4E8">: [</span></span>
+<span class="line"><span style="color:#9ECBFF">        "if [[ $FILE == *.py ]]; then black $FILE; fi"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">        "if [[ $FILE == *.ts ]]; then prettier --write $FILE; fi"</span></span>
+<span class="line"><span style="color:#E1E4E8">      ]</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="项目级配置">项目级配置</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#6A737D">// .claude/hooks.json</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "hooks"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "PostToolUse"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">      "Edit"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"npm run format"</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="注意事项">注意事项</h2>
+<ul>
+<li>确保格式化工具已安装</li>
+<li>格式化会增加一点延迟</li>
+<li>可以按文件类型有条件执行</li>
+</ul>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/49">Tip 49: 阻止危险命令</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-47" class="related-link" data-astro-cid-e5qe5oli>#47 Hooks intercept actions</a> </div> </div><div class="tip-item collapsed act-4 difficulty-advanced" data-tip-id="49" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(49)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#49</span> <span class="badge badge-advanced" data-astro-cid-e5qe5oli>advanced</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 4</span> <span class="category-badge" data-astro-cid-e5qe5oli>advanced</span> <span class="timestamp" data-astro-cid-e5qe5oli>40:10</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Block dangerous commands" data-title-zh="阻止危险命令" data-astro-cid-e5qe5oli>Block dangerous commands</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="49" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Use hooks to block dangerous commands</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>hooks</span><span class="tag" data-astro-cid-e5qe5oli>security</span><span class="tag" data-astro-cid-e5qe5oli>safety</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>使用 hooks 阻止危险命令执行。</p>
+<h2 id="危险命令模式">危险命令模式</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">rm</span><span style="color:#79B8FF"> -rf</span></span>
+<span class="line"><span style="color:#B392F0">git</span><span style="color:#9ECBFF"> clean</span><span style="color:#79B8FF"> -fdx</span></span>
+<span class="line"><span style="color:#B392F0">:</span><span style="color:#E1E4E8">(){ </span><span style="color:#79B8FF">:</span><span style="color:#F97583">|</span><span style="color:#79B8FF">:</span><span style="color:#E1E4E8">&#x26; };</span><span style="color:#79B8FF">:</span><span style="color:#6A737D">    # fork bomb</span></span>
+<span class="line"><span style="color:#B392F0">dd</span><span style="color:#9ECBFF"> if=/dev/zero</span></span>
+<span class="line"><span style="color:#F97583">></span><span style="color:#E1E4E8"> /dev/sda       </span><span style="color:#6A737D"># 覆盖磁盘</span></span>
+<span class="line"></span></code></pre>
+<h2 id="hook-配置">Hook 配置</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "hooks"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "PreToolUse"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">      "Bash"</span><span style="color:#E1E4E8">: [</span></span>
+<span class="line"><span style="color:#9ECBFF">        "if echo $COMMAND | grep -q 'rm -rf'; then"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">        "  echo '❌ DANGEROUS: rm -rf blocked'"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">        "  exit 1"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">        "fi"</span></span>
+<span class="line"><span style="color:#E1E4E8">      ]</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="更智能的检查">更智能的检查</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 检查脚本</span></span>
+<span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> [[ $FILE </span><span style="color:#F97583">==</span><span style="color:#F97583"> *</span><span style="color:#E1E4E8">.sh ]]; </span><span style="color:#F97583">then</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#B392F0"> grep</span><span style="color:#79B8FF"> -q</span><span style="color:#9ECBFF"> 'rm -rf'</span><span style="color:#E1E4E8"> $FILE; </span><span style="color:#F97583">then</span></span>
+<span class="line"><span style="color:#79B8FF">    echo</span><span style="color:#9ECBFF"> "⚠️ Script contains rm -rf"</span></span>
+<span class="line"><span style="color:#79B8FF">    read</span><span style="color:#79B8FF"> -p</span><span style="color:#9ECBFF"> "Continue? (y/N) "</span><span style="color:#79B8FF"> -n</span><span style="color:#79B8FF"> 1</span><span style="color:#79B8FF"> -r</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> [[ </span><span style="color:#F97583">!</span><span style="color:#E1E4E8"> $REPLY </span><span style="color:#F97583">=~</span><span style="color:#E1E4E8"> ^[Yy]$ ]]; </span><span style="color:#F97583">then</span></span>
+<span class="line"><span style="color:#79B8FF">      exit</span><span style="color:#79B8FF"> 1</span></span>
+<span class="line"><span style="color:#F97583">    fi</span></span>
+<span class="line"><span style="color:#F97583">  fi</span></span>
+<span class="line"><span style="color:#F97583">fi</span></span>
+<span class="line"></span></code></pre>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/tips/50">Tip 50: 探索插件生态系统</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-48" class="related-link" data-astro-cid-e5qe5oli>#48 Auto-format with PostToolUse</a><a href="#tip-50" class="related-link" data-astro-cid-e5qe5oli>#50 Explore the plugin ecosystem</a> </div> </div><div class="tip-item collapsed act-4 difficulty-intermediate" data-tip-id="50" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(50)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#50</span> <span class="badge badge-intermediate" data-astro-cid-e5qe5oli>intermediate</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 4</span> <span class="category-badge" data-astro-cid-e5qe5oli>advanced</span> <span class="timestamp" data-astro-cid-e5qe5oli>41:20</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Explore the plugin ecosystem" data-title-zh="探索插件生态" data-astro-cid-e5qe5oli>Explore the plugin ecosystem</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="50" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Explore the growing plugin ecosystem</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>plugins</span><span class="tag" data-astro-cid-e5qe5oli>ecosystem</span><span class="tag" data-astro-cid-e5qe5oli>extensions</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p>探索不断增长的插件生态系统。</p>
+<h2 id="官方插件">官方插件</h2>
+<ul>
+<li><strong>@astrojs/react</strong> - React 集成</li>
+<li><strong>@astrojs/vue</strong> - Vue 集成</li>
+<li><strong>@astrojs/sitemap</strong> - 自动生成 sitemap</li>
+<li><strong>astro-pagefind</strong> - 全文搜索</li>
+<li><strong>@astrojs/check</strong> - 类型检查</li>
+</ul>
+<h2 id="社区插件">社区插件</h2>
+<ul>
+<li><strong>astro-icon</strong> - 图标系统</li>
+<li><strong>astro-compress</strong> - 资源压缩</li>
+<li><strong>astro-seo</strong> - SEO 优化</li>
+<li><strong>astro-critters</strong> - CSS 优化</li>
+</ul>
+<h2 id="mcp-服务器">MCP 服务器</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 官方 MCP 服务器</span></span>
+<span class="line"><span style="color:#B392F0">@modelcontextprotocol/server-github</span></span>
+<span class="line"><span style="color:#B392F0">@modelcontextprotocol/server-postgres</span></span>
+<span class="line"><span style="color:#B392F0">@modelcontextprotocol/server-filesystem</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 社区 MCP 服务器</span></span>
+<span class="line"><span style="color:#B392F0">@modelcontextprotocol/server-slack</span></span>
+<span class="line"><span style="color:#B392F0">@modelcontextprotocol/server-jira</span></span>
+<span class="line"><span style="color:#B392F0">@modelcontextprotocol/server-puppeteer</span></span>
+<span class="line"></span></code></pre>
+<h2 id="发现插件">发现插件</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Astro 插件</span></span>
+<span class="line"><span style="color:#B392F0">https://astro.build/integrations/</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># MCP 服务器</span></span>
+<span class="line"><span style="color:#B392F0">https://github.com/modelcontextprotocol/servers</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 社区 Skills</span></span>
+<span class="line"><span style="color:#B392F0">.claude/skills/</span></span>
+<span class="line"></span></code></pre>
+<h2 id="贡献插件">贡献插件</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 创建自己的插件</span></span>
+<span class="line"><span style="color:#B392F0">mkdir</span><span style="color:#9ECBFF"> my-mcp-server</span></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> init</span><span style="color:#79B8FF"> -y</span></span>
+<span class="line"><span style="color:#6A737D"># ... 实现 MCP 协议</span></span>
+<span class="line"></span></code></pre>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="#">项目完成</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-49" class="related-link" data-astro-cid-e5qe5oli>#49 Block dangerous commands</a> </div> </div> </div> <div class="footer-nav" data-astro-cid-e5qe5oli> <a href="/tips" class="btn" data-astro-cid-e5qe5oli>返回技巧列表</a> <a href="/demo" class="btn btn-outline" data-astro-cid-e5qe5oli>查看交互演示</a> </div> </div>  </main> <footer data-astro-cid-sckkx6r4> <div class="container" data-astro-cid-sckkx6r4> <p data-astro-cid-sckkx6r4>&copy; 2026 Claude Code Tips. 团队内部演示使用。</p> </div> </footer>  </body> </html>  
