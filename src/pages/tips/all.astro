@@ -4,6 +4,20 @@ import { getCollection } from 'astro:content';
 
 const allTips = await getCollection('tips');
 const allTipsSorted = allTips.sort((a, b) => a.data.id - b.data.id);
+
+// Pre-render all tips
+const tipsWithContent = await Promise.all(
+  allTipsSorted.map(async (tip) => {
+    const { Content } = await tip.render();
+    return {
+      ...tip,
+      Content
+    };
+  })
+);
+
+const difficulties = ['beginner', 'intermediate', 'advanced'];
+const categories = ['setup', 'workflow', 'power-user', 'advanced'];
 ---
 
 <Layout title="所有技巧一览 - Claude Code Tips">
@@ -17,7 +31,7 @@ const allTipsSorted = allTips.sort((a, b) => a.data.id - b.data.id);
     </div>
 
     <div class="tips-list">
-      {allTipsSorted.map((tip, index) => (
+      {tipsWithContent.map((tip, index) => (
         <div class={`tip-item collapsed act-${tip.data.act} difficulty-${tip.data.difficulty}`} data-tip-id={tip.data.id}>
           <div class="tip-header" onclick={`toggleTip(${tip.data.id})`}>
             <div class="tip-meta">
@@ -42,14 +56,16 @@ const allTipsSorted = allTips.sort((a, b) => a.data.id - b.data.id);
           </div>
 
           <div class="tip-content">
-            <div class="tip-body" set:html={tip.render().content} />
+            <div class="tip-body">
+              <tip.Content />
+            </div>
           </div>
 
           {tip.data.related && tip.data.related.length > 0 && (
             <div class="tip-related">
               <strong>相关技巧：</strong>
               {tip.data.related.map(relatedId => {
-                const relatedTip = allTipsSorted.find(t => t.data.id === relatedId);
+                const relatedTip = tipsWithContent.find(t => t.data.id === relatedId);
                 return relatedTip ? (
                   <a href={`#tip-${relatedId}`} class="related-link">#{relatedId} {relatedTip.data.title}</a>
                 ) : null;
@@ -371,7 +387,7 @@ const allTipsSorted = allTips.sort((a, b) => a.data.id - b.data.id);
 
 <script>
   // Add IDs to tip items for anchor navigation
-  document.querySelectorAll('.tip-item').forEach((item, index) => {
+  document.querySelectorAll('.tip-item').forEach((item) => {
     const id = item.querySelector('.tip-number')?.textContent;
     if (id) {
       item.id = `tip-${id.replace('#', '')}`;
@@ -379,7 +395,7 @@ const allTipsSorted = allTips.sort((a, b) => a.data.id - b.data.id);
   });
 
   // Toggle tip expansion
-  function toggleTip(tipId) {
+  function toggleTip(tipId: string) {
     const tipItem = document.querySelector(`.tip-item[data-tip-id="${tipId}"]`);
     if (tipItem) {
       tipItem.classList.toggle('collapsed');
@@ -387,14 +403,14 @@ const allTipsSorted = allTips.sort((a, b) => a.data.id - b.data.id);
   }
 
   // Make function available globally
-  window.toggleTip = toggleTip;
+  (window as any).toggleTip = toggleTip;
 
   // Handle toggle button clicks separately
   document.querySelectorAll('.toggle-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const tipId = btn.getAttribute('data-tip-id');
-      toggleTip(tipId);
+      if (tipId) toggleTip(tipId);
     });
   });
 
