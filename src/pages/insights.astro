@@ -1,0 +1,66 @@
+---
+// Redirect to tip 51 (Insights)
+import Layout from '../layouts/Layout.astro';
+
+const targetTip = 51;
+---
+<Layout title="Insights - Claude Code Tips">
+  <div class="container redirect-container">
+    <div class="redirect-message">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+      </svg>
+      <h1>Redirecting...</h1>
+      <p>Taking you to the Insights tip page.</p>
+      <p>If not redirected automatically, <a href={`/tips/${targetTip}`}>click here</a>.</p>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .redirect-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+  }
+
+  .redirect-message {
+    text-align: center;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .redirect-message svg {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .redirect-message h1 {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-primary);
+  }
+
+  .redirect-message p {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .redirect-message a {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+</style>
+
+<script define:vars={{ targetTip }}>
+  // Redirect to the tips page after a short delay
+  setTimeout(() => {
+    window.location.href = `/tips/${targetTip}`;
+  }, 1000);
+</script>

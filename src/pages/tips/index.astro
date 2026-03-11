@@ -258,7 +258,7 @@ const categories = ['setup', 'workflow', 'power-user', 'advanced'];
   }
 </style>
 
-<script define:vars={{ tipsData }}>
+<script is:inline define:vars={{ tipsData }}>
   const allTips = JSON.parse(tipsData);
   let currentFilters = {
     act: '',
