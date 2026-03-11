@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
+const basePath = '/claude-code-tips';
 const allTips = await getCollection('tips');
 const allTipsSorted = allTips.sort((a, b) => a.data.id - b.data.id);
 
@@ -68,7 +69,7 @@ const categories = ['setup', 'workflow', 'power-user', 'advanced'];
           <h1>技巧列表</h1>
           <p class="count">显示 <span id="tip-count">0</span> 个技巧</p>
           <div class="header-actions">
-            <a href="/tips/all" class="btn btn-outline btn-sm">一览模式</a>
+            <a href={`${basePath}/tips/all`} class="btn btn-outline btn-sm">一览模式</a>
           </div>
         </div>
 
@@ -258,8 +259,9 @@ const categories = ['setup', 'workflow', 'power-user', 'advanced'];
   }
 </style>
 
-<script is:inline define:vars={{ tipsData }}>
+<script is:inline define:vars={{ tipsData, basePath }}>
   const allTips = JSON.parse(tipsData);
+  const basePathValue = basePath;
   let currentFilters = {
     act: '',
     difficulty: '',
@@ -284,7 +286,7 @@ const categories = ['setup', 'workflow', 'power-user', 'advanced'];
     tipCount.textContent = tips.length;
 
     tipsGrid.innerHTML = tips.map(tip => `
-      <a href="/tips/${tip.id}" class="card tip-card">
+      <a href="${basePathValue}/tips/${tip.id}" class="card tip-card">
         <div class="tip-header">
           <span class="tip-id">#${tip.id}</span>
           <div class="badges">

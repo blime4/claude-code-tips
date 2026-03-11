@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
+const basePath = '/claude-code-tips';
 const allTips = await getCollection('tips');
 const allTipsSorted = allTips.sort((a, b) => a.data.id - b.data.id);
 
@@ -88,7 +89,7 @@ const zhTitles: Record<number, string> = {
       </div>
       <p class="subtitle">完整的 50 个 Claude Code 使用技巧</p>
       <div class="actions">
-        <a href="/tips" class="btn btn-outline">返回卡片视图</a>
+        <a href={`${basePath}/tips`} class="btn btn-outline">返回卡片视图</a>
       </div>
     </div>
 
@@ -139,8 +140,8 @@ const zhTitles: Record<number, string> = {
     </div>
 
     <div class="footer-nav">
-      <a href="/tips" class="btn">返回技巧列表</a>
-      <a href="/demo" class="btn btn-outline">查看交互演示</a>
+      <a href={`${basePath}/tips`} class="btn">返回技巧列表</a>
+      <a href={`${basePath}/demo`} class="btn btn-outline">查看交互演示</a>
     </div>
   </div>
 </Layout>

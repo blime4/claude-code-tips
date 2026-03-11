@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const basePath = '/claude-code-tips';
 ---
 
 <Layout title="常见问题 - Claude Code Tips">
@@ -157,7 +159,7 @@ import Layout from '../layouts/Layout.astro';
 
     <section class="related">
       <h2>还有问题？</h2>
-      <p>查看 <a href="/tips">所有技巧</a> 或查阅 <a href="https://docs.anthropic.com" target="_blank">官方文档</a>。</p>
+      <p>查看 <a href={`${basePath}/tips`}>所有技巧</a> 或查阅 <a href="https://docs.anthropic.com" target="_blank">官方文档</a>。</p>
     </section>
   </article>
 </Layout>

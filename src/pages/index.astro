@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
+const basePath = '/claude-code-tips';
 const allTips = await getCollection('tips');
 const acts = [
   { num: 1, title: 'Getting Started', tips: allTips.filter(t => t.data.act === 1).length },
@@ -18,8 +19,8 @@ const featuredTips = allTips.slice(0, 3);
       <h1>Claude Code Tips</h1>
       <p class="subtitle">50个实用技巧，帮助你更好地使用 Claude Code</p>
       <div class="cta">
-        <a href="/quick-start" class="btn">快速入门</a>
-        <a href="/tips" class="btn btn-outline">浏览技巧</a>
+        <a href={`${basePath}/quick-start`} class="btn">快速入门</a>
+        <a href={`${basePath}/tips`} class="btn btn-outline">浏览技巧</a>
       </div>
     </div>
   </section>
@@ -29,7 +30,7 @@ const featuredTips = allTips.slice(0, 3);
       <h2>内容结构</h2>
       <div class="act-grid">
         {acts.map(act => (
-          <a href={`/tips?act=${act.num}`} class="act-card">
+          <a href={`${basePath}/tips?act=${act.num}`} class="act-card">
             <div class="act-number">Act {act.num}</div>
             <h3>{act.title}</h3>
             <p>{act.tips} 个技巧</p>
@@ -44,7 +45,7 @@ const featuredTips = allTips.slice(0, 3);
       <h2>精选技巧</h2>
       <div class="tip-grid">
         {featuredTips.map(tip => (
-          <a href={`/tips/${tip.data.id}`} class="card tip-card">
+          <a href={`${basePath}/tips/${tip.data.id}`} class="card tip-card">
             <div class="tip-meta">
               <span class="badge badge-{tip.data.difficulty}">{tip.data.difficulty}</span>
               <span class="tag">Act {tip.data.act}</span>
@@ -61,15 +62,15 @@ const featuredTips = allTips.slice(0, 3);
     <div class="container">
       <h2>快速链接</h2>
       <div class="link-grid">
-        <a href="/demo" class="card link-card">
+        <a href={`${basePath}/demo`} class="card link-card">
           <h3>交互演示</h3>
           <p>体验 Claude Code 的界面和交互</p>
         </a>
-        <a href="/best-practices" class="card link-card">
+        <a href={`${basePath}/best-practices`} class="card link-card">
           <h3>最佳实践</h3>
           <p>团队使用 Claude Code 的最佳实践</p>
         </a>
-        <a href="/faq" class="card link-card">
+        <a href={`${basePath}/faq`} class="card link-card">
           <h3>常见问题</h3>
           <p>常见问题的解答</p>
         </a>

@@ -2,6 +2,8 @@
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
+const basePath = '/claude-code-tips';
+
 export async function getStaticPaths() {
   const tips = await getCollection('tips');
   return tips.map(tip => ({
@@ -28,7 +30,7 @@ const nextTip = currentIndex < allTips.length - 1 ? allTips[currentIndex + 1] : 
 
 <Layout title={`${tip.data.title} - Tip #${tip.data.id} - Claude Code Tips`}>
   <article class="container">
-    <a href="/tips" class="back-link">← 返回技巧列表</a>
+    <a href={`${basePath}/tips`} class="back-link">← 返回技巧列表</a>
 
     <header class="tip-header">
       <div class="meta">
@@ -62,7 +64,7 @@ const nextTip = currentIndex < allTips.length - 1 ? allTips[currentIndex + 1] : 
         <h2>相关技巧</h2>
         <div class="related-grid">
           {relatedTipsData.map(rt => (
-            <a href={`/tips/${rt.data.id}`} class="card">
+            <a href={`${basePath}/tips/${rt.data.id}`} class="card">
               <span class="tip-id">#{rt.data.id}</span>
               <h3>{rt.data.title}</h3>
             </a>
@@ -73,12 +75,12 @@ const nextTip = currentIndex < allTips.length - 1 ? allTips[currentIndex + 1] : 
 
     <nav class="navigation">
       {prevTip && (
-        <a href={`/tips/${prevTip.data.id}`} class="nav-link prev">
+        <a href={`${basePath}/tips/${prevTip.data.id}`} class="nav-link prev">
           ← Tip #{prevTip.data.id}: {prevTip.data.title}
         </a>
       )}
       {nextTip && (
-        <a href={`/tips/${nextTip.data.id}`} class="nav-link next">
+        <a href={`${basePath}/tips/${nextTip.data.id}`} class="nav-link next">
           Tip #{nextTip.data.id}: {nextTip.data.title} →
         </a>
       )}

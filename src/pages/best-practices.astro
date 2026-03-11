@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const basePath = '/claude-code-tips';
 ---
 
 <Layout title="最佳实践 - Claude Code Tips">
@@ -96,7 +98,7 @@ claude</code></pre>
 
     <section class="related">
       <h2>相关资源</h2>
-      <a href="/tips" class="btn">浏览所有技巧</a>
+      <a href={`${basePath}/tips`} class="btn">浏览所有技巧</a>
     </section>
   </article>
 </Layout>
