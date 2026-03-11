@@ -1,0 +1,299 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="交互演示 - Claude Code Tips">
+  <div class="container">
+    <h1>交互演示</h1>
+    <p class="subtitle">体验 Claude Code 的界面和交互</p>
+
+    <div class="demo-container">
+      <div class="terminal">
+        <div class="terminal-header">
+          <div class="dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="title">claude-code</div>
+        </div>
+
+        <div class="terminal-content" id="terminal-content">
+          <!-- Demo messages will be inserted here -->
+        </div>
+
+        <div class="input-area">
+          <span class="prompt">></span>
+          <input type="text" id="demo-input" placeholder="输入命令或消息..." />
+          <button id="send-btn">发送</button>
+        </div>
+      </div>
+
+      <div class="presets">
+        <h3>试试这些命令</h3>
+        <button class="preset-btn" data-cmd="/help">/help - 显示帮助</button>
+        <button class="preset-btn" data-cmd="/context">/context - 查看 token 使用</button>
+        <button class="preset-btn" data-cmd="帮我创建一个新组件">创建组件示例</button>
+        <button class="preset-btn" data-cmd="这个 bug 怎么修复？">调试示例</button>
+      </div>
+    </div>
+
+    <div class="notice">
+      <p>⚠️ 这是一个 UI 演示，不是真实的 Claude Code 连接。</p>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .subtitle {
+    text-align: center;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .demo-container {
+    max-width: 900px;
+    margin: 0 auto var(--spacing-2xl);
+  }
+
+  .terminal {
+    background: var(--color-code-bg);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .terminal-header {
+    background: #2D2D2D;
+    padding: var(--spacing-sm) var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+
+  .dots {
+    display: flex;
+    gap: var(--spacing-sm);
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .dot.red { background: #FF5F56; }
+  .dot.yellow { background: #FFBD2E; }
+  .dot.green { background: #27C93F; }
+
+  .title {
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+  }
+
+  .terminal-content {
+    padding: var(--spacing-lg);
+    min-height: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .message {
+    margin-bottom: var(--spacing-md);
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .message.user {
+    color: #7AB5FF;
+  }
+
+  .message.assistant {
+    color: #E8E8E8;
+  }
+
+  .message.system {
+    color: var(--color-primary);
+  }
+
+  .message .label {
+    font-weight: 600;
+    margin-right: var(--spacing-sm);
+  }
+
+  .input-area {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-md);
+    background: #252525;
+    border-top: 1px solid #3D3D3D;
+  }
+
+  .prompt {
+    color: var(--color-primary);
+    margin-right: var(--spacing-sm);
+    font-weight: 600;
+  }
+
+  .input-area input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--color-surface);
+    font-size: 1rem;
+    outline: none;
+  }
+
+  .input-area button {
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .input-area button:hover {
+    background: #c06242;
+  }
+
+  .presets {
+    background: var(--color-surface);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+  }
+
+  .presets h3 {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .preset-btn {
+    display: block;
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    text-align: left;
+    transition: background var(--transition);
+  }
+
+  .preset-btn:hover {
+    background: var(--color-border);
+  }
+
+  .notice {
+    text-align: center;
+    color: var(--color-text-light);
+    padding: var(--spacing-lg);
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+  }
+
+  @media (max-width: 768px) {
+    .terminal-content {
+      min-height: 200px;
+    }
+  }
+</style>
+
+<script>
+  const demoResponses = {
+    '/help': `可用命令：
+/help      - 显示帮助
+/clear     - 清空对话
+/context   - 查看 token 使用
+/model     - 切换模型
+/plan      - 进入规划模式`,
+
+    '/context': `Session Context Usage:
+- Messages: 12,456 / 200,000 tokens
+- Remaining: 187,544 tokens (94%)
+- Last message: ~1,200 tokens`,
+
+    '帮我创建一个新组件': `好的！我来帮你创建一个新的用户卡片组件。
+
+我会创建：
+1. 组件文件 UserCard.astro
+2. 相应的样式
+3. TypeScript 类型定义
+
+是否继续？`,
+
+    '这个 bug 怎么修复？': `让我帮你分析这个问题。
+
+从错误信息来看，这可能是由以下原因引起的：
+1. 未定义的变量访问
+2. 异步处理问题
+3. 类型不匹配
+
+建议我先查看相关代码，可以吗？`
+  };
+
+  const terminalContent = document.getElementById('terminal-content');
+  const demoInput = document.getElementById('demo-input') as HTMLInputElement;
+  const sendBtn = document.getElementById('send-btn');
+
+  function addMessage(type: string, content: string) {
+    if (!terminalContent) return;
+    const message = document.createElement('div');
+    message.className = `message ${type}`;
+
+    const label = document.createElement('span');
+    label.className = 'label';
+    label.textContent = type === 'user' ? '你' : 'Claude';
+
+    const text = document.createElement('span');
+    text.textContent = content;
+
+    message.appendChild(label);
+    message.appendChild(text);
+    terminalContent.appendChild(message);
+    terminalContent.scrollTop = terminalContent.scrollHeight;
+  }
+
+  function handleSend() {
+    if (!demoInput) return;
+    const input = demoInput.value.trim();
+    if (!input) return;
+
+    addMessage('user', input);
+    demoInput.value = '';
+
+    // Simulate response
+    setTimeout(() => {
+      const key = input as keyof typeof demoResponses;
+      const response = demoResponses[key] || '我明白了。让我帮你处理这个...';
+      addMessage('assistant', response);
+    }, 500);
+  }
+
+  sendBtn?.addEventListener('click', handleSend);
+  demoInput?.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') handleSend();
+  });
+
+  // Preset buttons
+  document.querySelectorAll('.preset-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const cmd = btn.getAttribute('data-cmd');
+      if (demoInput && cmd) {
+        demoInput.value = cmd;
+        handleSend();
+      }
+    });
+  });
+
+  // Welcome message
+  addMessage('system', '欢迎使用 Claude Code！这是一个演示界面，试试输入命令或点击下面的预设按钮。');
+</script>

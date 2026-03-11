@@ -1,0 +1,179 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const allTips = await getCollection('tips');
+const acts = [
+  { num: 1, title: 'Getting Started', tips: allTips.filter(t => t.data.act === 1).length },
+  { num: 2, title: 'Daily Workflow', tips: allTips.filter(t => t.data.act === 2).length },
+  { num: 3, title: 'Power User', tips: allTips.filter(t => t.data.act === 3).length },
+  { num: 4, title: 'Advanced', tips: allTips.filter(t => t.data.act === 4).length },
+];
+const featuredTips = allTips.slice(0, 3);
+---
+
+<Layout title="Claude Code Tips - 团队内部演示">
+  <section class="hero">
+    <div class="container">
+      <h1>Claude Code Tips</h1>
+      <p class="subtitle">50个实用技巧，帮助你更好地使用 Claude Code</p>
+      <div class="cta">
+        <a href="/quick-start" class="btn">快速入门</a>
+        <a href="/tips" class="btn btn-outline">浏览技巧</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="acts">
+    <div class="container">
+      <h2>内容结构</h2>
+      <div class="act-grid">
+        {acts.map(act => (
+          <a href={`/tips?act=${act.num}`} class="act-card">
+            <div class="act-number">Act {act.num}</div>
+            <h3>{act.title}</h3>
+            <p>{act.tips} 个技巧</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="featured">
+    <div class="container">
+      <h2>精选技巧</h2>
+      <div class="tip-grid">
+        {featuredTips.map(tip => (
+          <a href={`/tips/${tip.id}`} class="card tip-card">
+            <div class="tip-meta">
+              <span class="badge badge-{tip.data.difficulty}">{tip.data.difficulty}</span>
+              <span class="tag">Act {tip.data.act}</span>
+            </div>
+            <h3>{tip.data.title}</h3>
+            <p>{tip.data.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="links">
+    <div class="container">
+      <h2>快速链接</h2>
+      <div class="link-grid">
+        <a href="/demo" class="card link-card">
+          <h3>交互演示</h3>
+          <p>体验 Claude Code 的界面和交互</p>
+        </a>
+        <a href="/best-practices" class="card link-card">
+          <h3>最佳实践</h3>
+          <p>团队使用 Claude Code 的最佳实践</p>
+        </a>
+        <a href="/faq" class="card link-card">
+          <h3>常见问题</h3>
+          <p>常见问题的解答</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    padding: var(--spacing-3xl) 0;
+    text-align: center;
+    background: linear-gradient(135deg, var(--color-bg) 0%, #f5f0ed 100%);
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-primary);
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .cta {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+  }
+
+  section {
+    padding: var(--spacing-3xl) 0;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .act-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .act-card {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .act-number {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .act-card h3 {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .act-card p {
+    color: var(--color-text-light);
+  }
+
+  .tip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .tip-card {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .tip-meta {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .link-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .link-card {
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2rem;
+    }
+
+    .cta {
+      flex-direction: column;
+    }
+  }
+</style>

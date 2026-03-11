@@ -1,0 +1,261 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const allTips = await getCollection('tips');
+const allTipsSorted = allTips.sort((a, b) => a.data.id - b.data.id);
+
+// Get filter params
+const url = Astro.url;
+const actFilter = url.searchParams.get('act');
+const difficultyFilter = url.searchParams.get('difficulty');
+const categoryFilter = url.searchParams.get('category');
+const searchQuery = url.searchParams.get('q')?.toLowerCase();
+
+// Filter tips
+const filteredTips = allTipsSorted.filter(tip => {
+  if (actFilter && tip.data.act !== parseInt(actFilter)) return false;
+  if (difficultyFilter && tip.data.difficulty !== difficultyFilter) return false;
+  if (categoryFilter && tip.data.category !== categoryFilter) return false;
+  if (searchQuery) {
+    const title = tip.data.title.toLowerCase();
+    const desc = tip.data.description.toLowerCase();
+    const tags = tip.data.tags.join(' ').toLowerCase();
+    if (!title.includes(searchQuery) && !desc.includes(searchQuery) && !tags.includes(searchQuery)) {
+      return false;
+    }
+  }
+  return true;
+});
+
+// Get unique values for filters
+const difficulties = ['beginner', 'intermediate', 'advanced'];
+const categories = ['setup', 'workflow', 'power-user', 'advanced'];
+---
+
+<Layout title={`技巧列表 ${actFilter ? `- Act ${actFilter}` : ''} - Claude Code Tips`}>
+  <div class="container">
+    <div class="tips-layout">
+      <aside class="sidebar">
+        <h3>筛选</h3>
+
+        <div class="filter-section">
+          <h4>按 Act</h4>
+          <ul class="filter-list">
+            <li><a href="/tips" class={actFilter ? '' : 'active'}>全部</a></li>
+            <li><a href={`/tips?act=1`} class={actFilter === '1' ? 'active' : ''}>Act 1: Getting Started</a></li>
+            <li><a href={`/tips?act=2`} class={actFilter === '2' ? 'active' : ''}>Act 2: Daily Workflow</a></li>
+            <li><a href={`/tips?act=3`} class={actFilter === '3' ? 'active' : ''}>Act 3: Power User</a></li>
+            <li><a href={`/tips?act=4`} class={actFilter === '4' ? 'active' : ''}>Act 4: Advanced</a></li>
+          </ul>
+        </div>
+
+        <div class="filter-section">
+          <h4>按难度</h4>
+          <ul class="filter-list">
+            <li><a href="/tips" class={difficultyFilter ? '' : 'active'}>全部</a></li>
+            {difficulties.map(d => (
+              <li>
+                <a href={`/tips?difficulty=${d}${actFilter ? `&act=${actFilter}` : ''}`}
+                   class={difficultyFilter === d ? 'active' : ''}>
+                   {d}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="filter-section">
+          <h4>按分类</h4>
+          <ul class="filter-list">
+            <li><a href="/tips" class={categoryFilter ? '' : 'active'}>全部</a></li>
+            {categories.map(c => (
+              <li>
+                <a href={`/tips?category=${c}${actFilter ? `&act=${actFilter}` : ''}`}
+                   class={categoryFilter === c ? 'active' : ''}>
+                   {c}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <div class="header">
+          <h1>技巧列表</h1>
+          <p class="count">显示 {filteredTips.length} 个技巧</p>
+        </div>
+
+        <div class="tips-grid">
+          {filteredTips.map(tip => (
+            <a href={`/tips/${tip.id}`} class="card tip-card">
+              <div class="tip-header">
+                <span class="tip-id">#{tip.data.id}</span>
+                <div class="badges">
+                  <span class={`badge badge-${tip.data.difficulty}`}>{tip.data.difficulty}</span>
+                  <span class="tag">Act {tip.data.act}</span>
+                </div>
+              </div>
+              <h2>{tip.data.title}</h2>
+              <p>{tip.data.description}</p>
+              <div class="tip-footer">
+                <span class="timestamp">{tip.data.timestamp}</span>
+                <div class="tags">
+                  {tip.data.tags.slice(0, 3).map(tag => (
+                    <span class="tag">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        {filteredTips.length === 0 && (
+          <div class="empty">
+            <p>没有找到匹配的技巧</p>
+            <a href="/tips" class="btn btn-outline">清除筛选</a>
+          </div>
+        )}
+      </main>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .tips-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: var(--spacing-2xl);
+    padding-top: var(--spacing-xl);
+  }
+
+  .sidebar {
+    position: sticky;
+    top: var(--spacing-xl);
+    align-self: start;
+  }
+
+  .sidebar h3 {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .filter-section {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .filter-section h4 {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .filter-list {
+    list-style: none;
+  }
+
+  .filter-list li {
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .filter-list a {
+    color: var(--color-text-light);
+    text-decoration: none;
+    display: block;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+  }
+
+  .filter-list a:hover,
+  .filter-list a.active {
+    background: var(--color-border);
+    color: var(--color-text);
+  }
+
+  .header {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .count {
+    color: var(--color-text-light);
+  }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .tip-card {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tip-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .tip-id {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .badges {
+    display: flex;
+    gap: var(--spacing-xs);
+  }
+
+  .tip-card h2 {
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .tip-card p {
+    flex: 1;
+    color: var(--color-text-light);
+    font-size: 0.9375rem;
+  }
+
+  .tip-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .timestamp {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+  }
+
+  .tags {
+    display: flex;
+    gap: var(--spacing-xs);
+    flex-wrap: wrap;
+  }
+
+  .empty {
+    text-align: center;
+    padding: var(--spacing-3xl);
+  }
+
+  @media (max-width: 768px) {
+    .tips-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+      position: static;
+    }
+  }
+</style>

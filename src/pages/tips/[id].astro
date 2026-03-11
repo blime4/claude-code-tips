@@ -1,0 +1,220 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const tips = await getCollection('tips');
+  return tips.map(tip => ({
+    params: { id: tip.data.id.toString() },
+    props: { tip },
+  }));
+}
+
+const { tip } = Astro.props;
+const { Content } = await tip.render();
+
+// Get related tips
+const allTips = await getCollection('tips');
+const relatedTipsData = tip.data.related
+  ?.map(id => allTips.find(t => t.data.id === id))
+  .filter((t): t is typeof allTips[number] => t !== undefined)
+  .slice(0, 3) ?? [];
+
+// Get prev/next
+const currentIndex = allTips.findIndex(t => t.data.id === tip.data.id);
+const prevTip = currentIndex > 0 ? allTips[currentIndex - 1] : null;
+const nextTip = currentIndex < allTips.length - 1 ? allTips[currentIndex + 1] : null;
+---
+
+<Layout title={`${tip.data.title} - Tip #${tip.data.id} - Claude Code Tips`}>
+  <article class="container">
+    <a href="/tips" class="back-link">← 返回技巧列表</a>
+
+    <header class="tip-header">
+      <div class="meta">
+        <span class="tip-id">Tip #{tip.data.id}</span>
+        <span class={`badge badge-${tip.data.difficulty}`}>{tip.data.difficulty}</span>
+        <span class="tag">Act {tip.data.act}</span>
+      </div>
+      <h1>{tip.data.title}</h1>
+      <p class="description">{tip.data.description}</p>
+      <div class="info">
+        <span class="timestamp">⏱ {tip.data.timestamp}</span>
+        <span class="category">📁 {tip.data.category}</span>
+      </div>
+    </header>
+
+    <div class="content">
+      <div class="tags-header">
+        <strong>标签：</strong>
+        {tip.data.tags.map(tag => (
+          <span class="tag">{tag}</span>
+        ))}
+      </div>
+    </div>
+
+    <div class="content rendered-content">
+      <Content />
+    </div>
+
+    {relatedTipsData.length > 0 && (
+      <section class="related">
+        <h2>相关技巧</h2>
+        <div class="related-grid">
+          {relatedTipsData.map(rt => (
+            <a href={`/tips/${rt.data.id}`} class="card">
+              <span class="tip-id">#{rt.data.id}</span>
+              <h3>{rt.data.title}</h3>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <nav class="navigation">
+      {prevTip && (
+        <a href={`/tips/${prevTip.data.id}`} class="nav-link prev">
+          ← Tip #{prevTip.data.id}: {prevTip.data.title}
+        </a>
+      )}
+      {nextTip && (
+        <a href={`/tips/${nextTip.data.id}`} class="nav-link next">
+          Tip #{nextTip.data.id}: {nextTip.data.title} →
+        </a>
+      )}
+    </nav>
+  </article>
+</Layout>
+
+<style>
+  article {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--spacing-xl) var(--spacing-lg);
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text-light);
+  }
+
+  .tip-header {
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .meta {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+    flex-wrap: wrap;
+  }
+
+  .tip-id {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .tip-header h1 {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .description {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+  }
+
+  .info {
+    display: flex;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-md);
+    color: var(--color-text-light);
+    font-size: 0.9375rem;
+  }
+
+  .content {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .tags-header {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    align-items: center;
+    padding: var(--spacing-md);
+    background: var(--color-border);
+    border-radius: var(--radius-md);
+  }
+
+  .rendered-content {
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .rendered-content :global(h2) {
+    margin-top: var(--spacing-2xl);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .rendered-content :global(pre) {
+    background: var(--color-code-bg);
+    color: #E8E8E8;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    overflow-x: auto;
+  }
+
+  .related {
+    margin-top: var(--spacing-3xl);
+  }
+
+  .related h2 {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+  }
+
+  .related .card {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--spacing-3xl);
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid var(--color-border);
+    gap: var(--spacing-lg);
+  }
+
+  .nav-link {
+    flex: 1;
+    padding: var(--spacing-md);
+    background: var(--color-border);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: var(--color-text);
+  }
+
+  .nav-link:hover {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    .navigation {
+      flex-direction: column;
+    }
+
+    .tip-header h1 {
+      font-size: 1.5rem;
+    }
+  }
+</style>

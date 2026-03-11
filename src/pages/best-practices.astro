@@ -1,0 +1,166 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="最佳实践 - Claude Code Tips">
+  <article class="container">
+    <h1>最佳实践</h1>
+    <p class="subtitle">团队使用 Claude Code 的最佳实践</p>
+
+    <section>
+      <h2>工作流程</h2>
+      <div class="practice">
+        <h3>1. 始终从根目录运行</h3>
+        <p>在项目根目录启动 Claude Code，确保完整的项目上下文。</p>
+        <pre><code>cd my-project
+claude</code></pre>
+      </div>
+
+      <div class="practice">
+        <h3>2. 新项目先运行 /init</h3>
+        <p>让 Claude Code 扫描项目并创建初始配置。</p>
+      </div>
+
+      <div class="practice">
+        <h3>3. 复杂任务使用 Plan Mode</h3>
+        <p>新功能、架构变更等复杂任务，先进入 Plan Mode 规划。</p>
+      </div>
+
+      <div class="practice">
+        <h3>4. Git 是你的安全网</h3>
+        <p>重要操作前先提交，出问题可以随时回退。</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>CLAUDE.md 配置</h2>
+      <div class="practice">
+        <h3>保持简洁</h3>
+        <p>只包含项目特定的关键信息，避免指令过载。</p>
+      </div>
+
+      <div class="practice">
+        <h3>使用 Critical Rules</h3>
+        <p>将不可违反的规则放在 Critical Rules 部分，最高优先级。</p>
+      </div>
+
+      <div class="practice">
+        <h3>提供验证方式</h3>
+        <p>告诉 Claude 如何验证它的工作（测试命令、构建命令等）。</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>模型选择</h2>
+      <table class="model-table">
+        <thead>
+          <tr>
+            <th>模型</th>
+            <th>适用场景</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Haiku</strong></td>
+            <td>简单查询、轻量任务、快速响应</td>
+          </tr>
+          <tr>
+            <td><strong>Sonnet</strong></td>
+            <td>日常开发（默认推荐）</td>
+          </tr>
+          <tr>
+            <td><strong>Opus</strong></td>
+            <td>复杂架构决策、深度分析</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>团队协作</h2>
+      <div class="practice">
+        <h3>提交 CLAUDE.md</h3>
+        <p>将 CLAUDE.md 纳入版本控制，团队共享配置。</p>
+      </div>
+
+      <div class="practice">
+        <h3>代码审查包含 AI 生成内容</h3>
+        <p>Claude 生成的代码也需要经过正常审查流程。</p>
+      </div>
+
+      <div class="practice">
+        <h3>记录 Claude 协助的内容</h3>
+        <p>提交信息中标注由 Claude 生成或协助的代码。</p>
+      </div>
+    </section>
+
+    <section class="related">
+      <h2>相关资源</h2>
+      <a href="/tips" class="btn">浏览所有技巧</a>
+    </section>
+  </article>
+</Layout>
+
+<style>
+  article {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--spacing-xl) var(--spacing-lg);
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .subtitle {
+    text-align: center;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-3xl);
+  }
+
+  section {
+    margin-bottom: var(--spacing-3xl);
+  }
+
+  h2 {
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--color-primary);
+  }
+
+  .practice {
+    background: var(--color-surface);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-lg);
+    border: 1px solid var(--color-border);
+  }
+
+  .practice h3 {
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-primary);
+  }
+
+  .model-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--spacing-lg);
+  }
+
+  .model-table th,
+  .model-table td {
+    text-align: left;
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .model-table th {
+    background: var(--color-bg);
+    font-weight: 600;
+  }
+
+  .related {
+    text-align: center;
+  }
+</style>
