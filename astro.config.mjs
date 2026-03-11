@@ -4,7 +4,6 @@ import pagefind from 'astro-pagefind';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://shaoboxie.github.io/claude-code-tips',
-  base: '/claude-code-tips',
   integrations: [pagefind()],
   build: {
     format: 'directory',
