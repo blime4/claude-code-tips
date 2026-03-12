@@ -1,0 +1,161 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-sckkx6r4> <head><meta charset="UTF-8"><meta name="description" content="Claude Code 使用技巧和最佳实践"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.16.19"><link rel="canonical" href="https://blime4.github.io/claude-code-tips/tips/56/"><title>使用 /export 导出对话 - Tip #56 - Claude Code Tips</title><!-- Preconnect for performance --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="/claude-code-tips/_astro/best-practices.Dk5xlTzR.css">
+<style>article[data-astro-cid-n6vfxypr]{max-width:800px;margin:0 auto;padding:var(--spacing-xl) var(--spacing-lg)}.back-link[data-astro-cid-n6vfxypr]{display:inline-block;margin-bottom:var(--spacing-lg);color:var(--color-text-light)}.tip-header[data-astro-cid-n6vfxypr]{margin-bottom:var(--spacing-2xl)}.meta[data-astro-cid-n6vfxypr]{display:flex;gap:var(--spacing-sm);align-items:center;margin-bottom:var(--spacing-md);flex-wrap:wrap}.tip-id[data-astro-cid-n6vfxypr]{font-size:.875rem;font-weight:600;color:var(--color-primary)}.tip-header[data-astro-cid-n6vfxypr] h1[data-astro-cid-n6vfxypr]{font-size:2rem;margin-bottom:var(--spacing-md)}.description[data-astro-cid-n6vfxypr]{font-size:1.125rem;color:var(--color-text-light)}.info[data-astro-cid-n6vfxypr]{display:flex;gap:var(--spacing-lg);margin-top:var(--spacing-md);color:var(--color-text-light);font-size:.9375rem}.content[data-astro-cid-n6vfxypr]{margin-bottom:var(--spacing-xl)}.tags-header[data-astro-cid-n6vfxypr]{display:flex;gap:var(--spacing-sm);flex-wrap:wrap;align-items:center;padding:var(--spacing-md);background:var(--color-border);border-radius:var(--radius-md)}.rendered-content[data-astro-cid-n6vfxypr]{margin-bottom:var(--spacing-2xl)}.rendered-content[data-astro-cid-n6vfxypr] h2{margin-top:var(--spacing-2xl);margin-bottom:var(--spacing-lg)}.rendered-content[data-astro-cid-n6vfxypr] code{background:#1e1e1e;color:#d97757;padding:2px 6px;border-radius:var(--radius-sm);font-size:.9em}.rendered-content[data-astro-cid-n6vfxypr] pre{background:#1e1e1e;color:#e8e8e8;padding:var(--spacing-lg);border-radius:var(--radius-md);overflow-x:auto}.rendered-content[data-astro-cid-n6vfxypr] pre code{background:transparent;color:#e8e8e8;padding:0}.related[data-astro-cid-n6vfxypr]{margin-top:var(--spacing-3xl)}.related[data-astro-cid-n6vfxypr] h2[data-astro-cid-n6vfxypr]{margin-bottom:var(--spacing-lg)}.related-grid[data-astro-cid-n6vfxypr]{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--spacing-md)}.related[data-astro-cid-n6vfxypr] .card[data-astro-cid-n6vfxypr]{text-decoration:none;color:inherit}.navigation[data-astro-cid-n6vfxypr]{display:flex;justify-content:space-between;margin-top:var(--spacing-3xl);padding-top:var(--spacing-xl);border-top:1px solid var(--color-border);gap:var(--spacing-lg)}.nav-link[data-astro-cid-n6vfxypr]{flex:1;padding:var(--spacing-md);background:var(--color-border);border-radius:var(--radius-md);text-decoration:none;color:var(--color-text)}.nav-link[data-astro-cid-n6vfxypr]:hover{background:var(--color-primary);color:#fff}@media (max-width: 768px){.navigation[data-astro-cid-n6vfxypr]{flex-direction:column}.tip-header[data-astro-cid-n6vfxypr] h1[data-astro-cid-n6vfxypr]{font-size:1.5rem}}
+</style></head> <body data-astro-cid-sckkx6r4> <header data-astro-cid-sckkx6r4> <nav class="container" data-astro-cid-sckkx6r4> <a href="/claude-code-tips/" class="logo" data-astro-cid-sckkx6r4>Claude Code Tips</a> <ul class="nav-links" data-astro-cid-sckkx6r4> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/quick-start" data-astro-cid-sckkx6r4>快速入门</a></li> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/tips" data-astro-cid-sckkx6r4>技巧</a></li> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/tips/all" data-astro-cid-sckkx6r4>一览</a></li> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/demo" data-astro-cid-sckkx6r4>演示</a></li> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/best-practices" data-astro-cid-sckkx6r4>最佳实践</a></li> </ul> </nav> </header> <main id="main-content" data-astro-cid-sckkx6r4>  <article class="container" data-astro-cid-n6vfxypr> <a href="/claude-code-tips/tips" class="back-link" data-astro-cid-n6vfxypr>← 返回技巧列表</a> <header class="tip-header" data-astro-cid-n6vfxypr> <div class="meta" data-astro-cid-n6vfxypr> <span class="tip-id" data-astro-cid-n6vfxypr>Tip #56</span> <span class="badge badge-intermediate" data-astro-cid-n6vfxypr>intermediate</span> <span class="tag" data-astro-cid-n6vfxypr>Act 4</span> </div> <h1 data-astro-cid-n6vfxypr>使用 /export 导出对话</h1> <p class="description" data-astro-cid-n6vfxypr>使用 /export 命令导出对话会话，用于文档、分享或归档</p> <div class="info" data-astro-cid-n6vfxypr> <span class="timestamp" data-astro-cid-n6vfxypr>⏱ 43:00</span> <span class="category" data-astro-cid-n6vfxypr>📁 advanced</span> </div> </header> <div class="content" data-astro-cid-n6vfxypr> <div class="tags-header" data-astro-cid-n6vfxypr> <strong data-astro-cid-n6vfxypr>标签：</strong> <span class="tag" data-astro-cid-n6vfxypr>commands</span><span class="tag" data-astro-cid-n6vfxypr>export</span><span class="tag" data-astro-cid-n6vfxypr>documentation</span><span class="tag" data-astro-cid-n6vfxypr>sharing</span> </div> </div> <div class="content rendered-content" data-astro-cid-n6vfxypr> <h2 id="描述">描述</h2>
+<p><code>/export</code> 命令将对话会话导出为文件或复制到剪贴板，支持多种格式。</p>
+<h2 id="使用方法">使用方法</h2>
+<h3 id="导出到文件">导出到文件</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 导出到 markdown 文件</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> session.md</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 导出到 HTML 文件（带样式）</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> session.html</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 导出到 JSON 文件（结构化数据）</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> session.json</span></span>
+<span class="line"></span></code></pre>
+<h3 id="导出到剪贴板">导出到剪贴板</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 复制整个会话到剪贴板</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> clipboard</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 复制为特定格式</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> clipboard</span><span style="color:#79B8FF"> --format</span><span style="color:#9ECBFF"> markdown</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> clipboard</span><span style="color:#79B8FF"> --format</span><span style="color:#9ECBFF"> html</span></span>
+<span class="line"></span></code></pre>
+<h3 id="高级选项">高级选项</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 指定导出格式</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> output.md</span><span style="color:#79B8FF"> --format</span><span style="color:#9ECBFF"> markdown</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> output.html</span><span style="color:#79B8FF"> --format</span><span style="color:#9ECBFF"> html</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> output.json</span><span style="color:#79B8FF"> --format</span><span style="color:#9ECBFF"> json</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 只导出最近的 N 条消息</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> recent.md</span><span style="color:#79B8FF"> --last</span><span style="color:#79B8FF"> 20</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 导出特定范围</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> from-message-10-to-20.md</span></span>
+<span class="line"></span></code></pre>
+<h2 id="使用场景">使用场景</h2>
+<h3 id="1-文档编写">1. 文档编写</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 完成功能开发后</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> feature-research.md</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 将深度调查结果用于文档</span></span>
+<span class="line"></span></code></pre>
+<h3 id="2-工单和-pr">2. 工单和 PR</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 分析完成后</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> bug-analysis.md</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 粘贴到 Jira 工单或 GitHub PR</span></span>
+<span class="line"></span></code></pre>
+<h3 id="3-团队交接">3. 团队交接</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 会话结束时</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> handoff.md</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 分享给团队成员</span></span>
+<span class="line"></span></code></pre>
+<h3 id="4-知识归档">4. 知识归档</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 重要讨论或决策</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> decision-record.md</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 保存到知识库</span></span>
+<span class="line"></span></code></pre>
+<h2 id="导出格式对比">导出格式对比</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>格式</th><th>用途</th><th>特点</th></tr></thead><tbody><tr><td><strong>Markdown</strong></td><td>文档、Wiki</td><td>纯文本，兼容性好</td></tr><tr><td><strong>HTML</strong></td><td>展示、分享</td><td>带样式，可直接浏览</td></tr><tr><td><strong>JSON</strong></td><td>程序处理</td><td>结构化数据，易于解析</td></tr></tbody></table>
+<h2 id="导出内容">导出内容</h2>
+<p>默认导出整个对话会话，包括：</p>
+<ul>
+<li>用户消息</li>
+<li>Claude 响应</li>
+<li>代码块</li>
+<li>时间戳</li>
+<li>工具调用记录</li>
+</ul>
+<h2 id="最佳实践">最佳实践</h2>
+<h3 id="选择合适的格式">选择合适的格式</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 文档或笔记 → Markdown</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> docs/architecture.md</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 展示给他人 → HTML</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> demo/session.html</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 后续处理 → JSON</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> data/session.json</span></span>
+<span class="line"></span></code></pre>
+<h3 id="定期导出">定期导出</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 重要会话结束</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> research/</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">date</span><span style="color:#9ECBFF"> +%Y%m%d</span><span style="color:#E1E4E8">)</span><span style="color:#9ECBFF">.md</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 阶段性成果</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> milestones/feature-v1.md</span></span>
+<span class="line"></span></code></pre>
+<h3 id="命名规范">命名规范</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 好的命名</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> 2026-03-12-auth-design.md</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> bugfix-123-token-expiry.md</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> research-sql-optimization.md</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 避免过于简单</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> session1.md</span><span style="color:#6A737D">  # 不清晰</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> chat.md</span><span style="color:#6A737D">       # 不知道是什么</span></span>
+<span class="line"></span></code></pre>
+<h2 id="快速参考">快速参考</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>需求</th><th>命令</th></tr></thead><tbody><tr><td>快速复制整个会话</td><td><code>/export clipboard</code></td></tr><tr><td>保存为文档</td><td><code>/export session.md</code></td></tr><tr><td>用于工单</td><td><code>/export bug-analysis.md</code></td></tr><tr><td>团队交接</td><td><code>/export handoff.md</code></td></tr><tr><td>归档重要决策</td><td><code>/export decision-$(date +%Y%m%d).md</code></td></tr></tbody></table>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/claude-code-tips/tips/55">Tip 55: 使用 /copy 复制响应</a></li>
+<li><a href="/claude-code-tips/tips/17">Tip 17: 会话生命周期管理</a></li>
+</ul> </div> <section class="related" data-astro-cid-n6vfxypr> <h2 data-astro-cid-n6vfxypr>相关技巧</h2> <div class="related-grid" data-astro-cid-n6vfxypr> <a href="/claude-code-tips/tips/55" class="card" data-astro-cid-n6vfxypr> <span class="tip-id" data-astro-cid-n6vfxypr>#55</span> <h3 data-astro-cid-n6vfxypr>使用 /copy 复制响应</h3> </a> </div> </section> <nav class="navigation" data-astro-cid-n6vfxypr> <a href="/claude-code-tips/tips/55" class="nav-link prev" data-astro-cid-n6vfxypr>
+← Tip #55: 使用 /copy 复制响应 </a>  </nav> </article>  </main> <footer data-astro-cid-sckkx6r4> <div class="container" data-astro-cid-sckkx6r4> <p data-astro-cid-sckkx6r4>&copy; 2026 Claude Code Tips. 团队内部演示使用。</p> </div> </footer>  </body> </html> 

@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="zh-CN" data-astro-cid-sckkx6r4> <head><meta charset="UTF-8"><meta name="description" content="Claude Code 使用技巧和最佳实践"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.16.19"><link rel="canonical" href="https://blime4.github.io/claude-code-tips/tips/all/"><title>所有技巧一览 - Claude Code Tips</title><!-- Preconnect for performance --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="/claude-code-tips/_astro/best-practices.Dk5xlTzR.css">
 <link rel="stylesheet" href="/claude-code-tips/_astro/all.BhDLr99c.css"><script type="module">let o=localStorage.getItem("tips-lang")||"en";const i=document.getElementById("lang-toggle");function l(){document.querySelectorAll("[data-title-en]").forEach(a=>{const r=a.getAttribute("data-title-en"),d=a.getAttribute("data-title-zh");a.textContent=o==="zh"?d:r}),i?.setAttribute("data-lang",o);const t=i?.querySelector(".lang-current"),n=i?.querySelector(".lang-other");t&&n&&(o==="zh"?(t.textContent="中文",n.textContent="EN"):(t.textContent="EN",n.textContent="中文"))}i?.addEventListener("click",()=>{o=o==="en"?"zh":"en",localStorage.setItem("tips-lang",o),l()});l();document.querySelectorAll(".tip-item").forEach(e=>{const t=e.querySelector(".tip-number")?.textContent;t&&(e.id=`tip-${t.replace("#","")}`)});function c(e){const t=document.querySelector(`.tip-item[data-tip-id="${e}"]`);t&&t.classList.toggle("collapsed")}window.toggleTip=c;document.querySelectorAll(".toggle-btn").forEach(e=>{e.addEventListener("click",t=>{t.stopPropagation();const n=e.getAttribute("data-tip-id");n&&c(n)})});if(window.location.hash){const e=window.location.hash.replace("#tip-",""),t=document.querySelector(`.tip-item[data-tip-id="${e}"]`);t&&t.classList.remove("collapsed")}
-</script></head> <body data-astro-cid-sckkx6r4> <header data-astro-cid-sckkx6r4> <nav class="container" data-astro-cid-sckkx6r4> <a href="/claude-code-tips/" class="logo" data-astro-cid-sckkx6r4>Claude Code Tips</a> <ul class="nav-links" data-astro-cid-sckkx6r4> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/quick-start" data-astro-cid-sckkx6r4>快速入门</a></li> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/tips" data-astro-cid-sckkx6r4>技巧</a></li> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/tips/all" data-astro-cid-sckkx6r4>一览</a></li> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/demo" data-astro-cid-sckkx6r4>演示</a></li> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/best-practices" data-astro-cid-sckkx6r4>最佳实践</a></li> </ul> </nav> </header> <main id="main-content" data-astro-cid-sckkx6r4>  <div class="container" data-astro-cid-e5qe5oli> <div class="header" data-astro-cid-e5qe5oli> <div class="header-top" data-astro-cid-e5qe5oli> <h1 data-astro-cid-e5qe5oli>所有技巧一览</h1> <button id="lang-toggle" class="lang-toggle" aria-label="切换语言" data-astro-cid-e5qe5oli> <span class="lang-current" data-astro-cid-e5qe5oli>EN</span> <span class="lang-separator" data-astro-cid-e5qe5oli>/</span> <span class="lang-other" data-astro-cid-e5qe5oli>中文</span> </button> </div> <p class="subtitle" data-astro-cid-e5qe5oli>完整的 50 个 Claude Code 使用技巧</p> <div class="actions" data-astro-cid-e5qe5oli> <a href="/claude-code-tips/tips" class="btn btn-outline" data-astro-cid-e5qe5oli>返回卡片视图</a> </div> </div> <div class="tips-list" data-astro-cid-e5qe5oli> <div class="tip-item collapsed act-1 difficulty-beginner" data-tip-id="1" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(1)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#1</span> <span class="badge badge-beginner" data-astro-cid-e5qe5oli>beginner</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 1</span> <span class="category-badge" data-astro-cid-e5qe5oli>setup</span> <span class="timestamp" data-astro-cid-e5qe5oli>1:18</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Run from root directory" data-title-zh="从根目录运行" data-astro-cid-e5qe5oli>Run from root directory</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="1" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Always run Claude Code from your project root directory</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>cli</span><span class="tag" data-astro-cid-e5qe5oli>directory</span><span class="tag" data-astro-cid-e5qe5oli>basics</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+</script></head> <body data-astro-cid-sckkx6r4> <header data-astro-cid-sckkx6r4> <nav class="container" data-astro-cid-sckkx6r4> <a href="/claude-code-tips/" class="logo" data-astro-cid-sckkx6r4>Claude Code Tips</a> <ul class="nav-links" data-astro-cid-sckkx6r4> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/quick-start" data-astro-cid-sckkx6r4>快速入门</a></li> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/tips" data-astro-cid-sckkx6r4>技巧</a></li> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/tips/all" data-astro-cid-sckkx6r4>一览</a></li> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/demo" data-astro-cid-sckkx6r4>演示</a></li> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/best-practices" data-astro-cid-sckkx6r4>最佳实践</a></li> </ul> </nav> </header> <main id="main-content" data-astro-cid-sckkx6r4>  <div class="container" data-astro-cid-e5qe5oli> <div class="header" data-astro-cid-e5qe5oli> <div class="header-top" data-astro-cid-e5qe5oli> <h1 data-astro-cid-e5qe5oli>所有技巧一览</h1> <button id="lang-toggle" class="lang-toggle" aria-label="切换语言" data-astro-cid-e5qe5oli> <span class="lang-current" data-astro-cid-e5qe5oli>EN</span> <span class="lang-separator" data-astro-cid-e5qe5oli>/</span> <span class="lang-other" data-astro-cid-e5qe5oli>中文</span> </button> </div> <p class="subtitle" data-astro-cid-e5qe5oli>完整的 56 个 Claude Code 使用技巧</p> <div class="actions" data-astro-cid-e5qe5oli> <a href="/claude-code-tips/tips" class="btn btn-outline" data-astro-cid-e5qe5oli>返回卡片视图</a> </div> </div> <div class="tips-list" data-astro-cid-e5qe5oli> <div class="tip-item collapsed act-1 difficulty-beginner" data-tip-id="1" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(1)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#1</span> <span class="badge badge-beginner" data-astro-cid-e5qe5oli>beginner</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 1</span> <span class="category-badge" data-astro-cid-e5qe5oli>setup</span> <span class="timestamp" data-astro-cid-e5qe5oli>1:18</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="Run from root directory" data-title-zh="从根目录运行" data-astro-cid-e5qe5oli>Run from root directory</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="1" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>Always run Claude Code from your project root directory</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>cli</span><span class="tag" data-astro-cid-e5qe5oli>directory</span><span class="tag" data-astro-cid-e5qe5oli>basics</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
 <p>始终在项目的根目录下运行 Claude Code。这确保 Claude 能够完整地了解你的项目结构。</p>
 <h2 id="为什么这样做">为什么这样做</h2>
 <p>Claude Code 需要看到整个项目才能：</p>
@@ -2102,4 +2102,217 @@
 <h2 id="参考资料">参考资料</h2>
 <ul>
 <li><a href="https://www.binance.com/en/square/post/300260490328786">Claude Code 新增 /btw 侧链对话功能</a></li>
-</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-38" class="related-link" data-astro-cid-e5qe5oli>#38 Ask Claude to install MCPs</a><a href="#tip-40" class="related-link" data-astro-cid-e5qe5oli>#40 Avoid instruction overload</a> </div> </div> </div> <div class="footer-nav" data-astro-cid-e5qe5oli> <a href="/claude-code-tips/tips" class="btn" data-astro-cid-e5qe5oli>返回技巧列表</a> <a href="/claude-code-tips/demo" class="btn btn-outline" data-astro-cid-e5qe5oli>查看交互演示</a> </div> </div>  </main> <footer data-astro-cid-sckkx6r4> <div class="container" data-astro-cid-sckkx6r4> <p data-astro-cid-sckkx6r4>&copy; 2026 Claude Code Tips. 团队内部演示使用。</p> </div> </footer>  </body> </html>  
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-38" class="related-link" data-astro-cid-e5qe5oli>#38 Ask Claude to install MCPs</a><a href="#tip-40" class="related-link" data-astro-cid-e5qe5oli>#40 Avoid instruction overload</a> </div> </div><div class="tip-item collapsed act-4 difficulty-beginner" data-tip-id="55" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(55)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#55</span> <span class="badge badge-beginner" data-astro-cid-e5qe5oli>beginner</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 4</span> <span class="category-badge" data-astro-cid-e5qe5oli>advanced</span> <span class="timestamp" data-astro-cid-e5qe5oli>42:30</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="使用 /copy 复制响应" data-title-zh="使用 /copy 复制响应" data-astro-cid-e5qe5oli>使用 /copy 复制响应</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="55" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>使用 /copy 命令快速复制最后一次响应到剪贴板</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>commands</span><span class="tag" data-astro-cid-e5qe5oli>clipboard</span><span class="tag" data-astro-cid-e5qe5oli>productivity</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p><code>/copy</code> 命令将 Claude 的最后一次响应以 Markdown 格式复制到剪贴板。</p>
+<h2 id="使用方法">使用方法</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Claude 响应后</span></span>
+<span class="line"><span style="color:#B392F0">/copy</span></span>
+<span class="line"></span></code></pre>
+<h2 id="使用场景">使用场景</h2>
+<h3 id="快分享代码">快��分享代码</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">你:</span><span style="color:#9ECBFF"> 帮我写一个用户认证函数</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">[Claude 生成代码...]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">你:</span><span style="color:#9ECBFF"> /copy</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 现在可以粘贴到其他应用</span></span>
+<span class="line"></span></code></pre>
+<h3 id="保存解释说明">保存解释说明</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">你:</span><span style="color:#9ECBFF"> 解释一下这个算法</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">[Claude 详细解释...]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">你:</span><span style="color:#9ECBFF"> /copy</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 粘贴到文档或 Wiki</span></span>
+<span class="line"></span></code></pre>
+<h3 id="导出分析结果">导出分析结果</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">你:</span><span style="color:#9ECBFF"> 分析这个性能问题</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">[Claude 分析完成...]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">你:</span><span style="color:#9ECBFF"> /copy</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 粘贴到工单或 PR 描述</span></span>
+<span class="line"></span></code></pre>
+<h2 id="复制的内容">复制的内容</h2>
+<p><code>/copy</code> 复制的是<strong>最后一次响应的完整内容</strong>，包括：</p>
+<ul>
+<li>代码块</li>
+<li>文本说明</li>
+<li>格式（Markdown）</li>
+</ul>
+<h2 id="注意事项">注意事项</h2>
+<ul>
+<li>只复制最后一次响应</li>
+<li>格式为 Markdown</li>
+<li>自动复制到系统剪贴板</li>
+<li>不影响对话继续进行</li>
+</ul>
+<h2 id="快速参考">快速参考</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>想要快速分享 Claude 的回答？ → /copy</span></span>
+<span class="line"><span>需要粘贴代码到其他应用？   → /copy</span></span>
+<span class="line"><span>保存重要解释？              → /copy</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/claude-code-tips/tips/56">Tip 56: 使用 /export 导出对话</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-56" class="related-link" data-astro-cid-e5qe5oli>#56 使用 /export 导出对话</a> </div> </div><div class="tip-item collapsed act-4 difficulty-intermediate" data-tip-id="56" data-astro-cid-e5qe5oli> <div class="tip-header" onclick="toggleTip(56)" data-astro-cid-e5qe5oli> <div class="tip-meta" data-astro-cid-e5qe5oli> <span class="tip-number" data-astro-cid-e5qe5oli>#56</span> <span class="badge badge-intermediate" data-astro-cid-e5qe5oli>intermediate</span> <span class="act-badge" data-astro-cid-e5qe5oli>Act 4</span> <span class="category-badge" data-astro-cid-e5qe5oli>advanced</span> <span class="timestamp" data-astro-cid-e5qe5oli>43:00</span> </div> <div class="tip-title-row" data-astro-cid-e5qe5oli> <h2 data-title-en="使用 /export 导出对话" data-title-zh="使用 /export 导出对话" data-astro-cid-e5qe5oli>使用 /export 导出对话</h2> <button class="toggle-btn" aria-label="展开/收起" data-tip-id="56" data-astro-cid-e5qe5oli> <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" data-astro-cid-e5qe5oli> <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" data-astro-cid-e5qe5oli></path> </svg> </button> </div> <p class="description" data-astro-cid-e5qe5oli>使用 /export 命令导出对话会话，用于文档、分享或归档</p> <div class="tip-tags" data-astro-cid-e5qe5oli> <span class="tag" data-astro-cid-e5qe5oli>commands</span><span class="tag" data-astro-cid-e5qe5oli>export</span><span class="tag" data-astro-cid-e5qe5oli>documentation</span><span class="tag" data-astro-cid-e5qe5oli>sharing</span> </div> </div> <div class="tip-content" data-astro-cid-e5qe5oli> <div class="tip-body" data-astro-cid-e5qe5oli> <h2 id="描述">描述</h2>
+<p><code>/export</code> 命令将对话会话导出为文件或复制到剪贴板，支持多种格式。</p>
+<h2 id="使用方法">使用方法</h2>
+<h3 id="导出到文件">导出到文件</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 导出到 markdown 文件</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> session.md</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 导出到 HTML 文件（带样式）</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> session.html</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 导出到 JSON 文件（结构化数据）</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> session.json</span></span>
+<span class="line"></span></code></pre>
+<h3 id="导出到剪贴板">导出到剪贴板</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 复制整个会话到剪贴板</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> clipboard</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 复制为特定格式</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> clipboard</span><span style="color:#79B8FF"> --format</span><span style="color:#9ECBFF"> markdown</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> clipboard</span><span style="color:#79B8FF"> --format</span><span style="color:#9ECBFF"> html</span></span>
+<span class="line"></span></code></pre>
+<h3 id="高级选项">高级选项</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 指定导出格式</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> output.md</span><span style="color:#79B8FF"> --format</span><span style="color:#9ECBFF"> markdown</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> output.html</span><span style="color:#79B8FF"> --format</span><span style="color:#9ECBFF"> html</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> output.json</span><span style="color:#79B8FF"> --format</span><span style="color:#9ECBFF"> json</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 只导出最近的 N 条消息</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> recent.md</span><span style="color:#79B8FF"> --last</span><span style="color:#79B8FF"> 20</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 导出特定范围</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> from-message-10-to-20.md</span></span>
+<span class="line"></span></code></pre>
+<h2 id="使用场景">使用场景</h2>
+<h3 id="1-文档编写">1. 文档编写</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 完成功能开发后</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> feature-research.md</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 将深度调查结果用于文档</span></span>
+<span class="line"></span></code></pre>
+<h3 id="2-工单和-pr">2. 工单和 PR</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 分析完成后</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> bug-analysis.md</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 粘贴到 Jira 工单或 GitHub PR</span></span>
+<span class="line"></span></code></pre>
+<h3 id="3-团队交接">3. 团队交接</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 会话结束时</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> handoff.md</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 分享给团队成员</span></span>
+<span class="line"></span></code></pre>
+<h3 id="4-知识归档">4. 知识归档</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 重要讨论或决策</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> decision-record.md</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 保存到知识库</span></span>
+<span class="line"></span></code></pre>
+<h2 id="导出格式对比">导出格式对比</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>格式</th><th>用途</th><th>特点</th></tr></thead><tbody><tr><td><strong>Markdown</strong></td><td>文档、Wiki</td><td>纯文本，兼容性好</td></tr><tr><td><strong>HTML</strong></td><td>展示、分享</td><td>带样式，可直接浏览</td></tr><tr><td><strong>JSON</strong></td><td>程序处理</td><td>结构化数据，易于解析</td></tr></tbody></table>
+<h2 id="导出内容">导出内容</h2>
+<p>默认导出整个对话会话，包括：</p>
+<ul>
+<li>用户消息</li>
+<li>Claude 响应</li>
+<li>代码块</li>
+<li>时间戳</li>
+<li>工具调用记录</li>
+</ul>
+<h2 id="最佳实践">最佳实践</h2>
+<h3 id="选择合适的格式">选择合适的格式</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 文档或笔记 → Markdown</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> docs/architecture.md</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 展示给他人 → HTML</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> demo/session.html</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 后续处理 → JSON</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> data/session.json</span></span>
+<span class="line"></span></code></pre>
+<h3 id="定期导出">定期导出</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 重要会话结束</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> research/</span><span style="color:#E1E4E8">$(</span><span style="color:#B392F0">date</span><span style="color:#9ECBFF"> +%Y%m%d</span><span style="color:#E1E4E8">)</span><span style="color:#9ECBFF">.md</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 阶段性成果</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> milestones/feature-v1.md</span></span>
+<span class="line"></span></code></pre>
+<h3 id="命名规范">命名规范</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 好的命名</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> 2026-03-12-auth-design.md</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> bugfix-123-token-expiry.md</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> research-sql-optimization.md</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 避免过于简单</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> session1.md</span><span style="color:#6A737D">  # 不清晰</span></span>
+<span class="line"><span style="color:#B392F0">/export</span><span style="color:#9ECBFF"> chat.md</span><span style="color:#6A737D">       # 不知道是什么</span></span>
+<span class="line"></span></code></pre>
+<h2 id="快速参考">快速参考</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>需求</th><th>命令</th></tr></thead><tbody><tr><td>快速复制整个会话</td><td><code>/export clipboard</code></td></tr><tr><td>保存为文档</td><td><code>/export session.md</code></td></tr><tr><td>用于工单</td><td><code>/export bug-analysis.md</code></td></tr><tr><td>团队交接</td><td><code>/export handoff.md</code></td></tr><tr><td>归档重要决策</td><td><code>/export decision-$(date +%Y%m%d).md</code></td></tr></tbody></table>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/claude-code-tips/tips/55">Tip 55: 使用 /copy 复制响应</a></li>
+<li><a href="/claude-code-tips/tips/17">Tip 17: 会话生命周期管理</a></li>
+</ul> </div> </div> <div class="tip-related" data-astro-cid-e5qe5oli> <strong data-astro-cid-e5qe5oli>相关技巧：</strong> <a href="#tip-55" class="related-link" data-astro-cid-e5qe5oli>#55 使用 /copy 复制响应</a> </div> </div> </div> <div class="footer-nav" data-astro-cid-e5qe5oli> <a href="/claude-code-tips/tips" class="btn" data-astro-cid-e5qe5oli>返回技巧列表</a> <a href="/claude-code-tips/demo" class="btn btn-outline" data-astro-cid-e5qe5oli>查看交互演示</a> </div> </div>  </main> <footer data-astro-cid-sckkx6r4> <div class="container" data-astro-cid-sckkx6r4> <p data-astro-cid-sckkx6r4>&copy; 2026 Claude Code Tips. 团队内部演示使用。</p> </div> </footer>  </body> </html>  
