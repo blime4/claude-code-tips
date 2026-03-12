@@ -15,4 +15,8 @@ export default defineConfig({
       cssMinify: true,
     },
   },
+  server: {
+    host: true,
+    port: 4321,
+  },
 });
