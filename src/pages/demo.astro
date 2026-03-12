@@ -49,10 +49,10 @@ import Layout from '../layouts/Layout.astro';
 
         <div class="presets-section">
           <h3>💬 对话示例</h3>
-          <button class="preset-btn" data-cmd="帮我创建一个新组件">创建组件示例</button>
-          <button class="preset-btn" data-cmd="这个 bug 怎么修复？">调试示例</button>
-          <button class="preset-btn" data-cmd="重构这个函数">重构代码</button>
-          <button class="preset-btn" data-cmd="写一个测试">编写测试</button>
+          <button class="preset-btn" data-cmd="team mode, member 1 修复用户登录的 token 过期问题，member 2 分析 API 响应慢的原因">Team Mode 并行协作</button>
+          <button class="preset-btn" data-cmd="审查这个 PR 的安全性，检查是否有 SQL 注入风险">安全审查示例</button>
+          <button class="preset-btn" data-cmd="重构认证模块，使用 JWT 替代 session，需要保持向后兼容">复杂重构任务</button>
+          <button class="preset-btn" data-cmd="写单元测试覆盖用户注册流程，包括正常和异常情况">测试编写示例</button>
         </div>
       </div>
     </div>
@@ -422,48 +422,93 @@ import Layout from '../layouts/Layout.astro';
 
 特点：不中断主任务、即时回答、只读模式`,
 
-    '帮我创建一个新组件': `好的！我来帮你创建一个新的用户卡片组件。
+    'team mode, member 1 修复用户登录的 token 过期问题，member 2 分析 API 响应慢的原因': `🚀 Team Mode 已激活
 
-我会创建：
-1. 组件文件 UserCard.astro
-2. 相应的样式
-3. TypeScript 类型定义
+正在启动两个 subagents 并行工作...
 
-是否继续？`,
+━━━ Member 1: 修复 token 过期 ━━━
+任务：修复用户登录的 token 过期问题
+状态：正在分析 auth.ts...
+• 检测到 token 有效期设置为 30 分钟
+• 建议实现 refresh token 机制
+• 正在添加自动续期逻辑...
 
-    '这个 bug 怎么修复？': `让我帮你分析这个问题。
+━━━ Member 2: 分析 API 性能 ━━━
+任务：分析 API 响应慢的原因
+状态：正在 profiling...
+• 发现 /api/users 接口响应时间 2.3s
+• 数据库查询缺少索引
+• 建议���加 users.email 索引
 
-从错误信息来看，这可能是由以下原因引起的：
-1. 未定义的变量访问
-2. 异步处理问题
-3. 类型不匹配
+两个任务已完成！准备合并结果...`,
 
-建议我先查看相关代码，可以吗？`,
+    '审查这个 PR 的安全性，检查是否有 SQL 注入风险': `🔒 安全审查中...
 
-    '重构这个函数': `我来分析这个函数。
+正在检查 PR #123 的安全性...
 
 发现的问题：
-• 函数过长 (80+ 行)
-• 职责过多
-• 缺少类型注解
+❌ 高危: users.ts#45 使用字符串拼接构建 SQL 查询
+   const query = `SELECT * FROM users WHERE id = ${userId}`
 
-重构方案：
-1. 拆分为 3 个小函数
-2. 添加类型注解
-3. 添加错误处理
+✅ 建议: 使用参数化查询
+   const query = 'SELECT * FROM users WHERE id = ?'
 
-是否开始重构？`,
+其他检查：
+✅ 密码使用 bcrypt 加密
+✅ API 速率限制已配置
+⚠️ 建议: 添加 CSRF token 验证
 
-    '写一个测试': `好的，我来编写测试。
+是否需要我修复这个 SQL 注入问题？`,
 
-测试覆盖：
-• 正常场景
-• 边界条件
-• 错误处理
+    '重构认证模块，使用 JWT 替代 session，需要保持向后兼容': `📋 重构计划确认
 
-使用框架: Vitest + Testing Library
+目标：认证模块从 session 迁移到 JWT
 
-准备开始...`
+迁移阶段：
+Phase 1: 添加 JWT 支持（保留 session）
+  • 安装 jsonwebtoken + @types/jsonwebtoken
+  • 实现 JWT 中间件
+  • 添加 /auth/token 端点
+
+Phase 2: 双模式运行
+  • 同时支持 session 和 JWT
+  • 逐步迁移现有客户端
+  • 监控错误率
+
+Phase 3: 完全迁移
+  • 移除 session 依赖
+  • 清理相关代码
+
+向后兼容策略：
+• 旧客户端继续使用 session
+• 新客户端使用 JWT
+• 提供 2 周迁移期
+
+是否开始 Phase 1？`,
+
+    '写单元测试覆盖用户注册流程，包括正常和异常情况': `✅ 测试计划确认
+
+测试场景覆盖：
+
+正常流程：
+✓ 用户名和密码有效 → 注册成功
+✓ 邮箱发送验证链接
+✓ 返回用户信息（不含密码）
+
+边界条件：
+✓ 用户名已存在 → 返回 409 错误
+✓ 邮箱格式无效 → 返回 400 错误
+✓ 密码强度不足 → 返回 400 错误
+✓ 缺少必填字段 → 返回 400 错误
+
+异常情况：
+✓ 数据库连接失败
+✓ 邮件服务不可用
+✓ 并发注册相同用户名
+
+使用框架: Vitest + msw (Mock Service Worker)
+
+准备生成测试代码...`
   };
 
   const terminalContent = document.getElementById('terminal-content');
