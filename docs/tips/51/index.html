@@ -1,51 +1,57 @@
-<!DOCTYPE html><html lang="zh-CN" data-astro-cid-sckkx6r4> <head><meta charset="UTF-8"><meta name="description" content="Claude Code 使用技巧和最佳实践"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.16.19"><link rel="canonical" href="https://blime4.github.io/claude-code-tips/tips/51/"><title>Use Insights - Tip #51 - Claude Code Tips</title><!-- Preconnect for performance --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="/claude-code-tips/_astro/best-practices.Dk5xlTzR.css">
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-sckkx6r4> <head><meta charset="UTF-8"><meta name="description" content="Claude Code 使用技巧和最佳实践"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.16.19"><link rel="canonical" href="https://blime4.github.io/claude-code-tips/tips/51/"><title>Use /insights command - Tip #51 - Claude Code Tips</title><!-- Preconnect for performance --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="/claude-code-tips/_astro/best-practices.Dk5xlTzR.css">
 <style>article[data-astro-cid-n6vfxypr]{max-width:800px;margin:0 auto;padding:var(--spacing-xl) var(--spacing-lg)}.back-link[data-astro-cid-n6vfxypr]{display:inline-block;margin-bottom:var(--spacing-lg);color:var(--color-text-light)}.tip-header[data-astro-cid-n6vfxypr]{margin-bottom:var(--spacing-2xl)}.meta[data-astro-cid-n6vfxypr]{display:flex;gap:var(--spacing-sm);align-items:center;margin-bottom:var(--spacing-md);flex-wrap:wrap}.tip-id[data-astro-cid-n6vfxypr]{font-size:.875rem;font-weight:600;color:var(--color-primary)}.tip-header[data-astro-cid-n6vfxypr] h1[data-astro-cid-n6vfxypr]{font-size:2rem;margin-bottom:var(--spacing-md)}.description[data-astro-cid-n6vfxypr]{font-size:1.125rem;color:var(--color-text-light)}.info[data-astro-cid-n6vfxypr]{display:flex;gap:var(--spacing-lg);margin-top:var(--spacing-md);color:var(--color-text-light);font-size:.9375rem}.content[data-astro-cid-n6vfxypr]{margin-bottom:var(--spacing-xl)}.tags-header[data-astro-cid-n6vfxypr]{display:flex;gap:var(--spacing-sm);flex-wrap:wrap;align-items:center;padding:var(--spacing-md);background:var(--color-border);border-radius:var(--radius-md)}.rendered-content[data-astro-cid-n6vfxypr]{margin-bottom:var(--spacing-2xl)}.rendered-content[data-astro-cid-n6vfxypr] h2{margin-top:var(--spacing-2xl);margin-bottom:var(--spacing-lg)}.rendered-content[data-astro-cid-n6vfxypr] code{background:#1e1e1e;color:#d97757;padding:2px 6px;border-radius:var(--radius-sm);font-size:.9em}.rendered-content[data-astro-cid-n6vfxypr] pre{background:#1e1e1e;color:#e8e8e8;padding:var(--spacing-lg);border-radius:var(--radius-md);overflow-x:auto}.rendered-content[data-astro-cid-n6vfxypr] pre code{background:transparent;color:#e8e8e8;padding:0}.related[data-astro-cid-n6vfxypr]{margin-top:var(--spacing-3xl)}.related[data-astro-cid-n6vfxypr] h2[data-astro-cid-n6vfxypr]{margin-bottom:var(--spacing-lg)}.related-grid[data-astro-cid-n6vfxypr]{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--spacing-md)}.related[data-astro-cid-n6vfxypr] .card[data-astro-cid-n6vfxypr]{text-decoration:none;color:inherit}.navigation[data-astro-cid-n6vfxypr]{display:flex;justify-content:space-between;margin-top:var(--spacing-3xl);padding-top:var(--spacing-xl);border-top:1px solid var(--color-border);gap:var(--spacing-lg)}.nav-link[data-astro-cid-n6vfxypr]{flex:1;padding:var(--spacing-md);background:var(--color-border);border-radius:var(--radius-md);text-decoration:none;color:var(--color-text)}.nav-link[data-astro-cid-n6vfxypr]:hover{background:var(--color-primary);color:#fff}@media (max-width: 768px){.navigation[data-astro-cid-n6vfxypr]{flex-direction:column}.tip-header[data-astro-cid-n6vfxypr] h1[data-astro-cid-n6vfxypr]{font-size:1.5rem}}
-</style></head> <body data-astro-cid-sckkx6r4> <header data-astro-cid-sckkx6r4> <nav class="container" data-astro-cid-sckkx6r4> <a href="/claude-code-tips/" class="logo" data-astro-cid-sckkx6r4>Claude Code Tips</a> <ul class="nav-links" data-astro-cid-sckkx6r4> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/quick-start" data-astro-cid-sckkx6r4>快速入门</a></li> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/tips" data-astro-cid-sckkx6r4>技巧</a></li> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/tips/all" data-astro-cid-sckkx6r4>一览</a></li> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/demo" data-astro-cid-sckkx6r4>演示</a></li> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/best-practices" data-astro-cid-sckkx6r4>最佳实践</a></li> </ul> </nav> </header> <main id="main-content" data-astro-cid-sckkx6r4>  <article class="container" data-astro-cid-n6vfxypr> <a href="/claude-code-tips/tips" class="back-link" data-astro-cid-n6vfxypr>← 返回技巧列表</a> <header class="tip-header" data-astro-cid-n6vfxypr> <div class="meta" data-astro-cid-n6vfxypr> <span class="tip-id" data-astro-cid-n6vfxypr>Tip #51</span> <span class="badge badge-intermediate" data-astro-cid-n6vfxypr>intermediate</span> <span class="tag" data-astro-cid-n6vfxypr>Act 4</span> </div> <h1 data-astro-cid-n6vfxypr>Use Insights</h1> <p class="description" data-astro-cid-n6vfxypr>Leverage Claude&#39;s ability to analyze and extract insights from your codebase</p> <div class="info" data-astro-cid-n6vfxypr> <span class="timestamp" data-astro-cid-n6vfxypr>⏱ 42:00</span> <span class="category" data-astro-cid-n6vfxypr>📁 advanced</span> </div> </header> <div class="content" data-astro-cid-n6vfxypr> <div class="tags-header" data-astro-cid-n6vfxypr> <strong data-astro-cid-n6vfxypr>标签：</strong> <span class="tag" data-astro-cid-n6vfxypr>insights</span><span class="tag" data-astro-cid-n6vfxypr>analysis</span><span class="tag" data-astro-cid-n6vfxypr>pattern-recognition</span> </div> </div> <div class="content rendered-content" data-astro-cid-n6vfxypr> <h2 id="description">Description</h2>
-<p>Claude can analyze your codebase to provide insights, identify patterns, and suggest improvements.</p>
+</style></head> <body data-astro-cid-sckkx6r4> <header data-astro-cid-sckkx6r4> <nav class="container" data-astro-cid-sckkx6r4> <a href="/claude-code-tips/" class="logo" data-astro-cid-sckkx6r4>Claude Code Tips</a> <ul class="nav-links" data-astro-cid-sckkx6r4> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/quick-start" data-astro-cid-sckkx6r4>快速入门</a></li> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/tips" data-astro-cid-sckkx6r4>技巧</a></li> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/tips/all" data-astro-cid-sckkx6r4>一览</a></li> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/demo" data-astro-cid-sckkx6r4>演示</a></li> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/best-practices" data-astro-cid-sckkx6r4>最佳实践</a></li> </ul> </nav> </header> <main id="main-content" data-astro-cid-sckkx6r4>  <article class="container" data-astro-cid-n6vfxypr> <a href="/claude-code-tips/tips" class="back-link" data-astro-cid-n6vfxypr>← 返回技巧列表</a> <header class="tip-header" data-astro-cid-n6vfxypr> <div class="meta" data-astro-cid-n6vfxypr> <span class="tip-id" data-astro-cid-n6vfxypr>Tip #51</span> <span class="badge badge-intermediate" data-astro-cid-n6vfxypr>intermediate</span> <span class="tag" data-astro-cid-n6vfxypr>Act 4</span> </div> <h1 data-astro-cid-n6vfxypr>Use /insights command</h1> <p class="description" data-astro-cid-n6vfxypr>Get intelligent insights about your codebase using the /insights command</p> <div class="info" data-astro-cid-n6vfxypr> <span class="timestamp" data-astro-cid-n6vfxypr>⏱ 42:00</span> <span class="category" data-astro-cid-n6vfxypr>📁 advanced</span> </div> </header> <div class="content" data-astro-cid-n6vfxypr> <div class="tags-header" data-astro-cid-n6vfxypr> <strong data-astro-cid-n6vfxypr>标签：</strong> <span class="tag" data-astro-cid-n6vfxypr>insights</span><span class="tag" data-astro-cid-n6vfxypr>command</span><span class="tag" data-astro-cid-n6vfxypr>analysis</span> </div> </div> <div class="content rendered-content" data-astro-cid-n6vfxypr> <h2 id="description">Description</h2>
+<p>The <code>/insights</code> command provides intelligent analysis of your codebase, extracting patterns, identifying issues, and suggesting improvements.</p>
 <h2 id="usage">Usage</h2>
-<p>Ask Claude to analyze your project:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Analyze patterns in your codebase</span></span>
-<span class="line"><span style="color:#B392F0">"Identify common patterns in my codebase"</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#6A737D"># Extract architecture insights</span></span>
-<span class="line"><span style="color:#B392F0">"What architectural patterns are used here?"</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#6A737D"># Find potential issues</span></span>
-<span class="line"><span style="color:#B392F0">"Identify potential security issues"</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#6A737D"># Suggest improvements</span></span>
-<span class="line"><span style="color:#B392F0">"What improvements would you recommend?"</span></span>
+<p>Run the insights command:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">/insights</span></span>
 <span class="line"></span></code></pre>
-<h2 id="what-claude-can-find">What Claude Can Find</h2>
+<p>Claude will analyze your project and provide:</p>
 <ul>
-<li><strong>Code patterns</strong>: Repeated structures, anti-patterns, idioms</li>
-<li><strong>Architecture</strong>: Design patterns, coupling, cohesion</li>
-<li><strong>Issues</strong>: Bugs, security vulnerabilities, performance problems</li>
-<li><strong>Improvements</strong>: Refactoring opportunities, best practices</li>
+<li><strong>Code patterns</strong>: Common structures, idioms, and anti-patterns</li>
+<li><strong>Architecture insights</strong>: Design patterns, coupling analysis</li>
+<li><strong>Potential issues</strong>: Bugs, security vulnerabilities, performance problems</li>
+<li><strong>Improvement suggestions</strong>: Refactoring opportunities, best practices</li>
+</ul>
+<h2 id="what-it-analyzes">What It Analyzes</h2>
+<ul>
+<li>File structure and organization</li>
+<li>Import dependencies and relationships</li>
+<li>Function and class patterns</li>
+<li>Code complexity metrics</li>
+<li>Test coverage gaps</li>
+<li>Security vulnerabilities</li>
+<li>Performance bottlenecks</li>
 </ul>
 <h2 id="best-practices">Best Practices</h2>
 <ol>
-<li><strong>Be specific</strong>: Focus on particular areas or concerns</li>
-<li><strong>Provide context</strong>: Explain what you’re looking for</li>
-<li><strong>Ask for alternatives</strong>: Request multiple approaches</li>
-<li><strong>Validate findings</strong>: Review suggestions before implementing</li>
+<li><strong>Run after major changes</strong>: Get fresh insights after significant code updates</li>
+<li><strong>Review suggestions carefully</strong>: Not all suggestions may apply to your context</li>
+<li><strong>Combine with /init</strong>: Use both commands for comprehensive project understanding</li>
+<li><strong>Iterate</strong>: Re-run periodically to track progress on identified issues</li>
 </ol>
-<h2 id="example-queries">Example Queries</h2>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Code quality</span></span>
-<span class="line"><span style="color:#B392F0">"What code quality issues exist in src/?"</span></span>
+<h2 id="example-output">Example Output</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">/insights</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#6A737D"># Performance</span></span>
-<span class="line"><span style="color:#B392F0">"Are there any performance bottlenecks?"</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#6A737D"># Security</span></span>
-<span class="line"><span style="color:#B392F0">"Review authentication flows for security issues"</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#6A737D"># Architecture</span></span>
-<span class="line"><span style="color:#B392F0">"How is state managed across components?"</span></span>
+<span class="line"><span style="color:#6A737D"># Claude will respond with:</span></span>
+<span class="line"><span style="color:#6A737D"># - Project structure overview</span></span>
+<span class="line"><span style="color:#6A737D"># - Pattern analysis</span></span>
+<span class="line"><span style="color:#6A737D"># - Issues found (with file locations)</span></span>
+<span class="line"><span style="color:#6A737D"># - Improvement recommendations</span></span>
 <span class="line"></span></code></pre>
+<h2 id="tips">Tips</h2>
+<ul>
+<li>Use <code>/insights</code> when starting work on an unfamiliar codebase</li>
+<li>Combine with specific questions about areas of concern</li>
+<li>Review the findings with your team for collective decision-making</li>
+<li>Track insights over time to measure code quality improvements</li>
+</ul>
 <h2 id="see-also">See Also</h2>
 <ul>
+<li><a href="/tips/3">/init - Initialize project</a></li>
+<li><a href="/tips/22">/context - Check token usage</a></li>
 <li><a href="/tips/50">Explore the plugin ecosystem</a></li>
-<li><a href="#">Code Review</a></li>
 </ul> </div> <section class="related" data-astro-cid-n6vfxypr> <h2 data-astro-cid-n6vfxypr>相关技巧</h2> <div class="related-grid" data-astro-cid-n6vfxypr> <a href="/claude-code-tips/tips/50" class="card" data-astro-cid-n6vfxypr> <span class="tip-id" data-astro-cid-n6vfxypr>#50</span> <h3 data-astro-cid-n6vfxypr>Explore the plugin ecosystem</h3> </a> </div> </section> <nav class="navigation" data-astro-cid-n6vfxypr> <a href="/claude-code-tips/tips/50" class="nav-link prev" data-astro-cid-n6vfxypr>
-← Tip #50: Explore the plugin ecosystem </a>  </nav> </article>  </main> <footer data-astro-cid-sckkx6r4> <div class="container" data-astro-cid-sckkx6r4> <p data-astro-cid-sckkx6r4>&copy; 2026 Claude Code Tips. 团队内部演示使用。</p> </div> </footer>  </body> </html> 
+← Tip #50: Explore the plugin ecosystem </a> <a href="/claude-code-tips/tips/53" class="nav-link next" data-astro-cid-n6vfxypr>
+Tip #53: 并行执行独立任务 →
+</a> </nav> </article>  </main> <footer data-astro-cid-sckkx6r4> <div class="container" data-astro-cid-sckkx6r4> <p data-astro-cid-sckkx6r4>&copy; 2026 Claude Code Tips. 团队内部演示使用。</p> </div> </footer>  </body> </html> 

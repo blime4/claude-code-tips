@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="zh-CN" data-astro-cid-sckkx6r4> <head><meta charset="UTF-8"><meta name="description" content="Claude Code 使用技巧和最佳实践"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.16.19"><link rel="canonical" href="https://blime4.github.io/claude-code-tips/tips/53/"><title>并行执行独立任务 - Tip #53 - Claude Code Tips</title><!-- Preconnect for performance --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="/claude-code-tips/_astro/best-practices.Dk5xlTzR.css">
+<style>article[data-astro-cid-n6vfxypr]{max-width:800px;margin:0 auto;padding:var(--spacing-xl) var(--spacing-lg)}.back-link[data-astro-cid-n6vfxypr]{display:inline-block;margin-bottom:var(--spacing-lg);color:var(--color-text-light)}.tip-header[data-astro-cid-n6vfxypr]{margin-bottom:var(--spacing-2xl)}.meta[data-astro-cid-n6vfxypr]{display:flex;gap:var(--spacing-sm);align-items:center;margin-bottom:var(--spacing-md);flex-wrap:wrap}.tip-id[data-astro-cid-n6vfxypr]{font-size:.875rem;font-weight:600;color:var(--color-primary)}.tip-header[data-astro-cid-n6vfxypr] h1[data-astro-cid-n6vfxypr]{font-size:2rem;margin-bottom:var(--spacing-md)}.description[data-astro-cid-n6vfxypr]{font-size:1.125rem;color:var(--color-text-light)}.info[data-astro-cid-n6vfxypr]{display:flex;gap:var(--spacing-lg);margin-top:var(--spacing-md);color:var(--color-text-light);font-size:.9375rem}.content[data-astro-cid-n6vfxypr]{margin-bottom:var(--spacing-xl)}.tags-header[data-astro-cid-n6vfxypr]{display:flex;gap:var(--spacing-sm);flex-wrap:wrap;align-items:center;padding:var(--spacing-md);background:var(--color-border);border-radius:var(--radius-md)}.rendered-content[data-astro-cid-n6vfxypr]{margin-bottom:var(--spacing-2xl)}.rendered-content[data-astro-cid-n6vfxypr] h2{margin-top:var(--spacing-2xl);margin-bottom:var(--spacing-lg)}.rendered-content[data-astro-cid-n6vfxypr] code{background:#1e1e1e;color:#d97757;padding:2px 6px;border-radius:var(--radius-sm);font-size:.9em}.rendered-content[data-astro-cid-n6vfxypr] pre{background:#1e1e1e;color:#e8e8e8;padding:var(--spacing-lg);border-radius:var(--radius-md);overflow-x:auto}.rendered-content[data-astro-cid-n6vfxypr] pre code{background:transparent;color:#e8e8e8;padding:0}.related[data-astro-cid-n6vfxypr]{margin-top:var(--spacing-3xl)}.related[data-astro-cid-n6vfxypr] h2[data-astro-cid-n6vfxypr]{margin-bottom:var(--spacing-lg)}.related-grid[data-astro-cid-n6vfxypr]{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--spacing-md)}.related[data-astro-cid-n6vfxypr] .card[data-astro-cid-n6vfxypr]{text-decoration:none;color:inherit}.navigation[data-astro-cid-n6vfxypr]{display:flex;justify-content:space-between;margin-top:var(--spacing-3xl);padding-top:var(--spacing-xl);border-top:1px solid var(--color-border);gap:var(--spacing-lg)}.nav-link[data-astro-cid-n6vfxypr]{flex:1;padding:var(--spacing-md);background:var(--color-border);border-radius:var(--radius-md);text-decoration:none;color:var(--color-text)}.nav-link[data-astro-cid-n6vfxypr]:hover{background:var(--color-primary);color:#fff}@media (max-width: 768px){.navigation[data-astro-cid-n6vfxypr]{flex-direction:column}.tip-header[data-astro-cid-n6vfxypr] h1[data-astro-cid-n6vfxypr]{font-size:1.5rem}}
+</style></head> <body data-astro-cid-sckkx6r4> <header data-astro-cid-sckkx6r4> <nav class="container" data-astro-cid-sckkx6r4> <a href="/claude-code-tips/" class="logo" data-astro-cid-sckkx6r4>Claude Code Tips</a> <ul class="nav-links" data-astro-cid-sckkx6r4> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/quick-start" data-astro-cid-sckkx6r4>快速入门</a></li> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/tips" data-astro-cid-sckkx6r4>技巧</a></li> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/tips/all" data-astro-cid-sckkx6r4>一览</a></li> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/demo" data-astro-cid-sckkx6r4>演示</a></li> <li data-astro-cid-sckkx6r4><a href="/claude-code-tips/best-practices" data-astro-cid-sckkx6r4>最佳实践</a></li> </ul> </nav> </header> <main id="main-content" data-astro-cid-sckkx6r4>  <article class="container" data-astro-cid-n6vfxypr> <a href="/claude-code-tips/tips" class="back-link" data-astro-cid-n6vfxypr>← 返回技巧列表</a> <header class="tip-header" data-astro-cid-n6vfxypr> <div class="meta" data-astro-cid-n6vfxypr> <span class="tip-id" data-astro-cid-n6vfxypr>Tip #53</span> <span class="badge badge-advanced" data-astro-cid-n6vfxypr>advanced</span> <span class="tag" data-astro-cid-n6vfxypr>Act 4</span> </div> <h1 data-astro-cid-n6vfxypr>并行执行独立任务</h1> <p class="description" data-astro-cid-n6vfxypr>同时运行多个独立 agent，大幅提升工作效率</p> <div class="info" data-astro-cid-n6vfxypr> <span class="timestamp" data-astro-cid-n6vfxypr>⏱ 47:00</span> <span class="category" data-astro-cid-n6vfxypr>📁 advanced</span> </div> </header> <div class="content" data-astro-cid-n6vfxypr> <div class="tags-header" data-astro-cid-n6vfxypr> <strong data-astro-cid-n6vfxypr>标签：</strong> <span class="tag" data-astro-cid-n6vfxypr>parallel</span><span class="tag" data-astro-cid-n6vfxypr>agents</span><span class="tag" data-astro-cid-n6vfxypr>workflow</span><span class="tag" data-astro-cid-n6vfxypr>multi-agent</span> </div> </div> <div class="content rendered-content" data-astro-cid-n6vfxypr> <h2 id="描述">描述</h2>
+<p>当面对多个独立任务时，可以在单次消息中启动多个 agents 并行工作。每个 agent 在独立上下文中运行，互不干扰。</p>
+<h2 id="为什么使用并行-agents">为什么使用并行 Agents</h2>
+<ul>
+<li><strong>节省时间</strong> - 多个任务同时进行，而非串行等待</li>
+<li><strong>隔离上下文</strong> - 每个 agent 只加载相关文件，避免 token 浪费</li>
+<li><strong>专业分工</strong> - 不同 agent 专注不同领域（前端、后端、安全等）</li>
+<li><strong>独立完成</strong> - 每个 agent 完成后自动通知，无需手动切换</li>
+</ul>
+<h2 id="如何启动并行-agents">如何启动并行 Agents</h2>
+<h3 id="方法-1单次消息请求">方法 1：单次消息请求</h3>
+<p>在一个消息中明确要求并行执行多个独立任务：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>请同时启动两个 agent 并行工作：</span></span>
+<span class="line"><span>1. 第一个 agent 审查 src/components/ 目录下的所有 React 组件代码</span></span>
+<span class="line"><span>2. 第二个 agent 审查 src/api/ 目录下的所有 API 端点代码</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Claude 会自动启动两个独立的 agents 并行处理。</p>
+<h3 id="方法-2使用-agent-工具">方法 2：使用 Agent 工具</h3>
+<p>通过自然语言请求使用特定 subagent：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>用 code-reviewer agent 审查 pr-123 分支的代码，</span></span>
+<span class="line"><span>同时用 security-reviewer agent 检查认证模块的安全性</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="subagent-类型">Subagent 类型</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Agent</th><th>用途</th><th>何时使用</th></tr></thead><tbody><tr><td><code>code-reviewer</code></td><td>代码质量审查</td><td>PR 审查、代码检查</td></tr><tr><td><code>security-reviewer</code></td><td>安全漏洞检测</td><td>认证、数据处理相关</td></tr><tr><td><code>tdd-guide</code></td><td>测试驱动开发指导</td><td>新功能、Bug 修复</td></tr><tr><td><code>architect</code></td><td>架构设计决策</td><td>系统设计、技术选型</td></tr><tr><td><code>planner</code></td><td>实施计划制定</td><td>复杂功能规划</td></tr><tr><td><code>general-purpose</code></td><td>通用任务</td><td>默认选项</td></tr></tbody></table>
+<h2 id="并行任务示例">并行任务示例</h2>
+<h3 id="示例-1前后端并行审查">示例 1：前后端并行审查</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>请启动两个 agents：</span></span>
+<span class="line"><span>1. 审查前端 React 组件的代码质量</span></span>
+<span class="line"><span>2. 同时审查后端 API 的安全性</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="示例-2多模块并行测试">示例 2：多模块并行测试</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>启动三个 agents 并行运行测试：</span></span>
+<span class="line"><span>- agent 1: 运行单元测试</span></span>
+<span class="line"><span>- agent 2: 运行集成测试</span></span>
+<span class="line"><span>- agent 3: 运行 E2E 测试</span></span>
+<span class="line"><span></span></span></code></pre>
+<h3 id="例-3文档和代码并行处理">���例 3：文档和代码并行处理</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>同时做两件事：</span></span>
+<span class="line"><span>1. 用 doc-updater agent 更新 API 文档</span></span>
+<span class="line"><span>2. 用 refactor-cleaner agent 清理未使用的代码</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="等待并行结果">等待并行结果</h2>
+<p>Agents 运行时你会看到：</p>
+<ul>
+<li>每个独立运行的通知</li>
+<li>Agent 完成后的自动消息</li>
+<li>所有 agents 完成后的汇总</li>
+</ul>
+<h2 id="最佳实践">最佳实践</h2>
+<h3 id="1-确保任务真正独立">1. 确保任务真正独立</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># ✅ 好 - 任务互不依赖</span></span>
+<span class="line"><span style="color:#B392F0">"审查组件 A 的代码"</span><span style="color:#9ECBFF"> +</span><span style="color:#9ECBFF"> "审查组件 B 的代码"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># ❌ 差 - 有依赖关系</span></span>
+<span class="line"><span style="color:#B392F0">"修复 API bug"</span><span style="color:#9ECBFF"> +</span><span style="color:#9ECBFF"> "编写 API 测试"</span><span style="color:#E1E4E8"> (测试依赖修复)</span></span>
+<span class="line"></span></code></pre>
+<h3 id="2-明确每个任务的范围">2. 明确每个任务的范围</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># ✅ 好 - 范围清晰</span></span>
+<span class="line"><span style="color:#B392F0">"审查 src/auth/ 目录的代码安全性"</span></span>
+<span class="line"><span style="color:#B392F0">"优化 src/components/ 的性能"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># ❌ 差 - 范围模糊</span></span>
+<span class="line"><span style="color:#B392F0">"看看代码有什么问题"</span></span>
+<span class="line"></span></code></pre>
+<h3 id="3-合理使用专业-agent">3. 合理使用专业 Agent</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># ✅ 好 - 用专业 agent</span></span>
+<span class="line"><span style="color:#B392F0">"用 security-reviewer 检查认证代码"</span></span>
+<span class="line"><span style="color:#B392F0">"用 code-reviewer 审查代码质量"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># ⚠️ 可用但效率较低</span></span>
+<span class="line"><span style="color:#B392F0">"用两个 general-purpose agents 审查代码"</span></span>
+<span class="line"></span></code></pre>
+<h3 id="4-避免过度并行">4. 避免过度并行</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># ✅ 合理 - 2-3 个并行任务</span></span>
+<span class="line"><span style="color:#B392F0">"启动 3 个 agents 审查不同模块"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># ❌ 过度 - 5+ 个并行任务难以跟踪</span></span>
+<span class="line"><span style="color:#B392F0">"启动 10 个 agents 同时审查代码"</span></span>
+<span class="line"></span></code></pre>
+<h2 id="注意事项">注意事项</h2>
+<ol>
+<li><strong>不要共享上下文</strong> - 每个 agent 独立运行，不会自动同步信息</li>
+<li><strong>避免竞争条件</strong> - 不要让多个 agents 修改同一文件</li>
+<li><strong>监控 Token 使用</strong> - 并行任务会增加 token 消耗</li>
+<li><strong>汇总结果</strong> - 所有 agents 完成后需要手动整合结果</li>
+</ol>
+<h2 id="另见">另见</h2>
+<ul>
+<li><a href="/claude-code-tips/tips/39">Tip 39: Subagents 隔离上下文</a></li>
+<li><a href="/claude-code-tips/tips/40">Tip 40: 避免指令过载</a></li>
+<li><a href="/claude-code-tips/best-practices">最佳实践</a></li>
+</ul> </div> <section class="related" data-astro-cid-n6vfxypr> <h2 data-astro-cid-n6vfxypr>相关技巧</h2> <div class="related-grid" data-astro-cid-n6vfxypr> <a href="/claude-code-tips/tips/39" class="card" data-astro-cid-n6vfxypr> <span class="tip-id" data-astro-cid-n6vfxypr>#39</span> <h3 data-astro-cid-n6vfxypr>Subagents = isolated context</h3> </a><a href="/claude-code-tips/tips/50" class="card" data-astro-cid-n6vfxypr> <span class="tip-id" data-astro-cid-n6vfxypr>#50</span> <h3 data-astro-cid-n6vfxypr>Explore the plugin ecosystem</h3> </a> </div> </section> <nav class="navigation" data-astro-cid-n6vfxypr> <a href="/claude-code-tips/tips/51" class="nav-link prev" data-astro-cid-n6vfxypr>
+← Tip #51: Use /insights command </a>  </nav> </article>  </main> <footer data-astro-cid-sckkx6r4> <div class="container" data-astro-cid-sckkx6r4> <p data-astro-cid-sckkx6r4>&copy; 2026 Claude Code Tips. 团队内部演示使用。</p> </div> </footer>  </body> </html> 
