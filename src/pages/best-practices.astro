@@ -7,98 +7,160 @@ const basePath = '/claude-code-tips';
 <Layout title="最佳实践 - Claude Code Tips">
   <article class="container">
     <h1>最佳实践</h1>
-    <p class="subtitle">团队使用 Claude Code 的最佳实践</p>
+    <p class="subtitle">Claude Code 核心工作指南</p>
 
     <section>
-      <h2>工作流程</h2>
-      <div class="practice">
-        <h3>1. 始终从根目录运行</h3>
-        <p>在项目根目录启动 Claude Code，确保完整的项目上下文。</p>
-        <pre><code>cd my-project
-claude</code></pre>
-      </div>
-
-      <div class="practice">
-        <h3>2. 新项目先运行 /init</h3>
-        <p>让 Claude Code 扫描项目并创建初始配置。</p>
-      </div>
-
-      <div class="practice">
-        <h3>3. 复杂任务使用 Plan Mode</h3>
-        <p>新功能、架构变更等复杂任务，先进入 Plan Mode 规划。</p>
-      </div>
-
-      <div class="practice">
-        <h3>4. Git 是你的安全网</h3>
-        <p>重要操作前先提交，出问题可以随时回退。</p>
+      <h2>🚀 工作流程</h2>
+      <div class="compact-list">
+        <div class="item">
+          <span class="num">1</span>
+          <div>
+            <strong>从根目录运行</strong>
+            <p>确保完整的项目上下文</p>
+          </div>
+        </div>
+        <div class="item">
+          <span class="num">2</span>
+          <div>
+            <strong>新项目先 /init</strong>
+            <p>让 Claude 扫描项目结构</p>
+          </div>
+        </div>
+        <div class="item">
+          <span class="num">3</span>
+          <div>
+            <strong>复杂任务用 Plan Mode</strong>
+            <p>先规划再实施</p>
+          </div>
+        </div>
+        <div class="item">
+          <span class="num">4</span>
+          <div>
+            <strong>Git 是安全网</strong>
+            <p>重要操作前先提交</p>
+          </div>
+        </div>
+        <div class="item">
+          <span class="num">5</span>
+          <div>
+            <strong>用 /btw 侧链提问</strong>
+            <p>工作时并行提问，不中断主任务</p>
+          </div>
+        </div>
       </div>
     </section>
 
     <section>
-      <h2>CLAUDE.md 配置</h2>
-      <div class="practice">
-        <h3>保持简洁</h3>
-        <p>只包含项目特定的关键信息，避免指令过载。</p>
+      <h2>💬 侧链对话 /btw</h2>
+      <p class="brief">Claude 工作时并行提问，即时浮层回答。</p>
+
+      <div class="workflow">
+        <h4>使用方式</h4>
+        <pre><code># Claude 正在执行任务时
+/btw 这个函数是做什么的？
+/btw useEffect 依赖怎么写？</code></pre>
       </div>
 
-      <div class="practice">
-        <h3>使用 Critical Rules</h3>
-        <p>将不可违反的规则放在 Critical Rules 部分，最高优先级。</p>
-      </div>
-
-      <div class="practice">
-        <h3>提供验证方式</h3>
-        <p>告诉 Claude 如何验证它的工作（测试命令、构建命令等）。</p>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <h4>不中断</h4>
+          <p>主任务继续执行</p>
+        </div>
+        <div class="tip-card">
+          <h4>即时回答</h4>
+          <p>浮层显示结果</p>
+        </div>
+        <div class="tip-card">
+          <h4>只读模式</h4>
+          <p>不调用工具</p>
+        </div>
+        <div class="tip-card">
+          <h4>简洁问题</h4>
+          <p>适合快速查证</p>
+        </div>
+        </div>
       </div>
     </section>
 
     <section>
-      <h2>模型选择</h2>
-      <table class="model-table">
-        <thead>
-          <tr>
-            <th>模型</th>
-            <th>适用场景</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Haiku</strong></td>
-            <td>简单查询、轻量任务、快速响应</td>
-          </tr>
-          <tr>
-            <td><strong>Sonnet</strong></td>
-            <td>日常开发（默认推荐）</td>
-          </tr>
-          <tr>
-            <td><strong>Opus</strong></td>
-            <td>复杂架构决策、深度分析</td>
-          </tr>
-        </tbody>
-      </table>
+      <h2>⚙️ CLAUDE.md 配置</h2>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <h4>保持简洁</h4>
+          <p>只写项目特定信息</p>
+        </div>
+        <div class="tip-card">
+          <h4>Critical Rules</h4>
+          <p>不可违反的规则放最前</p>
+        </div>
+        <div class="tip-card">
+          <h4>提供验证方式</h4>
+          <p>告诉 Claude 如何验证工作</p>
+        </div>
+        <div class="tip-card">
+          <h4>纳入版本控制</h4>
+          <p>团队共享配置</p>
+        </div>
+      </div>
     </section>
 
     <section>
-      <h2>团队协作</h2>
-      <div class="practice">
-        <h3>提交 CLAUDE.md</h3>
-        <p>将 CLAUDE.md 纳入版本控制，团队共享配置。</p>
+      <h2>🤖 并行 Agents</h2>
+      <p class="brief">多 AI 并行处理独立任务，节省时间、隔离上下文。</p>
+
+      <div class="workflow">
+        <h4>快速开始</h4>
+        <pre><code>请同时启动两个 agents：
+1. 审查前端 React 组件代码
+2. 审查后端 API 安全性</code></pre>
       </div>
 
-      <div class="practice">
-        <h3>代码审查包含 AI 生成内容</h3>
-        <p>Claude 生成的代码也需要经过正常审查流程。</p>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <h4>确保独立</h4>
+          <p>任务间无依赖关系</p>
+        </div>
+        <div class="tip-card">
+          <h4>明确范围</h4>
+          <p>清晰定义每个任务</p>
+        </div>
+        <div class="tip-card">
+          <h4>专业分工</h4>
+          <p>用 code-reviewer、security-reviewer 等</p>
+        </div>
+        <div class="tip-card">
+          <h4>适度并行</h4>
+          <p>2-3 个任务最佳</p>
+        </div>
       </div>
+    </section>
 
-      <div class="practice">
-        <h3>记录 Claude 协助的内容</h3>
-        <p>提交信息中标注由 Claude 生成或协助的代码。</p>
+    <section>
+      <h2>📊 模型选择</h2>
+      <div class="model-cards">
+        <div class="model-card">
+          <h4>Haiku</h4>
+          <p>简单查询、快速响应</p>
+        </div>
+        <div class="model-card featured">
+          <h4>Sonnet ⭐</h4>
+          <p>日常开发（默认）</p>
+        </div>
+        <div class="model-card">
+          <h4>Opus</h4>
+          <p>复杂决策、深度分析</p>
+        </div>
       </div>
     </section>
 
     <section class="related">
-      <h2>相关资源</h2>
-      <a href={`${basePath}/tips`} class="btn">浏览所有技巧</a>
+      <h2>📚 相关资源</h2>
+      <div class="links-grid">
+        <a href={`${basePath}/tips`} class="link-card">浏览所有技巧</a>
+        <a href={`${basePath}/tips/54`} class="link-card">/btw 侧链对话</a>
+        <a href={`${basePath}/tips/53`} class="link-card">并行 Agents</a>
+        <a href={`${basePath}/tips/52`} class="link-card">CI MCP 工具集</a>
+      </div>
     </section>
   </article>
 </Layout>
@@ -131,38 +193,153 @@ claude</code></pre>
     border-bottom: 2px solid var(--color-primary);
   }
 
-  .practice {
-    background: var(--color-surface);
-    padding: var(--spacing-lg);
-    border-radius: var(--radius-lg);
+  .brief {
+    color: var(--color-text-light);
     margin-bottom: var(--spacing-lg);
+  }
+
+  /* Compact Numbered List */
+  .compact-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
     border: 1px solid var(--color-border);
   }
 
-  .practice h3 {
-    margin-bottom: var(--spacing-sm);
+  .num {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary);
+    color: white;
+    border-radius: 50%;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .item strong {
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .item p {
+    margin: 0;
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+  }
+
+  /* Tips Grid */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: var(--spacing-md);
+  }
+
+  .tip-card {
+    padding: var(--spacing-md);
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    text-align: center;
+  }
+
+  .tip-card h4 {
+    margin: 0 0 var(--spacing-xs);
     color: var(--color-primary);
   }
 
-  .model-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: var(--spacing-lg);
+  .tip-card p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--color-text-light);
   }
 
-  .model-table th,
-  .model-table td {
-    text-align: left;
-    padding: var(--spacing-md);
-    border-bottom: 1px solid var(--color-border);
+  /* Workflow Code */
+  .workflow {
+    margin-bottom: var(--spacing-lg);
   }
 
-  .model-table th {
+  .workflow h4 {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .workflow pre {
     background: var(--color-bg);
-    font-weight: 600;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    overflow-x: auto;
   }
 
+  .workflow code {
+    font-size: 0.875rem;
+  }
+
+  /* Model Cards */
+  .model-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--spacing-md);
+  }
+
+  .model-card {
+    padding: var(--spacing-lg);
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    border: 2px solid var(--color-border);
+    text-align: center;
+  }
+
+  .model-card.featured {
+    border-color: var(--color-primary);
+    background: linear-gradient(135deg, var(--color-surface) 0%, rgba(var(--color-primary-rgb), 0.1) 100%);
+  }
+
+  .model-card h4 {
+    margin: 0 0 var(--spacing-sm);
+  }
+
+  .model-card p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+  }
+
+  /* Related Links */
   .related {
     text-align: center;
+  }
+
+  .links-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    justify-content: center;
+  }
+
+  .link-card {
+    display: inline-block;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: var(--color-text);
+    transition: all var(--transition);
+  }
+
+  .link-card:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
   }
 </style>

@@ -3,7 +3,7 @@ import pagefind from 'astro-pagefind';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://blime4.github.io/claude-code-tips',
+  site: 'https://blime4.github.io',
   base: '/claude-code-tips/',
   integrations: [pagefind()],
   outDir: 'docs',
