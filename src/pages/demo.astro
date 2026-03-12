@@ -36,7 +36,7 @@ import Layout from '../layouts/Layout.astro';
           <button class="preset-btn" data-cmd="/init">/init - 初始化项目</button>
           <button class="preset-btn" data-cmd="/clear">/clear - 清空对话</button>
           <button class="preset-btn" data-cmd="/context">/context - Token 使用</button>
-          <button class="preset-btn" data-cmd="/btw">/btw - 顺便提一下</button>
+          <button class="preset-btn" data-cmd="/btw">/btw - 侧链对话</button>
         </div>
 
         <div class="presets-section">
@@ -94,7 +94,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
         <div class="command-card">
           <code>/btw</code>
-          <p>顺便提一下 - 保存项目记忆</p>
+          <p>侧链对话 - 并行提问不中断主任务</p>
         </div>
       </div>
     </div>
@@ -411,16 +411,16 @@ import Layout from '../layouts/Layout.astro';
 
 可用工具: 12 个`,
 
-    '/btw': `顺��提一下...
+        '/btw': `侧链对话模式已开启 💬
 
-请告诉我你想要记录或记住的内容。
+你可以在主任务执行时并行提问，答案将显示在浮层中。
 
-例如：
-- "团队使用 Prettier 进行代码格式化"
-- "API 端点使用 RESTful 风格"
-- "下周一需要发布 v1.0"
+使用场景：
+• 快速查询：/btw 这个函数是做什么的？
+• 概念确认：/btw useEffect 依赖怎么做？
+• 相关疑问：/btw 这个错误码是什么意思？
 
-我会将这些信息保存到项目记忆中。`,
+特点：不中断主任务、即时回答、只读模式`,
 
     '帮我创建一个新组件': `好的！我来帮你创建一个新的用户卡片组件。
 
