@@ -448,7 +448,7 @@ import Layout from '../layouts/Layout.astro';
 
 发现的问题：
 ❌ 高危: users.ts#45 使用字符串拼接构建 SQL 查询
-   const query = `SELECT * FROM users WHERE id = ${userId}`
+   const query = \`SELECT * FROM users WHERE id = \${userId}\`
 
 ✅ 建议: 使用参数化查询
    const query = 'SELECT * FROM users WHERE id = ?'
