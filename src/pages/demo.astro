@@ -45,6 +45,8 @@ import Layout from '../layouts/Layout.astro';
           <button class="preset-btn" data-cmd="/plan">/plan - 进入规划模式</button>
           <button class="preset-btn" data-cmd="/resume">/resume - 恢复会话</button>
           <button class="preset-btn" data-cmd="/mcp">/mcp - MCP 状态</button>
+          <button class="preset-btn" data-cmd="/copy">/copy - 复制响应</button>
+          <button class="preset-btn" data-cmd="/export">/export - 导出对话</button>
         </div>
 
         <div class="presets-section">
@@ -95,6 +97,14 @@ import Layout from '../layouts/Layout.astro';
         <div class="command-card">
           <code>/btw</code>
           <p>侧链对话 - 并行提问不中断主任务</p>
+        </div>
+        <div class="command-card">
+          <code>/copy</code>
+          <p>复制最后响应到剪贴板</p>
+        </div>
+        <div class="command-card">
+          <code>/export</code>
+          <p>导出对话会话为文件</p>
         </div>
       </div>
     </div>
@@ -421,6 +431,34 @@ import Layout from '../layouts/Layout.astro';
 • 相关疑问：/btw 这个错误码是什么意思？
 
 特点：不中断主任务、即时回答、只读模式`,
+
+    '/copy': `✓ 已复制到剪贴板！
+
+最后一次响应的 Markdown 内容已复制到剪贴板。
+
+你现在可以：
+• 粘贴到代码编辑器
+• 粘贴到文档或 Wiki
+• 粘贴到工单或 PR 描述
+• 分享给团队成员`,
+
+    '/export': `📦 导出选项
+
+请选择导出格式：
+
+• /export session.md - Markdown 文档
+• /export session.html - HTML（带样式）
+• /export session.json - JSON 数据
+• /export clipboard - 复制到剪贴板
+
+或者直接指定：
+• /export output.md
+
+导出内容包括：
+• 完整对话历史
+• 代码和响应
+• 时间戳
+• 工具调用记录`,
 
     'team mode, member 1 修复用户登录的 token 过期问题，member 2 分析 API 响应慢的原因': `🚀 Team Mode 已激活
 
